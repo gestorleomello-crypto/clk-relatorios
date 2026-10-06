@@ -52,7 +52,15 @@ svg{display:block;max-width:100%;height:auto}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1715;--card:#231f1d;--ink:#ece6e1;--mut:#a39890;--line:#3a332f}
 :root:not([data-theme="light"]) .st .bx{background:#332c28}
 :root:not([data-theme="light"]) .flow .node.ok{background:#1c3329;border-color:#2b4a3a}
-:root:not([data-theme="light"]) .tb{background:#3d211e}:root:not([data-theme="light"]) .tg{background:#1c3329}:root:not([data-theme="light"]) .tw{background:#3a3016}}</style></head><body><div class="w">
+:root:not([data-theme="light"]) .tb{background:#3d211e}:root:not([data-theme="light"]) .tg{background:#1c3329}:root:not([data-theme="light"]) .tw{background:#3a3016}}.bar{cursor:pointer;transition:opacity .12s ease}
+.bar:hover{opacity:.72}
+.bar:focus{outline:none}
+.bar:focus-visible{outline:2px solid var(--ac);outline-offset:1px;opacity:.72}
+#tip{position:fixed;z-index:60;pointer-events:none;background:var(--ink);color:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12.5px;line-height:1.4;box-shadow:0 6px 22px rgba(0,0,0,.22);opacity:0;transform:translateY(2px);transition:opacity .1s ease}
+#tip.on{opacity:1;transform:none}
+#tip .tl{font-weight:700;display:block}
+#tip .tv{display:block;opacity:.9}
+</style></head><body><div class="w">
 
 <div class="hero">
 <h1>Use Tricô — Aquisição &amp; Crescimento</h1>
@@ -78,19 +86,19 @@ svg{display:block;max-width:100%;height:auto}
 <svg viewBox="0 0 900 280" role="img" aria-label="Recompra da base ao longo do tempo">
 <line x1="58" y1="236" x2="884" y2="236" stroke="#e8e1db" stroke-width="1.5"/>
 <text x="50" y="42" font-size="11" fill="#a39890" text-anchor="end">45%</text><text x="50" y="236" font-size="11" fill="#a39890" text-anchor="end">0</text>
-<rect x="124" y="137" width="34" height="99" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Até 30 dias da 1ª compra: 22% da base voltou a comprar" data-tip="Até 30 dias da 1ª compra|22% da base voltou a comprar" x="124" y="137" width="34" height="99" rx="2" fill="#8b6f5c"/>
 <text x="141" y="131" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">22%</text>
 <text x="141" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D30</text>
-<rect x="289" y="110" width="34" height="126" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Até 60 dias da 1ª compra: 28% da base voltou a comprar" data-tip="Até 60 dias da 1ª compra|28% da base voltou a comprar" x="289" y="110" width="34" height="126" rx="2" fill="#8b6f5c"/>
 <text x="306" y="104" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">28%</text>
 <text x="306" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D60</text>
-<rect x="454" y="97" width="34" height="139" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Até 90 dias da 1ª compra: 31% da base voltou a comprar" data-tip="Até 90 dias da 1ª compra|31% da base voltou a comprar" x="454" y="97" width="34" height="139" rx="2" fill="#8b6f5c"/>
 <text x="471" y="91" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">31%</text>
 <text x="471" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D90</text>
-<rect x="619" y="70" width="34" height="166" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Até 180 dias da 1ª compra: 37% da base voltou a comprar" data-tip="Até 180 dias da 1ª compra|37% da base voltou a comprar" x="619" y="70" width="34" height="166" rx="2" fill="#8b6f5c"/>
 <text x="636" y="64" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">37%</text>
 <text x="636" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D180</text>
-<rect x="784" y="34" width="34" height="202" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Até 365 dias (1 ano): 45% da base voltou a comprar" data-tip="Até 365 dias (1 ano)|45% da base voltou a comprar" x="784" y="34" width="34" height="202" rx="2" fill="#8b6f5c"/>
 <text x="801" y="28" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">45%</text>
 <text x="801" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D365</text>
 </svg>
@@ -104,31 +112,31 @@ svg{display:block;max-width:100%;height:auto}
 <svg viewBox="0 0 900 280" role="img" aria-label="Mídia por nova cliente (R$), por mês">
 <line x1="58" y1="236" x2="884" y2="236" stroke="#e8e1db" stroke-width="1.5"/>
 <text x="50" y="42" font-size="11" fill="#a39890" text-anchor="end">710</text><text x="50" y="236" font-size="11" fill="#a39890" text-anchor="end">0</text>
-<rect x="87" y="152" width="34" height="84" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Janeiro de 2026: R$ 295 de mídia por nova cliente" data-tip="Janeiro de 2026|R$ 295 de mídia por nova cliente" x="87" y="152" width="34" height="84" rx="2" fill="#8b6f5c"/>
 <text x="104" y="146" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">295</text>
 <text x="104" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jan</text>
-<rect x="179" y="144" width="34" height="92" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Fevereiro de 2026: R$ 322 de mídia por nova cliente" data-tip="Fevereiro de 2026|R$ 322 de mídia por nova cliente" x="179" y="144" width="34" height="92" rx="2" fill="#8b6f5c"/>
 <text x="196" y="138" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">322</text>
 <text x="196" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Fev</text>
-<rect x="270" y="155" width="34" height="81" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Março de 2026: R$ 283 de mídia por nova cliente" data-tip="Março de 2026|R$ 283 de mídia por nova cliente" x="270" y="155" width="34" height="81" rx="2" fill="#8b6f5c"/>
 <text x="287" y="149" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">283</text>
 <text x="287" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Mar</text>
-<rect x="362" y="146" width="34" height="90" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Abril de 2026: R$ 318 de mídia por nova cliente" data-tip="Abril de 2026|R$ 318 de mídia por nova cliente" x="362" y="146" width="34" height="90" rx="2" fill="#8b6f5c"/>
 <text x="379" y="140" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">318</text>
 <text x="379" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Abr</text>
-<rect x="454" y="162" width="34" height="74" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Maio de 2026: R$ 259 de mídia por nova cliente" data-tip="Maio de 2026|R$ 259 de mídia por nova cliente" x="454" y="162" width="34" height="74" rx="2" fill="#8b6f5c"/>
 <text x="471" y="156" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">259</text>
 <text x="471" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Mai</text>
-<rect x="546" y="155" width="34" height="81" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Junho de 2026: R$ 285 de mídia por nova cliente" data-tip="Junho de 2026|R$ 285 de mídia por nova cliente" x="546" y="155" width="34" height="81" rx="2" fill="#8b6f5c"/>
 <text x="563" y="149" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">285</text>
 <text x="563" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jun</text>
-<rect x="638" y="133" width="34" height="103" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Julho de 2026: R$ 362 de mídia por nova cliente" data-tip="Julho de 2026|R$ 362 de mídia por nova cliente" x="638" y="133" width="34" height="103" rx="2" fill="#8b6f5c"/>
 <text x="655" y="127" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">362</text>
 <text x="655" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jul</text>
-<rect x="729" y="34" width="34" height="202" rx="2" fill="#c0392b"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Agosto de 2026: R$ 710 de mídia por nova cliente" data-tip="Agosto de 2026|R$ 710 de mídia por nova cliente" x="729" y="34" width="34" height="202" rx="2" fill="#c0392b"/>
 <text x="746" y="28" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">710</text>
 <text x="746" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Ago</text>
-<rect x="821" y="39" width="34" height="197" rx="2" fill="#c0392b"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Setembro de 2026: R$ 693 de mídia por nova cliente" data-tip="Setembro de 2026|R$ 693 de mídia por nova cliente" x="821" y="39" width="34" height="197" rx="2" fill="#c0392b"/>
 <text x="838" y="33" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">693</text>
 <text x="838" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Set</text>
 </svg>
@@ -154,32 +162,32 @@ svg{display:block;max-width:100%;height:auto}
 <line x1="58" y1="250" x2="884" y2="250" stroke="#e8e1db" stroke-width="1.5"/>
 <text x="50" y="48" font-size="11" fill="#a39890" text-anchor="end">806</text>
 <text x="50" y="250" font-size="11" fill="#a39890" text-anchor="end">0</text>
-<rect x="76" y="177" width="26" height="73" rx="2" fill="#a98a74"/>
-<rect x="106" y="142" width="26" height="108" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Janeiro de 2025: 282 novas clientes" data-tip="Janeiro de 2025|282 novas clientes" x="76" y="177" width="26" height="73" rx="2" fill="#a98a74"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Janeiro de 2026: 413 novas clientes" data-tip="Janeiro de 2026|413 novas clientes" x="106" y="142" width="26" height="108" rx="2" fill="#8b6f5c"/>
 <text x="104" y="266" font-size="11" fill="#a39890" text-anchor="middle">Jan</text>
-<rect x="168" y="190" width="26" height="60" rx="2" fill="#a98a74"/>
-<rect x="198" y="180" width="26" height="70" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Fevereiro de 2025: 229 novas clientes" data-tip="Fevereiro de 2025|229 novas clientes" x="168" y="190" width="26" height="60" rx="2" fill="#a98a74"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Fevereiro de 2026: 269 novas clientes" data-tip="Fevereiro de 2026|269 novas clientes" x="198" y="180" width="26" height="70" rx="2" fill="#8b6f5c"/>
 <text x="196" y="266" font-size="11" fill="#a39890" text-anchor="middle">Fev</text>
-<rect x="259" y="178" width="26" height="72" rx="2" fill="#a98a74"/>
-<rect x="289" y="158" width="26" height="92" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Março de 2025: 275 novas clientes" data-tip="Março de 2025|275 novas clientes" x="259" y="178" width="26" height="72" rx="2" fill="#a98a74"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Março de 2026: 353 novas clientes" data-tip="Março de 2026|353 novas clientes" x="289" y="158" width="26" height="92" rx="2" fill="#8b6f5c"/>
 <text x="287" y="266" font-size="11" fill="#a39890" text-anchor="middle">Mar</text>
-<rect x="351" y="142" width="26" height="108" rx="2" fill="#a98a74"/>
-<rect x="381" y="141" width="26" height="109" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Abril de 2025: 415 novas clientes" data-tip="Abril de 2025|415 novas clientes" x="351" y="142" width="26" height="108" rx="2" fill="#a98a74"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Abril de 2026: 415 novas clientes" data-tip="Abril de 2026|415 novas clientes" x="381" y="141" width="26" height="109" rx="2" fill="#8b6f5c"/>
 <text x="379" y="266" font-size="11" fill="#a39890" text-anchor="middle">Abr</text>
-<rect x="443" y="124" width="26" height="126" rx="2" fill="#a98a74"/>
-<rect x="473" y="40" width="26" height="210" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Maio de 2025: 483 novas clientes" data-tip="Maio de 2025|483 novas clientes" x="443" y="124" width="26" height="126" rx="2" fill="#a98a74"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Maio de 2026: 808 novas clientes" data-tip="Maio de 2026|808 novas clientes" x="473" y="40" width="26" height="210" rx="2" fill="#8b6f5c"/>
 <text x="471" y="266" font-size="11" fill="#a39890" text-anchor="middle">Mai</text>
-<rect x="535" y="53" width="26" height="197" rx="2" fill="#a98a74"/>
-<rect x="565" y="63" width="26" height="187" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Junho de 2025: 758 novas clientes" data-tip="Junho de 2025|758 novas clientes" x="535" y="53" width="26" height="197" rx="2" fill="#a98a74"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Junho de 2026: 716 novas clientes" data-tip="Junho de 2026|716 novas clientes" x="565" y="63" width="26" height="187" rx="2" fill="#8b6f5c"/>
 <text x="563" y="266" font-size="11" fill="#a39890" text-anchor="middle">Jun</text>
-<rect x="627" y="92" width="26" height="158" rx="2" fill="#a98a74"/>
-<rect x="657" y="111" width="26" height="139" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Julho de 2025: 605 novas clientes" data-tip="Julho de 2025|605 novas clientes" x="627" y="92" width="26" height="158" rx="2" fill="#a98a74"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Julho de 2026: 535 novas clientes" data-tip="Julho de 2026|535 novas clientes" x="657" y="111" width="26" height="139" rx="2" fill="#8b6f5c"/>
 <text x="655" y="266" font-size="11" fill="#a39890" text-anchor="middle">Jul</text>
-<rect x="718" y="180" width="26" height="70" rx="2" fill="#a98a74"/>
-<rect x="748" y="177" width="26" height="73" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Agosto de 2025: 268 novas clientes" data-tip="Agosto de 2025|268 novas clientes" x="718" y="180" width="26" height="70" rx="2" fill="#a98a74"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Agosto de 2026: 280 novas clientes" data-tip="Agosto de 2026|280 novas clientes" x="748" y="177" width="26" height="73" rx="2" fill="#8b6f5c"/>
 <text x="746" y="266" font-size="11" fill="#a39890" text-anchor="middle">Ago</text>
-<rect x="810" y="199" width="26" height="51" rx="2" fill="#a98a74"/>
-<rect x="840" y="181" width="26" height="69" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Setembro de 2025: 197 novas clientes" data-tip="Setembro de 2025|197 novas clientes" x="810" y="199" width="26" height="51" rx="2" fill="#a98a74"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Setembro de 2026: 263 novas clientes" data-tip="Setembro de 2026|263 novas clientes" x="840" y="181" width="26" height="69" rx="2" fill="#8b6f5c"/>
 <text x="838" y="266" font-size="11" fill="#a39890" text-anchor="middle">Set</text>
 <rect x="684" y="22" width="12" height="12" fill="#a98a74"/><text x="700" y="32" font-size="12" fill="#a39890">2025</text>
 <rect x="784" y="22" width="12" height="12" fill="#8b6f5c"/><text x="800" y="32" font-size="12" fill="#a39890">2026</text>
@@ -209,31 +217,31 @@ svg{display:block;max-width:100%;height:auto}
 <svg viewBox="0 0 900 280" role="img" aria-label="Primeira compra 2026 — ticket inicial por mês">
 <line x1="58" y1="236" x2="884" y2="236" stroke="#e8e1db" stroke-width="1.5"/>
 <text x="50" y="42" font-size="11" fill="#a39890" text-anchor="end">1039</text><text x="50" y="236" font-size="11" fill="#a39890" text-anchor="end">0</text>
-<rect x="87" y="38" width="34" height="198" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Janeiro de 2026: R$ 1.017 na 1ª compra" data-tip="Janeiro de 2026|R$ 1.017 na 1ª compra" x="87" y="38" width="34" height="198" rx="2" fill="#8b6f5c"/>
 <text x="104" y="32" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">1017</text>
 <text x="104" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jan</text>
-<rect x="179" y="51" width="34" height="185" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Fevereiro de 2026: R$ 950 na 1ª compra" data-tip="Fevereiro de 2026|R$ 950 na 1ª compra" x="179" y="51" width="34" height="185" rx="2" fill="#8b6f5c"/>
 <text x="196" y="45" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">950</text>
 <text x="196" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Fev</text>
-<rect x="270" y="34" width="34" height="202" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Março de 2026: R$ 1.039 na 1ª compra" data-tip="Março de 2026|R$ 1.039 na 1ª compra" x="270" y="34" width="34" height="202" rx="2" fill="#8b6f5c"/>
 <text x="287" y="28" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">1039</text>
 <text x="287" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Mar</text>
-<rect x="362" y="55" width="34" height="181" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Abril de 2026: R$ 931 na 1ª compra" data-tip="Abril de 2026|R$ 931 na 1ª compra" x="362" y="55" width="34" height="181" rx="2" fill="#8b6f5c"/>
 <text x="379" y="49" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">931</text>
 <text x="379" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Abr</text>
-<rect x="454" y="66" width="34" height="170" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Maio de 2026: R$ 875 na 1ª compra" data-tip="Maio de 2026|R$ 875 na 1ª compra" x="454" y="66" width="34" height="170" rx="2" fill="#8b6f5c"/>
 <text x="471" y="60" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">875</text>
 <text x="471" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Mai</text>
-<rect x="546" y="74" width="34" height="162" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Junho de 2026: R$ 834 na 1ª compra" data-tip="Junho de 2026|R$ 834 na 1ª compra" x="546" y="74" width="34" height="162" rx="2" fill="#8b6f5c"/>
 <text x="563" y="68" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">834</text>
 <text x="563" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jun</text>
-<rect x="638" y="79" width="34" height="157" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Julho de 2026: R$ 805 na 1ª compra" data-tip="Julho de 2026|R$ 805 na 1ª compra" x="638" y="79" width="34" height="157" rx="2" fill="#8b6f5c"/>
 <text x="655" y="73" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">805</text>
 <text x="655" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jul</text>
-<rect x="729" y="85" width="34" height="151" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Agosto de 2026: R$ 776 na 1ª compra" data-tip="Agosto de 2026|R$ 776 na 1ª compra" x="729" y="85" width="34" height="151" rx="2" fill="#8b6f5c"/>
 <text x="746" y="79" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">776</text>
 <text x="746" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Ago</text>
-<rect x="821" y="90" width="34" height="146" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Setembro de 2026: R$ 750 na 1ª compra" data-tip="Setembro de 2026|R$ 750 na 1ª compra" x="821" y="90" width="34" height="146" rx="2" fill="#8b6f5c"/>
 <text x="838" y="84" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">750</text>
 <text x="838" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Set</text>
 </svg>
@@ -247,19 +255,19 @@ svg{display:block;max-width:100%;height:auto}
 <svg viewBox="0 0 900 280" role="img" aria-label="Recompra em 90 dias por nº de peças na 1ª compra">
 <line x1="58" y1="236" x2="884" y2="236" stroke="#e8e1db" stroke-width="1.5"/>
 <text x="50" y="42" font-size="11" fill="#a39890" text-anchor="end">52%</text><text x="50" y="236" font-size="11" fill="#a39890" text-anchor="end">0</text>
-<rect x="124" y="135" width="34" height="101" rx="2" fill="#2e7d5b"/>
+<rect class="bar" tabindex="0" role="img" aria-label="1 peça na 1ª compra: 26% recompra em 90 dias · ~R$ 935 de receita média" data-tip="1 peça na 1ª compra|26% recompra em 90 dias · ~R$ 935 de receita média" x="124" y="135" width="34" height="101" rx="2" fill="#2e7d5b"/>
 <text x="141" y="129" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">26%</text>
 <text x="141" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">1 peça</text>
-<rect x="289" y="108" width="34" height="128" rx="2" fill="#2e7d5b"/>
+<rect class="bar" tabindex="0" role="img" aria-label="2 peças na 1ª compra: 33% recompra em 90 dias · ~R$ 1.473 de receita média" data-tip="2 peças na 1ª compra|33% recompra em 90 dias · ~R$ 1.473 de receita média" x="289" y="108" width="34" height="128" rx="2" fill="#2e7d5b"/>
 <text x="306" y="102" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">33%</text>
 <text x="306" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">2</text>
-<rect x="454" y="69" width="34" height="167" rx="2" fill="#2e7d5b"/>
+<rect class="bar" tabindex="0" role="img" aria-label="3 peças na 1ª compra: 43% recompra em 90 dias · ~R$ 2.282 de receita média" data-tip="3 peças na 1ª compra|43% recompra em 90 dias · ~R$ 2.282 de receita média" x="454" y="69" width="34" height="167" rx="2" fill="#2e7d5b"/>
 <text x="471" y="63" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">43%</text>
 <text x="471" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">3</text>
-<rect x="619" y="61" width="34" height="175" rx="2" fill="#2e7d5b"/>
+<rect class="bar" tabindex="0" role="img" aria-label="4 peças na 1ª compra: 45% recompra em 90 dias · ~R$ 3.099 de receita média" data-tip="4 peças na 1ª compra|45% recompra em 90 dias · ~R$ 3.099 de receita média" x="619" y="61" width="34" height="175" rx="2" fill="#2e7d5b"/>
 <text x="636" y="55" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">45%</text>
 <text x="636" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">4</text>
-<rect x="784" y="34" width="34" height="202" rx="2" fill="#2e7d5b"/>
+<rect class="bar" tabindex="0" role="img" aria-label="5 peças na 1ª compra: 52% recompra em 90 dias · ~R$ 3.759 de receita média" data-tip="5 peças na 1ª compra|52% recompra em 90 dias · ~R$ 3.759 de receita média" x="784" y="34" width="34" height="202" rx="2" fill="#2e7d5b"/>
 <text x="801" y="28" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">52%</text>
 <text x="801" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">5</text>
 </svg>
@@ -471,4 +479,23 @@ svg{display:block;max-width:100%;height:auto}
 
 <p class="nt" style="margin-top:30px;border-top:1px solid var(--line);padding-top:16px">Fontes: pedidos Use Tricô (histórico fechado até 30/09/2026) · Meta Ads · Google Ads · GA4 · Solomon. Números de custo por nova cliente usam a mídia observada dividida pelas novas clientes do período — referência, não prova de origem única. Associações marcadas como associação, não causa. Recompensas do programa são exemplo inicial, sujeito a validação econômica.</p>
 
-</div></body></html>
+</div><div id="tip" role="status" aria-live="polite"></div>
+<script>
+(function(){
+ var tip=document.getElementById('tip');var cur=null;
+ function place(x,y){var r=tip.getBoundingClientRect();var l=x+14,t=y-r.height-12;if(t<6)t=y+20;if(l+r.width>window.innerWidth-8)l=window.innerWidth-8-r.width;if(l<6)l=6;tip.style.left=l+'px';tip.style.top=t+'px';}
+ function show(el,x,y){var d=el.getAttribute('data-tip')||'';var p=d.split('|');tip.innerHTML='<span class="tl">'+p[0]+'</span>'+(p[1]?'<span class="tv">'+p[1]+'</span>':'');tip.classList.add('on');place(x,y);cur=el;}
+ function hide(){tip.classList.remove('on');cur=null;}
+ document.querySelectorAll('.bar').forEach(function(el){
+  el.addEventListener('mouseenter',function(e){show(el,e.clientX,e.clientY);});
+  el.addEventListener('mousemove',function(e){if(cur===el)place(e.clientX,e.clientY);});
+  el.addEventListener('mouseleave',hide);
+  el.addEventListener('focus',function(){var b=el.getBoundingClientRect();show(el,b.left+b.width/2,b.top);});
+  el.addEventListener('blur',hide);
+  el.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+ });
+ document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.bar');if(el){var b=el.getBoundingClientRect();if(cur===el){hide();}else{show(el,b.left+b.width/2,b.top);}e.stopPropagation();}else{hide();}},true);
+ window.addEventListener('scroll',hide,true);window.addEventListener('resize',hide);
+})();
+</script>
+</body></html>
