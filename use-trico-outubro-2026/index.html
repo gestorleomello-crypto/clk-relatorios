@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Use Tricô — Aquisição & Crescimento</title>
+<style>:root{--bg:#faf8f6;--card:#fff;--ink:#2b2724;--mut:#7a716b;--line:#e8e1db;--ok:#2e7d5b;--bad:#c0392b;--warn:#b8860b;--ac:#8b6f5c}
+*{box-sizing:border-box}body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:0 16px}
+.w{max-width:960px;margin:0 auto;padding:32px 0 64px}
+h1{font-size:30px;line-height:1.15;margin:0 0 4px;letter-spacing:-.02em}
+.sub{color:var(--mut);margin:0 0 30px;font-size:15px}
+h2{font-size:20px;margin:46px 0 12px;letter-spacing:-.01em;border-bottom:2px solid var(--line);padding-bottom:8px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:14px 0}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin:16px 0}
+.k{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px}
+.k .l{font-size:11.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.k .v{font-size:24px;font-weight:600;margin:5px 0 2px;letter-spacing:-.02em}
+.k .d{font-size:13px;font-weight:600}
+.up{color:var(--ok)}.dn{color:var(--bad)}.fl{color:var(--mut)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.03em}
+.tb{background:#fdecea;color:var(--bad)}.tg{background:#e7f4ed;color:var(--ok)}.tw{background:#fdf5e2;color:var(--warn)}
+.big{font-size:19px;line-height:1.5;font-weight:500;margin:0}
+.nt{font-size:13.5px;color:var(--mut);margin-top:8px}
+.st{display:flex;align-items:center;gap:11px;margin:8px 0}
+.st .nm{width:175px;font-size:14px;flex-shrink:0}
+.st .bx{flex:1;background:#eee7e1;border-radius:6px;overflow:hidden;height:28px}
+.st .f{height:100%;background:linear-gradient(90deg,#8b6f5c,#a98a74)}
+.st .p{width:140px;text-align:right;font-size:14px;font-variant-numeric:tabular-nums;flex-shrink:0}
+ol.a{padding-left:0;list-style:none;counter-reset:a}
+ol.a li{counter-increment:a;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:10px;padding:15px 17px;margin:10px 0;position:relative}
+ol.a li::before{content:counter(a);position:absolute;left:-2px;top:-2px;background:var(--ac);color:#fff;width:25px;height:25px;border-radius:50% 0 50% 0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+ol.a .ti{font-weight:600;margin:0 0 4px;padding-left:21px}
+ol.a .de{font-size:14px;color:var(--mut);margin:0}
+svg{display:block;max-width:100%;height:auto}
+.hero{background:linear-gradient(135deg,#8b6f5c,#6f5848);color:#fff;border-radius:16px;padding:34px 26px;margin:8px 0 6px}
+.hero h1{color:#fff}.hero .sub{color:#f0e6df;margin:0}
+.flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:8px 0}
+.flow .node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 18px;font-weight:600;font-size:14.5px;text-align:center}
+.flow .node.ac{background:var(--ac);color:#fff;border-color:var(--ac)}
+.flow .node.ok{background:#e7f4ed;border-color:#bfe0cf}
+.flow .ar{color:var(--mut);font-size:18px;line-height:1.1;margin:3px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.motor{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;border-top:4px solid var(--ac)}
+.motor.m2{border-top-color:var(--ok)}
+.motor h3{margin:0 0 6px;font-size:16px}
+.rw{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.rw:last-child{border-bottom:0}
+.rw .pt{background:var(--ac);color:#fff;border-radius:8px;min-width:58px;text-align:center;font-weight:700;font-size:14px;padding:7px 4px}
+.rw .tx{font-size:14.5px}
+@media(max-width:620px){.st .nm{width:98px;font-size:12px}.st .p{width:92px;font-size:12px}h1{font-size:24px}.k .v{font-size:20px}.c{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:16px 14px}table{font-size:13px}th,td{padding:7px 5px}th{font-size:10.5px;letter-spacing:.03em}.t{font-size:10px;padding:2px 6px}.big{font-size:17px}.g{grid-template-columns:1fr 1fr;gap:9px}.k{padding:12px}svg{min-width:520px}.two{grid-template-columns:1fr}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1715;--card:#231f1d;--ink:#ece6e1;--mut:#a39890;--line:#3a332f}
+:root:not([data-theme="light"]) .st .bx{background:#332c28}
+:root:not([data-theme="light"]) .flow .node.ok{background:#1c3329;border-color:#2b4a3a}
+:root:not([data-theme="light"]) .tb{background:#3d211e}:root:not([data-theme="light"]) .tg{background:#1c3329}:root:not([data-theme="light"]) .tw{background:#3a3016}}</style></head><body><div class="w">
+
+<div class="hero">
+<h1>Use Tricô — Aquisição &amp; Crescimento</h1>
+<p class="sub">Diagnóstico + plano de reversão &middot; outubro de 2026</p>
+</div>
+<p class="sub" style="margin-top:12px">Análise do histórico de pedidos fechado até 30 de setembro de 2026 &middot; mídia Meta e Google &middot; comportamento de compra e recompra. Outubro entra só como plano, não como análise.</p>
+
+<div class="c">
+<p class="big">A Use Tricô tem uma base de clientes extremamente valiosa, que compra de novo e responde às lives e lançamentos.</p>
+<p class="big" style="margin-top:10px">A pergunta desta reunião é: <strong>como voltamos a alimentar essa base de forma saudável — e mais barata?</strong></p>
+<p class="nt">A resposta não é abandonar o retorno (ROAS). É entender qual trabalho cada campanha faz, construir aquisição de verdade e criar um segundo caminho para trazer clientes novas — pelas próprias clientes da marca.</p>
+</div>
+
+<h2>1. O que a Use Tricô já construiu</h2>
+<div class="g">
+<div class="k"><div class="l">Recompra em 1 ano</div><div class="v">~45%</div><div class="d fl">quase 1 em cada 2 volta</div></div>
+<div class="k"><div class="l">Peso da base</div><div class="v">~82%</div><div class="d fl">da receita vem de quem recompra</div></div>
+<div class="k"><div class="l">Receita 2026</div><div class="v">R$ 12 mi+</div><div class="d up">+46% YoY · jan a 11/set</div></div>
+<div class="k"><div class="l">Ticket médio</div><div class="v">R$ 905</div><div class="d fl">por pedido · jan a 11/set</div></div>
+</div>
+<div class="c">
+<p style="margin:0 0 10px;font-weight:600">A base volta a comprar ao longo do tempo</p>
+<svg viewBox="0 0 900 280" role="img" aria-label="Recompra da base ao longo do tempo">
+<line x1="58" y1="236" x2="884" y2="236" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50" y="42" font-size="11" fill="#a39890" text-anchor="end">45%</text><text x="50" y="236" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect x="124" y="137" width="34" height="99" rx="2" fill="#8b6f5c"/>
+<text x="141" y="131" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">22%</text>
+<text x="141" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D30</text>
+<rect x="289" y="110" width="34" height="126" rx="2" fill="#8b6f5c"/>
+<text x="306" y="104" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">28%</text>
+<text x="306" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D60</text>
+<rect x="454" y="97" width="34" height="139" rx="2" fill="#8b6f5c"/>
+<text x="471" y="91" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">31%</text>
+<text x="471" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D90</text>
+<rect x="619" y="70" width="34" height="166" rx="2" fill="#8b6f5c"/>
+<text x="636" y="64" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">37%</text>
+<text x="636" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D180</text>
+<rect x="784" y="34" width="34" height="202" rx="2" fill="#8b6f5c"/>
+<text x="801" y="28" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">45%</text>
+<text x="801" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">D365</text>
+</svg>
+<p class="big" style="margin-top:14px">A base <strong>não é o problema</strong>. É um dos maiores ativos da empresa.</p>
+<p class="nt">Ela recompra, tem valor ao longo do tempo (LTV), responde a lançamentos e lives e tem relacionamento com a marca. Mais de 11 mil clientes já passaram pela loja no histórico. A operação cresceu <strong>+46%</strong> em 2026 — não é uma marca em queda.</p>
+</div>
+
+<h2>2. O problema está na entrada — trazer cliente nova ficou mais caro</h2>
+<div class="c">
+<p style="margin:0 0 10px;font-weight:600">Quanto de mídia investimos para cada nova cliente adicionada à base (R$/mês, 2026)</p>
+<svg viewBox="0 0 900 280" role="img" aria-label="Mídia por nova cliente (R$), por mês">
+<line x1="58" y1="236" x2="884" y2="236" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50" y="42" font-size="11" fill="#a39890" text-anchor="end">710</text><text x="50" y="236" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect x="87" y="152" width="34" height="84" rx="2" fill="#8b6f5c"/>
+<text x="104" y="146" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">295</text>
+<text x="104" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jan</text>
+<rect x="179" y="144" width="34" height="92" rx="2" fill="#8b6f5c"/>
+<text x="196" y="138" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">322</text>
+<text x="196" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Fev</text>
+<rect x="270" y="155" width="34" height="81" rx="2" fill="#8b6f5c"/>
+<text x="287" y="149" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">283</text>
+<text x="287" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Mar</text>
+<rect x="362" y="146" width="34" height="90" rx="2" fill="#8b6f5c"/>
+<text x="379" y="140" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">318</text>
+<text x="379" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Abr</text>
+<rect x="454" y="162" width="34" height="74" rx="2" fill="#8b6f5c"/>
+<text x="471" y="156" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">259</text>
+<text x="471" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Mai</text>
+<rect x="546" y="155" width="34" height="81" rx="2" fill="#8b6f5c"/>
+<text x="563" y="149" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">285</text>
+<text x="563" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jun</text>
+<rect x="638" y="133" width="34" height="103" rx="2" fill="#8b6f5c"/>
+<text x="655" y="127" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">362</text>
+<text x="655" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jul</text>
+<rect x="729" y="34" width="34" height="202" rx="2" fill="#c0392b"/>
+<text x="746" y="28" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">710</text>
+<text x="746" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Ago</text>
+<rect x="821" y="39" width="34" height="197" rx="2" fill="#c0392b"/>
+<text x="838" y="33" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">693</text>
+<text x="838" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Set</text>
+</svg>
+<p class="big" style="margin-top:14px">Ao longo de 2026, adicionar uma cliente nova ficou <strong>substancialmente mais caro</strong> — com pico de R$ 710 em agosto (não é uma subida reta todo mês, mas o patamar subiu).</p>
+<p class="nt">Este número é a <strong>mídia paga observada dividida pelas novas clientes do mês</strong> — uma referência de custo, não a prova de que cada cliente veio só da mídia (parte vem de orgânico, live e indicação; parte da mídia também trabalha a base).</p>
+</div>
+
+<h2>3. 2025 × 2026 — o dobro de mídia para 15% mais clientes</h2>
+<div class="g">
+<div class="k"><div class="l">Mídia (jan–set)</div><div class="v">~+100%</div><div class="d fl">R$ 716 mil → R$ 1,43 mi</div></div>
+<div class="k"><div class="l">Novas clientes</div><div class="v up">~+15%</div><div class="d fl">3.512 → 4.052</div></div>
+<div class="k"><div class="l">Custo por nova cliente</div><div class="v dn">~+73%</div><div class="d fl">R$ 204 → R$ 353</div></div>
+</div>
+<div class="c">
+<p class="big">Investimos praticamente o <strong>dobro</strong> em mídia para adicionar apenas <strong>15% mais</strong> clientes à base.</p>
+<p class="nt">É o fato central do diagnóstico: a marca <strong>continua crescendo e adquirindo</strong> — mas cada cliente nova está custando mais. É isso que vamos atacar.</p>
+</div>
+
+<h2>4. Mas não é um problema que nasceu agora</h2>
+<div class="c">
+<p style="margin:0 0 10px;font-weight:600">Novas clientes por mês — 2025 e 2026 caem do mesmo jeito depois do inverno</p>
+<svg viewBox="0 0 900 300" role="img" aria-label="Novas clientes por mês, 2025 vs 2026">
+<line x1="58" y1="250" x2="884" y2="250" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50" y="48" font-size="11" fill="#a39890" text-anchor="end">806</text>
+<text x="50" y="250" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect x="76" y="177" width="26" height="73" rx="2" fill="#a98a74"/>
+<rect x="106" y="142" width="26" height="108" rx="2" fill="#8b6f5c"/>
+<text x="104" y="266" font-size="11" fill="#a39890" text-anchor="middle">Jan</text>
+<rect x="168" y="190" width="26" height="60" rx="2" fill="#a98a74"/>
+<rect x="198" y="180" width="26" height="70" rx="2" fill="#8b6f5c"/>
+<text x="196" y="266" font-size="11" fill="#a39890" text-anchor="middle">Fev</text>
+<rect x="259" y="178" width="26" height="72" rx="2" fill="#a98a74"/>
+<rect x="289" y="158" width="26" height="92" rx="2" fill="#8b6f5c"/>
+<text x="287" y="266" font-size="11" fill="#a39890" text-anchor="middle">Mar</text>
+<rect x="351" y="142" width="26" height="108" rx="2" fill="#a98a74"/>
+<rect x="381" y="141" width="26" height="109" rx="2" fill="#8b6f5c"/>
+<text x="379" y="266" font-size="11" fill="#a39890" text-anchor="middle">Abr</text>
+<rect x="443" y="124" width="26" height="126" rx="2" fill="#a98a74"/>
+<rect x="473" y="40" width="26" height="210" rx="2" fill="#8b6f5c"/>
+<text x="471" y="266" font-size="11" fill="#a39890" text-anchor="middle">Mai</text>
+<rect x="535" y="53" width="26" height="197" rx="2" fill="#a98a74"/>
+<rect x="565" y="63" width="26" height="187" rx="2" fill="#8b6f5c"/>
+<text x="563" y="266" font-size="11" fill="#a39890" text-anchor="middle">Jun</text>
+<rect x="627" y="92" width="26" height="158" rx="2" fill="#a98a74"/>
+<rect x="657" y="111" width="26" height="139" rx="2" fill="#8b6f5c"/>
+<text x="655" y="266" font-size="11" fill="#a39890" text-anchor="middle">Jul</text>
+<rect x="718" y="180" width="26" height="70" rx="2" fill="#a98a74"/>
+<rect x="748" y="177" width="26" height="73" rx="2" fill="#8b6f5c"/>
+<text x="746" y="266" font-size="11" fill="#a39890" text-anchor="middle">Ago</text>
+<rect x="810" y="199" width="26" height="51" rx="2" fill="#a98a74"/>
+<rect x="840" y="181" width="26" height="69" rx="2" fill="#8b6f5c"/>
+<text x="838" y="266" font-size="11" fill="#a39890" text-anchor="middle">Set</text>
+<rect x="684" y="22" width="12" height="12" fill="#a98a74"/><text x="700" y="32" font-size="12" fill="#a39890">2025</text>
+<rect x="784" y="22" width="12" height="12" fill="#8b6f5c"/><text x="800" y="32" font-size="12" fill="#a39890">2026</text>
+</svg>
+<p class="big" style="margin-top:14px">Existe uma <strong>queda sazonal</strong> depois do inverno — nos dois anos.</p>
+<p class="nt">Por isso não dá para simplesmente culpar o gestor atual, nem a conta nova de anúncios, nem a mudança de estrutura. O padrão se repete. A sazonalidade é real; a <em>causa exata</em> dela é hipótese.</p>
+</div>
+
+<h2>5. Ao mesmo tempo, a sazonalidade não explica tudo</h2>
+<div class="c">
+<p style="margin:0 0 6px;font-weight:600">Mesma época do ano: junho de 2025 vs junho de 2026</p>
+<table>
+<tr><th>Junho</th><th class="n">2025</th><th class="n">2026</th></tr>
+<tr><td>Mídia investida</td><td class="n">~R$ 80,7 mil</td><td class="n">~R$ 204,4 mil</td></tr>
+<tr><td>Novas clientes</td><td class="n">758</td><td class="n">717</td></tr>
+<tr><td>Custo por nova cliente</td><td class="n">~R$ 106</td><td class="n"><span class="t tb">~R$ 285</span></td></tr>
+<tr><td>Voltaram a comprar em 90 dias</td><td class="n">~31%</td><td class="n"><span class="t tb">~27%</span></td></tr>
+<tr><td>Receita média em 90 dias</td><td class="n">~R$ 1.644</td><td class="n"><span class="t tb">~R$ 1.304</span></td></tr>
+</table>
+<p class="big" style="margin-top:14px">Comparando a <strong>mesma época do ano</strong>, a eficiência da entrada caiu.</p>
+<p class="nt">Não atribuímos a uma causa única — pode vir de mídia, produto, criativos, oferta, estrutura, site e calendário. É um dos pontos que vamos investigar a fundo.</p>
+</div>
+
+<h2>6. A primeira compra também encolheu</h2>
+<div class="c">
+<p style="margin:0 0 10px;font-weight:600">Valor da primeira compra ao longo de 2026 (R$)</p>
+<svg viewBox="0 0 900 280" role="img" aria-label="Primeira compra 2026 — ticket inicial por mês">
+<line x1="58" y1="236" x2="884" y2="236" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50" y="42" font-size="11" fill="#a39890" text-anchor="end">1039</text><text x="50" y="236" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect x="87" y="38" width="34" height="198" rx="2" fill="#8b6f5c"/>
+<text x="104" y="32" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">1017</text>
+<text x="104" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jan</text>
+<rect x="179" y="51" width="34" height="185" rx="2" fill="#8b6f5c"/>
+<text x="196" y="45" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">950</text>
+<text x="196" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Fev</text>
+<rect x="270" y="34" width="34" height="202" rx="2" fill="#8b6f5c"/>
+<text x="287" y="28" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">1039</text>
+<text x="287" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Mar</text>
+<rect x="362" y="55" width="34" height="181" rx="2" fill="#8b6f5c"/>
+<text x="379" y="49" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">931</text>
+<text x="379" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Abr</text>
+<rect x="454" y="66" width="34" height="170" rx="2" fill="#8b6f5c"/>
+<text x="471" y="60" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">875</text>
+<text x="471" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Mai</text>
+<rect x="546" y="74" width="34" height="162" rx="2" fill="#8b6f5c"/>
+<text x="563" y="68" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">834</text>
+<text x="563" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jun</text>
+<rect x="638" y="79" width="34" height="157" rx="2" fill="#8b6f5c"/>
+<text x="655" y="73" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">805</text>
+<text x="655" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Jul</text>
+<rect x="729" y="85" width="34" height="151" rx="2" fill="#8b6f5c"/>
+<text x="746" y="79" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">776</text>
+<text x="746" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Ago</text>
+<rect x="821" y="90" width="34" height="146" rx="2" fill="#8b6f5c"/>
+<text x="838" y="84" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">750</text>
+<text x="838" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">Set</text>
+</svg>
+<p class="big" style="margin-top:14px">Além de custar mais para adicionar uma cliente, a <strong>primeira compra ficou menor</strong>.</p>
+<p class="nt">O valor da 1ª compra caiu de ~R$ 1.017 (janeiro) para ~R$ 750 (setembro); o número de peças na 1ª compra caiu de 2,07 para 1,49. No ano, <strong>entram mais clientes</strong> que em 2025 — mas cada uma custa mais para entrar e começa comprando menos.</p>
+</div>
+
+<h2>7. Por que isso importa tanto</h2>
+<div class="c">
+<p style="margin:0 0 10px;font-weight:600">Quanto mais peças a cliente leva na 1ª compra, mais ela tende a voltar</p>
+<svg viewBox="0 0 900 280" role="img" aria-label="Recompra em 90 dias por nº de peças na 1ª compra">
+<line x1="58" y1="236" x2="884" y2="236" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50" y="42" font-size="11" fill="#a39890" text-anchor="end">52%</text><text x="50" y="236" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect x="124" y="135" width="34" height="101" rx="2" fill="#2e7d5b"/>
+<text x="141" y="129" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">26%</text>
+<text x="141" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">1 peça</text>
+<rect x="289" y="108" width="34" height="128" rx="2" fill="#2e7d5b"/>
+<text x="306" y="102" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">33%</text>
+<text x="306" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">2</text>
+<rect x="454" y="69" width="34" height="167" rx="2" fill="#2e7d5b"/>
+<text x="471" y="63" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">43%</text>
+<text x="471" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">3</text>
+<rect x="619" y="61" width="34" height="175" rx="2" fill="#2e7d5b"/>
+<text x="636" y="55" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">45%</text>
+<text x="636" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">4</text>
+<rect x="784" y="34" width="34" height="202" rx="2" fill="#2e7d5b"/>
+<text x="801" y="28" font-size="11" font-weight="600" fill="#a39890" text-anchor="middle">52%</text>
+<text x="801" y="252" font-size="10.5" fill="#a39890" text-anchor="middle">5</text>
+</svg>
+<p class="big" style="margin-top:14px">Trazer cliente é importante. Trazer uma cliente que <strong>entra bem na marca</strong> é ainda mais importante.</p>
+<p class="nt"><span class="t tw">ASSOCIAÇÃO, NÃO PROVA DE CAUSA</span> &nbsp;Clientes que começam com mais peças tendem a voltar mais — não quer dizer que forçar mais peças cause mais recompra. Mas aponta um caminho: <strong>look completo, combinações, categoria e cross-sell</strong> na hora de adquirir.</p>
+</div>
+
+<h2>8. O papel do ROAS — dois motores diferentes</h2>
+<div class="c">
+<p class="big">O retorno (ROAS) continua fundamental. O que muda é entender <strong>qual trabalho cada campanha está fazendo.</strong></p>
+<div class="two" style="margin-top:14px">
+<div class="motor"><h3>Motor 1 — Base</h3><p class="de" style="color:var(--mut);font-size:14px;margin:0 0 6px">Vende para quem já conhece e já comprou.</p><p style="margin:0"><strong>Régua principal: retorno (ROAS) + receita.</strong> É natural esperar eficiência alta aqui.</p></div>
+<div class="motor m2"><h3>Motor 2 — Aquisição</h3><p class="de" style="color:var(--mut);font-size:14px;margin:0 0 6px">Procura alguém que <em>nunca</em> comprou.</p><p style="margin:0"><strong>Régua principal: custo por nova cliente + qualidade dela.</strong> É um trabalho mais caro por natureza.</p></div>
+</div>
+<p class="nt">Não faz sentido exigir exatamente o mesmo retorno das duas. Cobrar da aquisição o ROAS da base faz a gente desligar justamente o que traz cliente nova.</p>
+</div>
+
+<h2>9. O que vamos fazer — primeiro estabilizar, depois acelerar</h2>
+<div class="c">
+<p class="big">Não vamos desligar tudo e sair atrás de cliente nova amanhã. <strong>Primeiro estabilizamos a operação. Depois aceleramos a aquisição.</strong></p>
+<p class="nt">Foi o alinhamento com a Solomon: recuperar e organizar a eficiência da base, caminhando para uma operação de anúncios mais estável e previsível. Um retorno de referência (próximo de 8) foi discutido como <strong>meta de organização</strong> — é uma referência de trabalho, <em>não</em> uma regra fixa, e <strong>não</strong> vamos esperar parados por ele para começar a preparar a aquisição.</p>
+</div>
+
+<h2>10. Fase 1 — organizar e estabilizar os anúncios (~2 semanas)</h2>
+<ol class="a">
+<li><p class="ti">Dar função clara a cada verba</p><p class="de">Separar as campanhas por papel: base/recompra, engajamento, live/lançamentos, aquisição e testes — para saber o que cada real está fazendo.</p></li>
+<li><p class="ti">Aproveitar o que já funcionou</p><p class="de">Cruzar a conta atual com o histórico da marca e recuperar <em>formatos</em> que davam certo — sem religar campanhas antigas cegamente.</p></li>
+<li><p class="ti">Corrigir a medição</p><p class="de">A troca de plataforma da loja (início de outubro) afetou parte do rastreamento. Primeiro acertar os números, depois ler conversão e novas clientes com segurança.</p></li>
+<li><p class="ti">Proteger o faturamento atual</p><p class="de">Manter a base monetizada (lives, lançamentos, relacionamento) enquanto reorganizamos.</p></li>
+</ol>
+
+<h2>11. O que aprendemos com o histórico da marca</h2>
+<div class="c">
+<p>A conta histórica trabalhava com formatos <strong>maiores e mais estruturados</strong>, não só produto solto:</p>
+<div class="g" style="margin-top:12px">
+<div class="k"><div class="l">Formato</div><div class="v" style="font-size:16px">Look completo</div><div class="d fl">~359 compras · retorno ~14,5</div></div>
+<div class="k"><div class="l">Formato</div><div class="v" style="font-size:16px">Categoria / coleção</div><div class="d fl">vitrine, não só 1 produto</div></div>
+<div class="k"><div class="l">Formato</div><div class="v" style="font-size:16px">Catálogo</div><div class="d fl">motor de volume</div></div>
+<div class="k"><div class="l">Formato</div><div class="v" style="font-size:16px">Base / recompra</div><div class="d fl">retorno alto</div></div>
+</div>
+<p class="big" style="margin-top:14px">Não vamos copiar 2025. Vamos <strong>recuperar os princípios que funcionavam</strong> e adaptar aos produtos de agora.</p>
+<p class="nt">Detalhe importante de estação: os campeões históricos de categoria eram muito de <strong>inverno</strong> (malhas, casacos, capas). Para a primavera/verão, o histórico aponta mais força em <strong>calças, jeans, regatas e looks</strong>.</p>
+</div>
+
+<h2>12. Fase 2 — aquisição controlada (em paralelo)</h2>
+<div class="c">
+<p>Enquanto a base estabiliza, começamos pequenos testes de aquisição, com verba controlada. Três primeiras apostas:</p>
+</div>
+<ol class="a">
+<li><p class="ti">Look / composição</p><p class="de">Vender contexto, não só uma peça: "3 formas de usar", "monte o look", "calça + blusa". Tem histórico forte e conversa com o dado de que cesta maior volta mais.</p></li>
+<li><p class="ti">Destino: produto × categoria</p><p class="de">A Renata lembrou que, no passado, muitos anúncios iam para a home/categoria, não só para a página do produto. Vamos <strong>testar</strong> com o mesmo criativo, mesma oferta e mesmo público — mudando só o destino. Medir, em vez de discutir opinião.</p></li>
+<li><p class="ti">Produto de entrada da estação</p><p class="de">Escolher o produto que <em>traz</em> cliente, não só o que fatura. Para a estação, priorizar calças/jeans/regatas/looks em vez de repetir capas de inverno.</p></li>
+</ol>
+<div class="c">
+<p class="big">Produto que <strong>traz cliente</strong> nem sempre é o mesmo que <strong>faz a cliente voltar</strong>.</p>
+<p class="nt">Exemplo real: a Capa 10177 foi uma das maiores portas de entrada do histórico, mas a recompra dela não foi excepcional. Faturar muito não é o mesmo que ser o melhor produto de aquisição.</p>
+</div>
+
+<h2>13. Quando a aquisição começa a escalar</h2>
+<div class="c">
+<p>Quando a operação estabilizar e os testes mostrarem sinal, aumentamos progressivamente o orçamento de aquisição — com uma missão explícita: <strong>colocar novas clientes na base.</strong> Essa verba será avaliada por:</p>
+<div class="g" style="margin-top:6px">
+<div class="k"><div class="v" style="font-size:15px">Novas clientes</div></div>
+<div class="k"><div class="v" style="font-size:15px">Custo por nova</div></div>
+<div class="k"><div class="v" style="font-size:15px">Ticket inicial</div></div>
+<div class="k"><div class="v" style="font-size:15px">Peças na 1ª compra</div></div>
+<div class="k"><div class="v" style="font-size:15px">Produto de entrada</div></div>
+<div class="k"><div class="v" style="font-size:15px">Volta em 30/60/90 dias</div></div>
+</div>
+<p class="big" style="margin-top:14px">Retenção monetiza a base de <strong>hoje</strong>. Aquisição constrói a base de <strong>amanhã</strong>.</p>
+</div>
+
+<h2>14. Ainda existe um problema — e uma oportunidade</h2>
+<div class="c">
+<p class="big">Mesmo reorganizando os anúncios, a operação segue <strong>investindo pesado em Meta e Google</strong> para apoiar a entrada de cada nova cliente.</p>
+<p class="big" style="margin-top:10px">E se a própria base da Use Tricô pudesse ajudar a trazer a próxima geração de clientes?</p>
+</div>
+
+<h2>15. Uma tese a testar — Programa de Embaixadoras (piloto)</h2>
+<div class="c">
+<p>A ideia é <strong>testar</strong> se indicações entre clientes — que podem já acontecer de forma informal — viram um canal organizado, medível e recompensado, com um grupo pequeno de clientes que realmente vestem a camisa da marca. É uma <strong>tese de piloto</strong>, com desenho ainda a validar.</p>
+<div class="g" style="margin-top:6px">
+<div class="k"><div class="l">Piloto (a definir)</div><div class="v" style="font-size:17px">Pequeno</div><div class="d fl">tamanho a fechar com a Renata</div></div>
+<div class="k"><div class="l">Entrada</div><div class="v" style="font-size:17px">Por convite</div><div class="d fl">"você foi escolhida", não inscrição</div></div>
+<div class="k"><div class="l">Modelo econômico</div><div class="v" style="font-size:17px">A validar</div><div class="d fl">pontos ou comissão — a definir</div></div>
+</div>
+<p class="nt" style="margin-top:12px">Não é automático ("comprou X vezes vira embaixadora"). É um <strong>convite privado</strong>, feito pela marca, com base em relacionamento, confiança e identificação. Creators/influenciadoras não entram neste mesmo programa agora.</p>
+</div>
+
+<div class="c">
+<p style="margin:0 0 4px;font-weight:600">Como poderia funcionar — cada embaixadora com um cupom próprio <span class="t tw">EXEMPLO A VALIDAR</span></p><p class="nt" style="margin:0 0 10px">Mecânica hipotética, sujeita a modelagem econômica e aprovação antes de qualquer lançamento.</p>
+<div class="st"><div class="nm">Cliente existente</div><div class="bx"><div class="f" style="width:50%"></div></div><div class="p">1 ponto</div></div>
+<div class="st"><div class="nm">Nova cliente</div><div class="bx"><div class="f" style="width:100%"></div></div><div class="p">2 pontos</div></div>
+<p class="nt">A ideia por trás do exemplo: como o problema a resolver é aquisição, faria sentido a nova cliente valer mais do que a recompra. Pesos, regras de validação (autocompra, cancelamento/devolução) e valores são <strong>hipóteses a modelar</strong>, não uma regra fechada.</p>
+</div>
+
+<div class="c">
+<p style="margin:0 0 4px;font-weight:600">Recompensas — <span class="t tw">EXEMPLO INICIAL</span></p>
+<p class="nt" style="margin:0 0 10px">Ideia de como o programa <em>pode</em> funcionar. A economia final (valor de cada recompensa) será modelada e validada antes do lançamento.</p>
+<div class="rw"><div class="pt">5 pts</div><div class="tx">Massagem relaxante</div></div>
+<div class="rw"><div class="pt">10 pts</div><div class="tx">Um dia no SPA</div></div>
+<div class="rw"><div class="pt">20 pts</div><div class="tx">Uma peça da Use Tricô <span class="nt" style="display:inline">(com regra de disponibilidade/estoque a definir)</span></div></div>
+<div class="rw"><div class="pt">30 pts</div><div class="tx">Dia de compras / curadoria com a Renata</div></div>
+<div class="rw"><div class="pt">50 pts</div><div class="tx">Dia Use Tricô — bastidores da operação e do time</div></div>
+<div class="rw"><div class="pt">75 pts</div><div class="tx">Fim de semana / experiência premium <span class="nt" style="display:inline">(regra por região — não fixar uma cidade única)</span></div></div>
+<div class="rw"><div class="pt">100 pts</div><div class="tx">Experiência extraordinária / viagem <span class="nt" style="display:inline">(destino a definir)</span></div></div>
+</div>
+
+<div class="c">
+<p style="margin:0 0 6px;font-weight:600">Pontos ou comissão — uma decisão de desenho</p>
+<p class="nt" style="margin:0">Há duas economias diferentes a separar e validar: <strong>comunidade</strong> (cliente-embaixadora, reconhecimento e experiências) e <strong>afiliação</strong> (geração de venda com comissão). Qual modelo entra no piloto — pontos, comissão ou um mix — é uma decisão de desenho a fechar com a Renata antes de lançar. Campanhas especiais (Black Friday, aniversário, lançamento) poderiam existir à parte.</p>
+</div>
+
+<h2>16. O ciclo que estamos criando</h2>
+<div class="c">
+<div class="two">
+<div class="motor"><h3>Motor 1 — Mídia</h3><p style="margin:0">Meta + Google → <strong>novas clientes</strong></p><p class="de" style="color:var(--mut);font-size:14px;margin-top:6px">Mais inteligente: campanhas próprias para aquisição, medidas por custo por cliente.</p></div>
+<div class="motor m2"><h3>Motor 2 — Base <span class="t tw">A TESTAR</span></h3><p style="margin:0">Embaixadoras → indicação → <strong>novas clientes</strong> <em>(hipótese)</em></p><p class="de" style="color:var(--mut);font-size:14px;margin-top:6px">Aquisição própria a validar: clientes podendo trazer clientes.</p></div>
+</div>
+<div class="flow" style="margin-top:18px">
+<div class="node ac">Mídia + Embaixadoras</div><div class="ar">▼</div>
+<div class="node">Nova cliente</div><div class="ar">▼</div>
+<div class="node ok">Base Use Tricô (recompra + LTV + lives)</div><div class="ar">▼</div>
+<div class="node">Clientes candidatas podem virar embaixadoras</div><div class="ar">▼</div>
+<div class="node ac">Novas indicações → novas clientes <em style="font-weight:400">(a validar)</em></div>
+</div>
+<p class="nt">Os dois motores alimentam a mesma base — e a base passa a ajudar a trazer a próxima cliente.</p>
+</div>
+
+<h2>17. Plano dos próximos 90 dias</h2>
+<div class="c">
+<table>
+<tr><th>Quando</th><th>Anúncios (Meta/Google)</th><th>Embaixadoras <span style="font-weight:400;text-transform:none;letter-spacing:0">(piloto — só se aprovado)</span></th></tr>
+<tr><td><strong>Semana 1–2</strong></td><td>Reorganizar e dar função às campanhas; corrigir medição; proteger a base.</td><td>Se seguirmos com a tese: desenhar o programa (critérios de escolha, economia e regras) e preparar materiais.</td></tr>
+<tr><td><strong>Semana 3–4</strong></td><td>Operação mais organizada; primeiros testes de aquisição (look, destino, produto de entrada).</td><td>Fechar o desenho e a economia; convite privado e onboarding. Início condicionado à validação e aprovação.</td></tr>
+<tr><td><strong>Mês 2</strong></td><td>Escalar o que funciona na base; continuar testes de custo por cliente.</td><td>Caso o piloto inicie: primeira ação com as participantes; medir novas clientes por cupom.</td></tr>
+<tr><td><strong>Mês 3</strong></td><td>Aumentar a aquisição vencedora; medir quantas clientes novas voltam a comprar em 30, 60 e 90 dias.</td><td>Comparar custo por cliente (mídia × indicação) e decidir se — e como — escalar.</td></tr>
+</table>
+<p class="nt">Ao fim de 90 dias decidimos o programa: escalar, ajustar, manter exclusivo ou criar uma camada profissional. O piloto é o que permite responder isso com dado.</p>
+</div>
+
+<h2>18. Onde queremos chegar</h2>
+<div class="two">
+<div class="c" style="margin:0"><p style="margin:0 0 6px"><span class="t tb">HOJE</span></p><p class="big">Grande dependência de Meta/Google para alimentar a base — e cada cliente nova mais cara.</p></div>
+<div class="c" style="margin:0"><p style="margin:0 0 6px"><span class="t tg">OBJETIVO</span></p><p class="big">Mídia mais inteligente para adquirir + <strong>testar um segundo motor</strong> (clientes trazendo clientes) — com a base forte sendo monetizada por recompra, relacionamento, lives e lançamentos.</p></div>
+</div>
+
+<h2>19. O que começa agora</h2>
+<ol class="a">
+<li><p class="ti">Anúncios</p><p class="de">Reorganização imediata e correção da medição.</p></li>
+<li><p class="ti">Aquisição</p><p class="de">Primeiros testes controlados (look, destino, produto de entrada).</p></li>
+<li><p class="ti">Embaixadoras</p><p class="de">Desenhar e validar o piloto com a Renata antes de iniciar — é uma tese a testar, não uma decisão fechada.</p></li>
+<li><p class="ti">Medição</p><p class="de">Acompanhamento semanal: novas clientes, custo por cliente, novas × recorrentes e quantas clientes novas voltam em 30, 60 e 90 dias.</p></li>
+</ol>
+<div class="c">
+<p class="big">Não vamos apenas acompanhar o problema. Vamos reorganizar a aquisição por mídia <strong>e testar um novo caminho</strong> para alimentar a base da Use Tricô.</p>
+</div>
+
+<p class="nt" style="margin-top:30px;border-top:1px solid var(--line);padding-top:16px">Fontes: pedidos Use Tricô (histórico fechado até 30/09/2026) · Meta Ads · Google Ads · GA4 · Solomon. Números de custo por nova cliente usam a mídia observada dividida pelas novas clientes do período — referência, não prova de origem única. Associações marcadas como associação, não causa. Recompensas do programa são exemplo inicial, sujeito a validação econômica.</p>
+
+</div></body></html>
