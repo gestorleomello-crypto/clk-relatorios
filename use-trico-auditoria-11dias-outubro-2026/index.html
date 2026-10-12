@@ -63,21 +63,63 @@ svg{display:block;max-width:100%;height:auto}
 
 <div class="hero">
 <h1>Use Tricô — Auditoria de Outubro</h1>
-<p class="sub">Primeiros 11 dias · 01–11/10/2026 vs 01–11/09/2026 e 01–11/10/2025 · por que outubro parece mais fraco</p>
+<p class="sub">Primeiros 11 dias · 01–11/10/2026 vs 01–11/09/2026 e 01–11/10/2025 · retificação com faturamento aprovado</p>
 </div>
 <p class="sub" style="margin-top:12px">Data de referência 11/10/2026. O dia 11 ainda <strong>não consolidou</strong> (parcial) — o corte fechado usado nas comparações é <strong>01–10</strong>. Fontes: Google Analytics 4, Meta Ads, Google Ads e navegação na loja. Passe o mouse (ou toque) nos gráficos para o valor exato. <strong>Gráficos interativos — o valor também aparece no texto.</strong></p>
 
 <div class="c">
-<p class="big">Outubro <strong>não</strong> é uma queda de vendas da marca. Comparado a outubro do ano passado, a loja está <strong>bem mais forte</strong>. O que caiu foi o mês contra setembro — e boa parte disso é <strong>sazonalidade + uma quebra de medição</strong> associada, no tempo, a uma <strong>quebra de medição observada a partir de 01/10</strong>.</p>
-<p class="big" style="margin-top:12px">A prioridade de recuperação é <strong>consertar a medição</strong> (compra, conversão e origem do tráfego). Enquanto os números de compra não voltam, Meta e Google "enxergam" menos resultado e tendem a <strong>reduzir a entrega</strong> — o que provavelmente contribuiu para a queda de tráfego e vendas em outubro (o impacto causal e incremental não está demonstrado).</p>
+<p class="big">Outubro caiu <strong>de verdade</strong> no caixa: o faturamento <strong>aprovado</strong> de 01–10 foi <strong>R$ 181.088</strong>, contra <strong>R$ 356.365</strong> em setembro (mesma janela) — queda real de <strong>−49%</strong>. Contra o ano passado, o <strong>YoY comercial é não comprovado</strong> (sem o aprovado de out/25); os proxies comportamentais do GA4 marcam +27–30%, mas não são caixa.</p>
+<p class="big" style="margin-top:12px">Correção desta versão: a auditoria anterior destacou o <strong>item-scope do GA4 (R$ 277 mil)</strong>, que <strong>não é caixa</strong> — supera o aprovado em ~53%. A queda real é <strong>maior</strong> do que o relatório anterior sugeria. A recuperação tem duas frentes: <strong>consertar a medição</strong> (o sinal de conversão quebrado pode fazer Meta/Google reduzirem entrega) e <strong>recuperar tráfego e conversão reais</strong> (a monetização por sessão também caiu).</p>
+</div>
+
+<div class="c" style="border-left:4px solid var(--ac)">
+<p style="margin:0 0 6px;font-weight:700">Faturamento aprovado (caixa confirmado) — janela 01–10/10</p>
+<div class="g" style="margin:6px 0">
+<div class="k"><div class="l">Aprovado 01–10</div><div class="v">R$ 181.088</div><div class="d fl">gestor (confirmado)</div></div>
+<div class="k"><div class="l">Aprovado 01–11</div><div class="v">R$ 186.661</div><div class="d fl">inclui 11/10 R$ 5.572</div></div>
+<div class="k"><div class="l">GA4 item-scope 01–10</div><div class="v fl" style="font-size:19px">~R$ 276,9k</div><div class="d dn">NÃO é aprovado (+53%)</div></div>
+</div>
+<svg viewBox="0 0 900 300" role="img" aria-label="Reconciliacao item vs purchase vs aprovado, outubro 01-10">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">R$ 276.908</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="GA4 item-scope · Out 01–10: R$ 276.908 — comportamental, NÃO é caixa" data-tip="GA4 item-scope · Out 01–10|R$ 276.908 — comportamental, NÃO é caixa" x="162.3" y="40.0" width="90.0" height="210.0" rx="2" fill="#c9b5a6"/>
+<text x="207.3" y="34.0" font-size="11" fill="#a39890" text-anchor="middle" font-weight="600">R$ 276.908</text>
+<text x="207.3" y="266.0" font-size="11" fill="#a39890" text-anchor="middle">GA4 item-scope</text>
+<rect class="bar" tabindex="0" role="img" aria-label="GA4 purchase-event · Out 01–10: R$ 193.860 ≈ pedidos criados" data-tip="GA4 purchase-event · Out 01–10|R$ 193.860 ≈ pedidos criados" x="433.0" y="103.0" width="90.0" height="147.0" rx="2" fill="#8b6f5c"/>
+<text x="478.0" y="97.0" font-size="11" fill="#a39890" text-anchor="middle" font-weight="600">R$ 193.860</text>
+<text x="478.0" y="266.0" font-size="11" fill="#a39890" text-anchor="middle">GA4 purchase</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Faturamento aprovado · Out 01–10: R$ 181.088 — caixa confirmado (gestor)" data-tip="Faturamento aprovado · Out 01–10|R$ 181.088 — caixa confirmado (gestor)" x="703.7" y="112.7" width="90.0" height="137.3" rx="2" fill="#2e7d5b"/>
+<text x="748.7" y="106.7" font-size="11" fill="#a39890" text-anchor="middle" font-weight="600">R$ 181.088</text>
+<text x="748.7" y="266.0" font-size="11" fill="#a39890" text-anchor="middle">Aprovado (caixa)</text>
+</svg>
+<p class="nt">Decomposição 01–10: <strong>item-scope R$ 276,9k</strong> → (−R$ 83k de sobrecontagem do item) → <strong>purchase-event R$ 193,9k</strong> → (−R$ 13k criado-não-aprovado, −7%) → <strong>aprovado R$ 181,1k</strong>. Métricas <strong>comerciais</strong> (aprovado = caixa) e <strong>comportamentais</strong> (GA4) são coisas diferentes e aparecem separadas. Aprovado informado pelo gestor, pendente de reconciliação por pedido.</p>
+</div>
+
+<div class="c" style="border-left:4px solid var(--warn)">
+<p style="margin:0 0 8px;font-weight:700">Revisão das conclusões — o que muda com o faturamento aprovado</p>
+<table>
+<tr><th>Conclusão anterior</th><th>Status</th><th>Agora</th></tr>
+<tr><td>"Não é queda da marca"</td><td><span class="t tw">Corrigida</span></td><td>Caixa caiu −49% MoM (real); YoY comercial não comprovado (proxy GA4 +27–30%)</td></tr>
+<tr><td>+69% YoY</td><td><span class="t tb">Não comprovada</span></td><td>Era item-scope; YoY em aprovado = lacuna (proxy GA4 ~+27%)</td></tr>
+<tr><td>−32% MoM</td><td><span class="t tb">Corrigida</span></td><td>−49% em faturamento aprovado</td></tr>
+<tr><td>Receita/sessão +11%</td><td><span class="t tb">Corrigida</span></td><td>−17% MoM (aprovado ÷ sessões)</td></tr>
+<tr><td>Sazonalidade explica a queda</td><td><span class="t tw">Suspensa</span></td><td>Pode explicar parte; contribuição não quantificada</td></tr>
+<tr><td>Qualidade do tráfego (bot)</td><td><span class="t tg">Mantida</span></td><td>Tráfego fantasma inflando sessões</td></tr>
+<tr><td>Google Ads → menor entrega</td><td><span class="t tg">Mantida (hip.)</span></td><td>Conversão −92%; elo com venda segue hipótese</td></tr>
+<tr><td>UTMs / Paid Social reclassificado</td><td><span class="t tg">Mantida (hip.)</span></td><td>Paid Social 24,3k→1,1k sessões</td></tr>
+<tr><td>"Todas as tags de compra quebradas"</td><td><span class="t tb">Corrigida</span></td><td>purchase-event ≈ aprovado; quebrou Google conv, pixel-valor, item-scope, UTM</td></tr>
+</table>
 </div>
 
 <div class="g">
-<div class="k"><div class="l">Receita 01–10 (item)</div><div class="v">R$ 277 mil</div><div class="d up">+69% vs out/25</div></div>
-<div class="k"><div class="l">vs setembro</div><div class="v dn">−32%</div><div class="d fl">receita item-scope (sazonal)</div></div>
+<div class="k"><div class="l">Aprovado 01–10</div><div class="v">R$ 181 mil</div><div class="d dn">−49% vs setembro</div></div>
+<div class="k"><div class="l">Receita/sessão</div><div class="v dn">−17%</div><div class="d fl">MoM (aprovado ÷ sessões)</div></div>
 <div class="k"><div class="l">Sessões 01–10</div><div class="v dn">−39%</div><div class="d fl">vs set · −6% vs out/25</div></div>
-<div class="k"><div class="l">Conversão Google</div><div class="v dn">−92%</div><div class="d fl">quebra de rastreamento</div></div>
+<div class="k"><div class="l">YoY comercial</div><div class="v fl" style="font-size:17px">não comp.</div><div class="d fl">proxy ~+27% · out/25 lacuna</div></div>
 </div>
+
+
 
 <h2>1. Antes de tudo: o que dá para confiar</h2>
 <div class="c">
@@ -85,15 +127,16 @@ svg{display:block;max-width:100%;height:auto}
 <table>
 <tr><th>Métrica</th><th>Status em outubro</th><th>Como usar</th></tr>
 <tr><td>Sessões (tráfego)</td><td><span class="t tg">Confiável</span></td><td>Boa, com ressalva de tráfego internacional/bot inflando um pouco</td></tr>
-<tr><td>Receita <strong>item-scope</strong></td><td><span class="t tg">Confiável</span></td><td>Melhor medida de outubro — é o que usamos</td></tr>
-<tr><td>Receita/compras <strong>por evento</strong></td><td><span class="t tb">Parcial</span></td><td>Subcontada e duplicada no início do mês; converge só a partir de ~06/10</td></tr>
+<tr><td>Faturamento <strong>aprovado</strong> (caixa)</td><td><span class="t tg">Confirmado</span></td><td>Informado pelo gestor; caixa real (pendente reconciliação por pedido)</td></tr>
+<tr><td>GA4 <strong>item-scope</strong></td><td><span class="t tb">Comportamental</span></td><td><strong>Não é caixa</strong> — supera o aprovado em ~53% (mecanismo a reconciliar)</td></tr>
+<tr><td>GA4 <strong>purchase-event</strong></td><td><span class="t tw">Proxy razoável</span></td><td>≈ pedidos criados; no total ~93% vira aprovado (anômalo em 01–05)</td></tr>
 <tr><td>Funil (carrinho/checkout)</td><td><span class="t tb">Quebrado 01–03</span></td><td>Volta a existir a partir de ~04–05/10</td></tr>
 <tr><td>Origem do tráfego (canal)</td><td><span class="t tb">Inválida</span></td><td>Pago aparece como orgânico — ler mídia pelo Meta/Google, não pelo GA4</td></tr>
 <tr><td>Conversão do Google Ads</td><td><span class="t tb">Inválida</span></td><td>Conversão não registrada (−92%; hipótese: não dispara no checkout)</td></tr>
 <tr><td>Novas × recorrentes</td><td><span class="t tb">Parcial</span></td><td>Nova cliente convertendo 0,13% = classificação ainda furada</td></tr>
-<tr><td>Receita de <strong>pedidos aprovados</strong></td><td><span class="t tw">Indisponível</span></td><td>Sem acesso ao painel de pedidos — lacuna (ver seção 12)</td></tr>
+<tr><td><strong>Reconciliação por pedido</strong></td><td><span class="t tw">Parcial</span></td><td>Totais aprovados confirmados; detalhe por pedido/SKU pende export (ver seção 12)</td></tr>
 </table>
-<p style="margin:16px 0 8px;font-weight:600">A prova de que a quebra é de medição, não de vendas: os dois jeitos de medir a receita divergem no início e voltam a bater</p>
+<p style="margin:16px 0 8px;font-weight:600">Os dois jeitos do GA4 de medir receita divergem no início e convergem — e nenhum é o caixa</p>
 <svg viewBox="0 0 900 310" role="img" aria-label="Receita diária item-scope vs purchase-event, outubro">
 <line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
 <text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">61k</text>
@@ -137,13 +180,31 @@ svg{display:block;max-width:100%;height:auto}
 <text x="726.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Purchase</text>
 </svg>
 <p class="leg"><span class="pill" style="color:var(--ac)">■</span> item-scope (valor dos itens) &nbsp; <span class="pill" style="color:#c9b5a6">■</span> purchase-event (valor do evento de compra)</p>
-<p class="nt">Nos dias 01–05, o valor pelo evento de compra ficou <strong>2,16× menor</strong> que o valor dos itens — sinal claro de evento de compra falhando. De 06/10 em diante os dois praticamente coincidem (1,09×), como em setembro (1,09×) e em outubro/25 (1,10×). <strong>Isso é assinatura de quebra de rastreamento, não de queda real de vendas.</strong></p>
+<p class="nt">Os dois divergem até 2,16× em 01–05 e convergem a partir de 06/10. Com o aprovado em mãos, sabemos o lado certo: o <strong>purchase-event fica perto do aprovado</strong> (R$ 193,9k vs R$ 181,1k no total 01–10), enquanto o <strong>item-scope está inflado</strong> (R$ 276,9k, +53% sobre o caixa). A divergência inicial é anomalia do item-scope — mas isso <strong>não</strong> significa que outubro foi forte: o caixa caiu <strong>−49%</strong> vs setembro.</p>
 </div>
 
-<h2>2. O resultado (melhor proxy disponível) — queda contra setembro, alta contra o ano passado</h2>
+<h2>2. O resultado real — queda de −49% no caixa contra setembro</h2>
+<div class="c">
+<p style="margin:0 0 8px;font-weight:600">Faturamento aprovado · 01–10 (Out/25 sem dado — lacuna)</p>
+<svg viewBox="0 0 900 300" role="img" aria-label="Faturamento aprovado 01-10 Out vs Set (Out25 lacuna)">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">R$ 356.365</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Aprovado · Out/26 (01–10): R$ 181.088 — gestor (confirmado)" data-tip="Aprovado · Out/26 (01–10)|R$ 181.088 — gestor (confirmado)" x="162.3" y="143.3" width="90.0" height="106.7" rx="2" fill="#c0392b"/>
+<text x="207.3" y="137.3" font-size="11" fill="#a39890" text-anchor="middle" font-weight="600">R$ 181.088</text>
+<text x="207.3" y="266.0" font-size="11" fill="#a39890" text-anchor="middle">Out/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Aprovado · Set/26 (01–10): R$ 356.365 — Bagy (reconstrução CLK)" data-tip="Aprovado · Set/26 (01–10)|R$ 356.365 — Bagy (reconstrução CLK)" x="433.0" y="40.0" width="90.0" height="210.0" rx="2" fill="#c9b5a6"/>
+<text x="478.0" y="34.0" font-size="11" fill="#a39890" text-anchor="middle" font-weight="600">R$ 356.365</text>
+<text x="478.0" y="266.0" font-size="11" fill="#a39890" text-anchor="middle">Set/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Aprovado · Out/25 (01–10): Indisponível — lacuna (sem fonte)" data-tip="Aprovado · Out/25 (01–10)|Indisponível — lacuna (sem fonte)" x="703.7" y="250.0" width="90.0" height="0.0" rx="2" fill="#e8e1db"/>
+<text x="748.7" y="244.0" font-size="11" fill="#a39890" text-anchor="middle" font-weight="600">s/ dado</text>
+<text x="748.7" y="266.0" font-size="11" fill="#a39890" text-anchor="middle">Out/25</text>
+</svg>
+<p class="nt">Aprovado Out/26 R$ 181.088 (gestor) vs Set/26 R$ 356.365 (reconstrução Bagy, verificada CLK) = <strong>−49%</strong>. No corte 01–11 a queda é −53% (R$ 186.661 vs R$ 394.511). Out/25 em aprovado não está disponível (lacuna).</p>
+</div>
 <div class="two">
 <div class="c" style="margin:0">
-<p style="margin:0 0 8px;font-weight:600">Receita item-scope · 01–10</p>
+<p style="margin:0 0 8px;font-weight:600">GA4 item-scope · 01–10 (comportamental, não é caixa)</p>
 <svg viewBox="0 0 900 300" role="img" aria-label="Receita item-scope 01-10 por janela">
 <line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
 <text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">406k</text>
@@ -180,21 +241,22 @@ svg{display:block;max-width:100%;height:auto}
 <div class="c">
 <table>
 <tr><th>01–10 (fechado)</th><th class="n">Out/26</th><th class="n">Set/26</th><th class="n">Out/25</th><th class="n">vs Set</th><th class="n">vs Out/25</th></tr>
+<tr><td><strong>Aprovado (caixa)</strong></td><td class="n">R$ 181,1k</td><td class="n">R$ 356,4k</td><td class="n">s/ dado</td><td class="n"><span class="t tb">−49%</span></td><td class="n">lacuna</td></tr>
 <tr><td>Sessões</td><td class="n">29.422</td><td class="n">48.070</td><td class="n">31.373</td><td class="n"><span class="t tb">−39%</span></td><td class="n">−6%</td></tr>
-<tr><td>Receita item-scope</td><td class="n">R$ 276,9k</td><td class="n">R$ 406,1k</td><td class="n">R$ 163,7k</td><td class="n"><span class="t tb">−32%</span></td><td class="n"><span class="t tg">+69%</span></td></tr>
-<tr><td>Receita por evento</td><td class="n">R$ 193,9k</td><td class="n">R$ 371,4k</td><td class="n">R$ 148,9k</td><td class="n"><span class="t tb">−48%*</span></td><td class="n">+30%</td></tr>
-<tr><td>Receita / sessão (item)</td><td class="n">R$ 9,41</td><td class="n">R$ 8,45</td><td class="n">R$ 5,22</td><td class="n"><span class="t tg">+11%</span></td><td class="n"><span class="t tg">+80%</span></td></tr>
+<tr><td>Aprovado / sessão</td><td class="n">R$ 6,15</td><td class="n">R$ 7,41</td><td class="n">s/ dado</td><td class="n"><span class="t tb">−17%</span></td><td class="n">lacuna</td></tr>
+<tr><td>GA4 purchase-event <span class="nt" style="display:inline">(compor.)</span></td><td class="n">R$ 193,9k</td><td class="n">R$ 371,4k</td><td class="n">R$ 148,9k</td><td class="n">−48%</td><td class="n">+30%</td></tr>
+<tr><td>GA4 item-scope <span class="nt" style="display:inline">(não é caixa)</span></td><td class="n">R$ 276,9k</td><td class="n">R$ 406,1k</td><td class="n">R$ 163,7k</td><td class="n">−32%</td><td class="n">+69%</td></tr>
 </table>
-<p class="big" style="margin-top:14px">A queda de outubro contra setembro é <strong>essencialmente tráfego</strong> (−39% de sessões). A <strong>receita por sessão até subiu</strong> (+11%). Contra o ano passado, outubro/26 mede <strong>+69% em itens</strong> — coerente com o crescimento de ~+46% que a marca vinha tendo no ano.</p>
-<p class="nt">* O −48% pelo "evento de compra" é <strong>exagerado pela quebra</strong> de 01–05; por isso usamos o item-scope (−32%) como <strong>melhor proxy disponível</strong> — ainda sem reconciliação com pedidos aprovados. Setembro foi um pico de tráfego (lançamentos/estação); outubro normalizou para um patamar parecido com o de outubro/25 em sessões. O dia 06/10 foi o maior do período (R$ 60,8k em itens, possível lançamento/ação — a confirmar).</p>
+<p class="big" style="margin-top:14px">No caixa, outubro caiu <strong>−49%</strong> vs setembro (R$ 181,1k vs R$ 356,4k). A queda vem de <strong>tráfego −39%</strong> e também de <strong>monetização por sessão −17%</strong> — não é só tráfego. Contra o ano passado, o <strong>YoY comercial é não comprovado</strong> (aprovado de out/25 = lacuna); os proxies comportamentais do GA4 marcam +27–30%, mas não são caixa.</p>
+<p class="nt">As linhas do GA4 (purchase-event, item-scope) são <strong>comportamentais</strong>, não caixa. Setembro foi um pico de tráfego (lançamentos/estação) e outubro normalizou — a <strong>sazonalidade pode explicar parte</strong> da queda, mas sua contribuição não foi quantificada (precisa do aprovado por dia). O dia 06/10 foi o maior do período (possível lançamento/ação — a confirmar). O dia 11/10 (domingo) teve só <strong>R$ 5.572</strong> aprovado — baixo mesmo para domingo.</p>
 </div>
 
-<h2>3. A hipótese mais forte: a medição quebra no checkout</h2>
+<h2>3. Hipótese prioritária: possível quebra no checkout (a confirmar)</h2>
 <div class="c">
-<p>Na vitrine (usetrico.com.br) as <strong>tags principais estão presentes</strong>: Google Analytics 4, Meta pixel, Google Ads e Microsoft Clarity. A hipótese mais forte está na <strong>finalização da compra</strong>: o checkout fica em um domínio separado (documentado como <code>easycheckout.tray.com.br</code>) com uma política de segurança que <strong>pode bloquear o disparo das tags</strong> na tela de confirmação. Confirmar no painel da plataforma.</p>
+<p>Na vitrine (usetrico.com.br) as <strong>tags principais estão presentes</strong>: Google Analytics 4, Meta pixel, Google Ads e Microsoft Clarity. Parte das tags de resultado parece não disparar na <strong>finalização da compra</strong> (checkout em domínio separado, documentado como <code>easycheckout.tray.com.br</code>, com política de segurança restritiva). <strong>Importante (reconciliação):</strong> o <em>purchase-event</em> do GA4 tracou bem (≈ aprovado, 93%) — então o comprovadamente comprometido é a <strong>conversão do Google (−92%)</strong>, o <strong>valor do pixel do Meta</strong> e o <strong>item-scope (inflado)</strong>, não o total de compras do GA4. Confirmar no painel da plataforma.</p>
 <div class="flow" style="margin-top:14px">
 <div class="node">Quebra de medição a partir de 01/10 · checkout em domínio separado</div><div class="ar">▼</div>
-<div class="node bad">Evento de compra, conversão do Google e pixel do Meta <strong>podem não disparar</strong> no checkout</div><div class="ar">▼</div>
+<div class="node bad">Conversão do Google e valor do pixel do Meta <strong>podem não registrar</strong> no checkout</div><div class="ar">▼</div>
 <div class="node bad">Meta e Google "veem" quase nenhuma venda → tendem a <strong>reduzir a entrega</strong></div><div class="ar">▼</div>
 <div class="node">Menos cliques e sessões → menos vendas medidas (e possivelmente reais)</div>
 </div>
@@ -316,7 +378,7 @@ svg{display:block;max-width:100%;height:auto}
 <h2>9. Base vs novas — a base sustenta, mas a classificação está furada</h2>
 <div class="c">
 <div class="two">
-<div class="motor mok"><h3>Recorrentes</h3><p style="margin:0">11.337 sessões · <strong>291 compras</strong> · R$ 185 mil</p><p class="nt" style="margin-top:6px">A base segue sustentando a receita (coerente com o histórico ~80%).</p></div>
+<div class="motor mok"><h3>Recorrentes</h3><p style="margin:0">11.337 sessões · <strong>291 compras</strong> · R$ 185 mil <span class="nt">(GA4, compor.)</span></p><p class="nt" style="margin-top:6px">O GA4 atribui ~93% da receita comportamental de outubro à base (R$ 185k de R$ 198,6k; dado parcial, não é caixa).</p></div>
 <div class="motor m2"><h3>Novas</h3><p style="margin:0">14.143 sessões · <strong>19 compras</strong> · R$ 13,6 mil</p><p class="nt" style="margin-top:6px">Conversão 0,13% é implausível → classificação New/Returning <strong>ainda furada</strong>.</p></div>
 </div>
 <p class="nt">No dia 02/10 a classificação registrava literalmente <strong>0 compras de novas</strong>; melhorou, mas ainda não é confiável. Mais 5.559 sessões ficaram sem classificação. Não tratar "aquisição parou" como fato — é medição.</p>
@@ -326,29 +388,30 @@ svg{display:block;max-width:100%;height:auto}
 <div class="c">
 <table>
 <tr><th>Sintoma</th><th>Causa provável</th><th>Confiança</th><th>Teste confirmatório</th></tr>
-<tr><td>Compras/receita por evento subcontadas e duplicadas</td><td>Tags de compra provavelmente não disparam no checkout (domínio separado + CSP)</td><td><span class="t tb">Alta</span></td><td>Acessar o painel da plataforma e inspecionar o checkout; comparar com pedidos reais</td></tr>
+<tr><td>GA4 item-scope +53% acima do aprovado</td><td>item-scope +52,9% acima do aprovado; mecanismo (bruto/duplicação) a reconciliar</td><td><span class="t tb">Alta</span></td><td>Reconciliar por pedido (export); conferir desconto/duplicidade de item</td></tr>
 <tr><td>Google conversões −92%</td><td>Conversão não registrada no checkout (hipótese) → lance automático cega</td><td><span class="t tb">Alta</span></td><td>Teste de conversão no Google Ads; importação offline temporária</td></tr>
 <tr><td>Paid Social 24,3k→1,1k sessões</td><td>Hipótese: UTMs não reconhecidas no período (macro não resolvida / possível domínio antigo)</td><td><span class="t tb">Alta</span></td><td>Inspecionar URLs das campanhas Meta e os parâmetros de destino</td></tr>
 <tr><td>Meta cliques −42% com gasto −17%</td><td>Pixel de compra quebrado degrada a otimização</td><td><span class="t tw">Média-alta</span></td><td>Pixel + CAPI com valor; observar recuperação de CTR/entrega</td></tr>
-<tr><td>Sessões −39% vs setembro</td><td>Sazonalidade (set foi pico) + espiral de mídia acima</td><td><span class="t tw">Média-alta</span></td><td>YoY sessões ~estáveis (−6%) confirma componente sazonal</td></tr>
+<tr><td>Sessões −39% vs setembro</td><td>Sazonalidade (set foi pico) + espiral de mídia acima</td><td><span class="t tw">Média-alta</span></td><td>YoY sessões ~estáveis (−6%); compatível com sazonalidade, não prova</td></tr>
 <tr><td>Nova cliente convertendo 0,13%</td><td>Classificação New/Returning e identidade quebradas</td><td><span class="t tw">Média</span></td><td>Checar consentimento/identificação na plataforma da loja</td></tr>
 </table>
-<p class="nt"><strong>NÃO</strong> é causa: queda comercial da marca (YoY +69% em itens). <strong>Não comprovado</strong> (sem fonte): ruptura de estoque, queda estrutural de demanda. Antes×depois da quebra observada = associação forte, <strong>não</strong> prova de causa isolada.</p>
+<p class="nt"><strong>Comprovado:</strong> queda MoM no caixa −49%. <strong>Não comprovado</strong> (sem fonte): YoY comercial (out/25 aprovado = lacuna), ruptura de estoque, queda estrutural de demanda. Antes×depois da quebra observada = associação forte, <strong>não</strong> prova de causa isolada.</p>
 </div>
 
-<h2>11. Plano de recuperação — medição primeiro, caixa depois</h2>
+<h2>11. Plano de recuperação — medição e caixa em paralelo</h2>
 <p class="sub" style="margin:0 0 6px">Priorizado por impacto no caixa e facilidade (ICE). Dono sugerido entre parênteses.</p>
 <ol class="a">
 <li><p class="ti">24–72h · Validar e corrigir a captura de compra/conversão no checkout <span class="t tb">crítico</span></p><p class="de">Confirmar no painel se compra/conversão disparam no checkout e, se não dispararem, forçar o disparo — preferencialmente por envio server-side (API de conversão/CAPI), que contorna um eventual bloqueio do domínio de checkout. (CLK + dev da plataforma) · KPI: compras medidas = pedidos reais; conversões Google voltam.</p></li>
 <li><p class="ti">24–72h · Verificar e corrigir as UTMs e os destinos das campanhas <span class="t tb">crítico</span></p><p class="de">Padronizar <code>utm_source/medium/campaign</code> no Meta e no Google; eliminar destinos apontando para o domínio antigo da loja. (CLK/tráfego) · KPI: "Paid Social" volta a aparecer no GA4.</p></li>
 <li><p class="ti">24–72h · Destravar o lance do Google <span class="t tb">crítico</span></p><p class="de">Com a conversão restabelecida (ou importação offline temporária), tirar as campanhas do modo "cego". (CLK/Google) · KPI: conversões rastreadas voltam ao patamar de set.</p></li>
 <li><p class="ti">7 dias · Pixel Meta + CAPI com valor e deduplicação</p><p class="de">Restaurar o sinal de valor do pedido para a otimização; acompanhar recuperação de CTR e entrega. (CLK) · KPI: AOV do pixel volta ao normal.</p></li>
-<li><p class="ti">7 dias · Fechar a reconciliação com pedidos reais</p><p class="de">Um export de pedidos da plataforma (CSV) fecha a conta "medido × aprovado" e calibra tudo. (Leonardo envia · CLK processa) · KPI: diferença medido×real &lt; 5%.</p></li>
+<li><p class="ti">7 dias · Ativar base/CRM/lives para recuperar caixa</p><p class="de">A base concentra a maior parte da receita (histórico); acionar lives, relacionamento e recompra recupera caixa mais rápido que aquisição nova. (CLK + Renata) · KPI: receita aprovada da base por semana.</p></li>
+<li><p class="ti">7 dias · Fechar a reconciliação por pedido</p><p class="de">Totais já batem (aprovado confirmado); falta o <strong>detalhe por pedido/SKU</strong> (export CSV) para receita por produto/canal/estado. (Leonardo envia · CLK processa) · KPI: reconciliação por pedido fechada.</p></li>
 <li><p class="ti">7 dias · Filtrar tráfego fantasma</p><p class="de">Excluir bots/geo irrelevante do GA4 e revisar segmentação que atrai região fora do público. (CLK) · KPI: conversão aparente sobe sem mudar venda.</p></li>
 <li><p class="ti">14 dias · Recompor a verba de aquisição conforme o sinal volta</p><p class="de">Não cortar por ROAS falso; reescalar Meta/Google à medida que a conversão volta a ser medida. (CLK/tráfego) · KPI: sessões pagas e CPA voltam ao normal.</p></li>
 <li><p class="ti">14 dias · CRO do checkout</p><p class="de">Reduzir fricção na finalização (o checkout separado é ponto de perda) — frete, Pix, parcelamento visíveis cedo. (CLK/CRO) · KPI: taxa checkout→compra.</p></li>
 <li><p class="ti">30 dias · Monitorar funil e New/Returning</p><p class="de">Validar add_to_cart/checkout/purchase e a classificação de novas clientes. (CLK) · KPI: funil e New/Returning confiáveis.</p></li>
-<li><p class="ti">30 dias · Preparar a Black Friday com medição íntegra</p><p class="de">Teste de estresse e sala de guerra (método EDP) só fazem sentido com rastreamento confiável — sem isso, decide-se no escuro. (CLK + Leonardo) · KPI: checklist BF com tracking validado.</p></li>
+<li><p class="ti">30 dias · Preparar a Black Friday com medição íntegra</p><p class="de">Teste de estresse e sala de guerra só fazem sentido com rastreamento confiável — sem isso, decide-se no escuro. (CLK + Leonardo) · KPI: checklist BF com tracking validado.</p></li>
 </ol>
 
 <h2>12. O que não deu para medir (lacunas)</h2>
@@ -398,7 +461,7 @@ svg{display:block;max-width:100%;height:auto}
 </div>
 
 <p class="nt" style="margin-top:30px;border-top:1px solid var(--line);padding-top:16px">
-<strong>Fontes e definições.</strong> Google Analytics 4 (propriedade Use Tricô), Meta Ads (contas Fuso BR e LA), Google Ads e navegação na loja, períodos 01–11/10/2026, 01–11/09/2026 e 01–11/10/2025; comparações no corte fechado 01–10 (dia 11 parcial). <strong>item-scope</strong> = soma do valor dos itens; <strong>evento</strong> = valor do evento de compra; em medição saudável os dois quase coincidem. Números de mídia são o que cada plataforma mediu — <strong>atribuição não é prova de causa (incrementalidade)</strong>. "Antes × depois" da quebra observada é associação, não causa isolada. Receita de pedidos aprovados não estava disponível (lacuna). Valores de outubro são preliminares (medição em recuperação).
+<strong>Fontes e definições.</strong> Google Analytics 4 (propriedade Use Tricô), Meta Ads (contas Fuso BR e LA), Google Ads e navegação na loja, períodos 01–11/10/2026, 01–11/09/2026 e 01–11/10/2025; comparações no corte fechado 01–10 (dia 11 parcial). <strong>item-scope</strong> = soma do valor dos itens; <strong>evento</strong> = valor do evento de compra; em medição saudável os dois quase coincidem. Números de mídia são o que cada plataforma mediu — <strong>atribuição não é prova de causa (incrementalidade)</strong>. "Antes × depois" da quebra observada é associação, não causa isolada. <strong>Faturamento aprovado</strong> = caixa, informado pelo gestor (01–10 R$ 181.088,31; 01–11 R$ 186.660,56; 11/10 R$ 5.572,25), pendente de reconciliação por pedido. Aprovado de set/26 = reconstrução Bagy verificada pela CLK (01–10 ~R$ 356.365; 01–11 R$ 394.511,47). <strong>Aprovado de out/25 = lacuna</strong> (YoY comercial não comprovado; proxy comportamental GA4). item-scope/purchase-event do GA4 são comportamentais, não caixa.
 </p>
 
 </div><div id="tip" role="status" aria-live="polite"></div>
