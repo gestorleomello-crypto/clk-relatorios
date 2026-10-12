@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Use Tricô — Auditoria de Outubro</title>
+<style>:root{--bg:#faf8f6;--card:#fff;--ink:#2b2724;--mut:#7a716b;--line:#e8e1db;--ok:#2e7d5b;--bad:#c0392b;--warn:#b8860b;--ac:#8b6f5c}
+*{box-sizing:border-box}body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:0 16px}
+.w{max-width:960px;margin:0 auto;padding:32px 0 64px}
+h1{font-size:30px;line-height:1.15;margin:0 0 4px;letter-spacing:-.02em}
+.sub{color:var(--mut);margin:0 0 30px;font-size:15px}
+h2{font-size:20px;margin:46px 0 12px;letter-spacing:-.01em;border-bottom:2px solid var(--line);padding-bottom:8px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:14px 0}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin:16px 0}
+.k{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px}
+.k .l{font-size:11.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.k .v{font-size:24px;font-weight:600;margin:5px 0 2px;letter-spacing:-.02em}
+.k .d{font-size:13px;font-weight:600}
+.up{color:var(--ok)}.dn{color:var(--bad)}.fl{color:var(--mut)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.03em}
+.tb{background:#fdecea;color:var(--bad)}.tg{background:#e7f4ed;color:var(--ok)}.tw{background:#fdf5e2;color:var(--warn)}
+.big{font-size:19px;line-height:1.5;font-weight:500;margin:0}
+.nt{font-size:13.5px;color:var(--mut);margin-top:8px}
+.st{display:flex;align-items:center;gap:11px;margin:8px 0}
+.st .nm{width:175px;font-size:14px;flex-shrink:0}
+.st .bx{flex:1;background:#eee7e1;border-radius:6px;overflow:hidden;height:28px}
+.st .f{height:100%;background:linear-gradient(90deg,#8b6f5c,#a98a74)}
+.st .p{width:140px;text-align:right;font-size:14px;font-variant-numeric:tabular-nums;flex-shrink:0}
+ol.a{padding-left:0;list-style:none;counter-reset:a}
+ol.a li{counter-increment:a;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:10px;padding:15px 17px;margin:10px 0;position:relative}
+ol.a li::before{content:counter(a);position:absolute;left:-2px;top:-2px;background:var(--ac);color:#fff;width:25px;height:25px;border-radius:50% 0 50% 0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+ol.a .ti{font-weight:600;margin:0 0 4px;padding-left:21px}
+ol.a .de{font-size:14px;color:var(--mut);margin:0}
+svg{display:block;max-width:100%;height:auto}
+.hero{background:linear-gradient(135deg,#8b6f5c,#6f5848);color:#fff;border-radius:16px;padding:34px 26px;margin:8px 0 6px}
+.hero h1{color:#fff}.hero .sub{color:#f0e6df;margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.motor{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;border-top:4px solid var(--ac)}
+.motor.m2{border-top-color:var(--bad)}.motor.mok{border-top-color:var(--ok)}
+.motor h3{margin:0 0 6px;font-size:16px}
+.flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:8px 0}
+.flow .node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 18px;font-weight:600;font-size:14px;text-align:center;max-width:620px}
+.flow .node.ac{background:var(--ac);color:#fff;border-color:var(--ac)}
+.flow .node.bad{background:#fdecea;border-color:#f3c9c2;color:var(--bad)}
+.flow .ar{color:var(--mut);font-size:18px;line-height:1.1;margin:3px 0}
+.leg{font-size:12.5px;color:var(--mut);margin:6px 0 0}
+.pill{font-weight:700}
+@media(max-width:620px){.st .nm{width:120px;font-size:12px}.st .p{width:90px;font-size:12px}h1{font-size:24px}.k .v{font-size:20px}.c{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:16px 14px}table{font-size:13px}th,td{padding:7px 5px}th{font-size:10.5px;letter-spacing:.03em}.t{font-size:10px;padding:2px 6px}.big{font-size:17px}.g{grid-template-columns:1fr 1fr;gap:9px}.k{padding:12px}svg{min-width:560px}.two{grid-template-columns:1fr}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1715;--card:#231f1d;--ink:#ece6e1;--mut:#a39890;--line:#3a332f}
+:root:not([data-theme="light"]) .st .bx{background:#332c28}
+:root:not([data-theme="light"]) .tb{background:#3d211e}:root:not([data-theme="light"]) .tg{background:#1c3329}:root:not([data-theme="light"]) .tw{background:#3a3016}
+:root:not([data-theme="light"]) .flow .node.bad{background:#3d211e;border-color:#5a2f28}}
+.bar{cursor:pointer;transition:opacity .12s ease}
+.bar:hover{opacity:.72}
+.bar:focus{outline:none}
+.bar:focus-visible{outline:2px solid var(--ac);outline-offset:1px;opacity:.72}
+#tip{position:fixed;z-index:60;pointer-events:none;background:var(--ink);color:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12.5px;line-height:1.4;box-shadow:0 6px 22px rgba(0,0,0,.22);opacity:0;transform:translateY(2px);transition:opacity .1s ease}
+#tip.on{opacity:1;transform:none}
+#tip .tl{font-weight:700;display:block}
+#tip .tv{display:block;opacity:.9}
+</style></head><body><div class="w">
+
+<div class="hero">
+<h1>Use Tricô — Auditoria de Outubro</h1>
+<p class="sub">Primeiros 11 dias · 01–11/10/2026 vs 01–11/09/2026 e 01–11/10/2025 · por que outubro parece mais fraco</p>
+</div>
+<p class="sub" style="margin-top:12px">Data de referência 11/10/2026. O dia 11 ainda <strong>não consolidou</strong> (parcial) — o corte fechado usado nas comparações é <strong>01–10</strong>. Fontes: Google Analytics 4, Meta Ads, Google Ads e navegação na loja. Passe o mouse (ou toque) nos gráficos para o valor exato. <strong>Gráficos interativos — o valor também aparece no texto.</strong></p>
+
+<div class="c">
+<p class="big">Outubro <strong>não</strong> é uma queda de vendas da marca. Comparado a outubro do ano passado, a loja está <strong>bem mais forte</strong>. O que caiu foi o mês contra setembro — e boa parte disso é <strong>sazonalidade + uma quebra de medição</strong> associada, no tempo, a uma <strong>quebra de medição observada a partir de 01/10</strong>.</p>
+<p class="big" style="margin-top:12px">A prioridade de recuperação é <strong>consertar a medição</strong> (compra, conversão e origem do tráfego). Enquanto os números de compra não voltam, Meta e Google "enxergam" menos resultado e tendem a <strong>reduzir a entrega</strong> — o que provavelmente contribuiu para a queda de tráfego e vendas em outubro (o impacto causal e incremental não está demonstrado).</p>
+</div>
+
+<div class="g">
+<div class="k"><div class="l">Receita 01–10 (item)</div><div class="v">R$ 277 mil</div><div class="d up">+69% vs out/25</div></div>
+<div class="k"><div class="l">vs setembro</div><div class="v dn">−32%</div><div class="d fl">receita item-scope (sazonal)</div></div>
+<div class="k"><div class="l">Sessões 01–10</div><div class="v dn">−39%</div><div class="d fl">vs set · −6% vs out/25</div></div>
+<div class="k"><div class="l">Conversão Google</div><div class="v dn">−92%</div><div class="d fl">quebra de rastreamento</div></div>
+</div>
+
+<h2>1. Antes de tudo: o que dá para confiar</h2>
+<div class="c">
+<p>Uma <strong>quebra de parte da medição</strong> começou em 01/10 (o site hoje apresenta <strong>indícios de Tray</strong> — meta-tag e CDN, ver seção 3; a mudança de plataforma e sua data ficam a confirmar). Antes de qualquer conclusão, classificamos cada número:</p>
+<table>
+<tr><th>Métrica</th><th>Status em outubro</th><th>Como usar</th></tr>
+<tr><td>Sessões (tráfego)</td><td><span class="t tg">Confiável</span></td><td>Boa, com ressalva de tráfego internacional/bot inflando um pouco</td></tr>
+<tr><td>Receita <strong>item-scope</strong></td><td><span class="t tg">Confiável</span></td><td>Melhor medida de outubro — é o que usamos</td></tr>
+<tr><td>Receita/compras <strong>por evento</strong></td><td><span class="t tb">Parcial</span></td><td>Subcontada e duplicada no início do mês; converge só a partir de ~06/10</td></tr>
+<tr><td>Funil (carrinho/checkout)</td><td><span class="t tb">Quebrado 01–03</span></td><td>Volta a existir a partir de ~04–05/10</td></tr>
+<tr><td>Origem do tráfego (canal)</td><td><span class="t tb">Inválida</span></td><td>Pago aparece como orgânico — ler mídia pelo Meta/Google, não pelo GA4</td></tr>
+<tr><td>Conversão do Google Ads</td><td><span class="t tb">Inválida</span></td><td>Conversão não registrada (−92%; hipótese: não dispara no checkout)</td></tr>
+<tr><td>Novas × recorrentes</td><td><span class="t tb">Parcial</span></td><td>Nova cliente convertendo 0,13% = classificação ainda furada</td></tr>
+<tr><td>Receita de <strong>pedidos aprovados</strong></td><td><span class="t tw">Indisponível</span></td><td>Sem acesso ao painel de pedidos — lacuna (ver seção 12)</td></tr>
+</table>
+<p style="margin:16px 0 8px;font-weight:600">A prova de que a quebra é de medição, não de vendas: os dois jeitos de medir a receita divergem no início e voltam a bater</p>
+<svg viewBox="0 0 900 310" role="img" aria-label="Receita diária item-scope vs purchase-event, outubro">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">61k</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="1/out · Item: R$ 24.425,00 (item-scope)" data-tip="1/out · Item|R$ 24.425,00 (item-scope)" x="83.9" y="165.6" width="24.0" height="84.4" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="1/out · Purchase: R$ 11.603,82 (purchase-event)" data-tip="1/out · Purchase|R$ 11.603,82 (purchase-event)" x="109.9" y="209.9" width="24.0" height="40.1" rx="2" fill="#c9b5a6"/>
+<text x="108.9" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">01</text>
+<rect class="bar" tabindex="0" role="img" aria-label="2/out · Item: R$ 45.999,40 (item-scope)" data-tip="2/out · Item|R$ 45.999,40 (item-scope)" x="157.7" y="91.1" width="24.0" height="158.9" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="2/out · Purchase: R$ 20.437,52 (purchase-event)" data-tip="2/out · Purchase|R$ 20.437,52 (purchase-event)" x="183.7" y="179.4" width="24.0" height="70.6" rx="2" fill="#c9b5a6"/>
+<text x="182.7" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">02</text>
+<rect class="bar" tabindex="0" role="img" aria-label="3/out · Item: R$ 31.593,80 (item-scope)" data-tip="3/out · Item|R$ 31.593,80 (item-scope)" x="231.5" y="140.9" width="24.0" height="109.1" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="3/out · Purchase: R$ 12.922,16 (purchase-event)" data-tip="3/out · Purchase|R$ 12.922,16 (purchase-event)" x="257.5" y="205.4" width="24.0" height="44.6" rx="2" fill="#c9b5a6"/>
+<text x="256.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">03</text>
+<rect class="bar" tabindex="0" role="img" aria-label="4/out · Item: R$ 15.857,10 (item-scope)" data-tip="4/out · Item|R$ 15.857,10 (item-scope)" x="305.4" y="195.2" width="24.0" height="54.8" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="4/out · Purchase: R$ 4.425,54 (purchase-event)" data-tip="4/out · Purchase|R$ 4.425,54 (purchase-event)" x="331.4" y="234.7" width="24.0" height="15.3" rx="2" fill="#c9b5a6"/>
+<text x="330.4" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">04</text>
+<rect class="bar" tabindex="0" role="img" aria-label="5/out · Item: R$ 14.297,40 (item-scope)" data-tip="5/out · Item|R$ 14.297,40 (item-scope)" x="379.2" y="200.6" width="24.0" height="49.4" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="5/out · Purchase: R$ 11.774,62 (purchase-event)" data-tip="5/out · Purchase|R$ 11.774,62 (purchase-event)" x="405.2" y="209.3" width="24.0" height="40.7" rx="2" fill="#c9b5a6"/>
+<text x="404.2" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">05</text>
+<rect class="bar" tabindex="0" role="img" aria-label="6/out · Item: R$ 60.804,50 (item-scope)" data-tip="6/out · Item|R$ 60.804,50 (item-scope)" x="453.0" y="40.0" width="24.0" height="210.0" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="6/out · Purchase: R$ 57.510,43 (purchase-event)" data-tip="6/out · Purchase|R$ 57.510,43 (purchase-event)" x="479.0" y="51.4" width="24.0" height="198.6" rx="2" fill="#c9b5a6"/>
+<text x="478.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">06</text>
+<rect class="bar" tabindex="0" role="img" aria-label="7/out · Item: R$ 18.905,60 (item-scope)" data-tip="7/out · Item|R$ 18.905,60 (item-scope)" x="526.8" y="184.7" width="24.0" height="65.3" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="7/out · Purchase: R$ 17.154,98 (purchase-event)" data-tip="7/out · Purchase|R$ 17.154,98 (purchase-event)" x="552.8" y="190.8" width="24.0" height="59.2" rx="2" fill="#c9b5a6"/>
+<text x="551.8" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">07</text>
+<rect class="bar" tabindex="0" role="img" aria-label="8/out · Item: R$ 16.365,80 (item-scope)" data-tip="8/out · Item|R$ 16.365,80 (item-scope)" x="600.6" y="193.5" width="24.0" height="56.5" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="8/out · Purchase: R$ 14.732,65 (purchase-event)" data-tip="8/out · Purchase|R$ 14.732,65 (purchase-event)" x="626.6" y="199.1" width="24.0" height="50.9" rx="2" fill="#c9b5a6"/>
+<text x="625.6" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">08</text>
+<rect class="bar" tabindex="0" role="img" aria-label="9/out · Item: R$ 28.764,00 (item-scope)" data-tip="9/out · Item|R$ 28.764,00 (item-scope)" x="674.5" y="150.7" width="24.0" height="99.3" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="9/out · Purchase: R$ 27.573,54 (purchase-event)" data-tip="9/out · Purchase|R$ 27.573,54 (purchase-event)" x="700.5" y="154.8" width="24.0" height="95.2" rx="2" fill="#c9b5a6"/>
+<text x="699.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">09</text>
+<rect class="bar" tabindex="0" role="img" aria-label="10/out · Item: R$ 19.895,00 (item-scope)" data-tip="10/out · Item|R$ 19.895,00 (item-scope)" x="748.3" y="181.3" width="24.0" height="68.7" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="10/out · Purchase: R$ 15.724,87 (purchase-event)" data-tip="10/out · Purchase|R$ 15.724,87 (purchase-event)" x="774.3" y="195.7" width="24.0" height="54.3" rx="2" fill="#c9b5a6"/>
+<text x="773.3" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">10</text>
+<rect class="bar" tabindex="0" role="img" aria-label="11/out · Item: R$ 4.909,00 (item-scope)" data-tip="11/out · Item|R$ 4.909,00 (item-scope)" x="822.1" y="233.0" width="24.0" height="17.0" rx="2" fill="#8b6f5c"/>
+<rect class="bar" tabindex="0" role="img" aria-label="11/out · Purchase: R$ 4.772,52 (purchase-event)" data-tip="11/out · Purchase|R$ 4.772,52 (purchase-event)" x="848.1" y="233.5" width="24.0" height="16.5" rx="2" fill="#c9b5a6"/>
+<text x="847.1" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">11</text>
+<rect x="600" y="22" width="12" height="12" fill="#8b6f5c"/>
+<text x="616.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Item</text>
+<rect x="710" y="22" width="12" height="12" fill="#c9b5a6"/>
+<text x="726.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Purchase</text>
+</svg>
+<p class="leg"><span class="pill" style="color:var(--ac)">■</span> item-scope (valor dos itens) &nbsp; <span class="pill" style="color:#c9b5a6">■</span> purchase-event (valor do evento de compra)</p>
+<p class="nt">Nos dias 01–05, o valor pelo evento de compra ficou <strong>2,16× menor</strong> que o valor dos itens — sinal claro de evento de compra falhando. De 06/10 em diante os dois praticamente coincidem (1,09×), como em setembro (1,09×) e em outubro/25 (1,10×). <strong>Isso é assinatura de quebra de rastreamento, não de queda real de vendas.</strong></p>
+</div>
+
+<h2>2. O resultado (melhor proxy disponível) — queda contra setembro, alta contra o ano passado</h2>
+<div class="two">
+<div class="c" style="margin:0">
+<p style="margin:0 0 8px;font-weight:600">Receita item-scope · 01–10</p>
+<svg viewBox="0 0 900 300" role="img" aria-label="Receita item-scope 01-10 por janela">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">406k</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Out/26 (01–10): R$ 276.908 · receita item-scope" data-tip="Out/26 (01–10)|R$ 276.908 · receita item-scope" x="184.3" y="106.8" width="46.0" height="143.2" rx="2" fill="#8b6f5c"/>
+<text x="207.3" y="100.8" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">277k</text>
+<text x="207.3" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Out/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Set/26 (01–10): R$ 406.131 · receita item-scope" data-tip="Set/26 (01–10)|R$ 406.131 · receita item-scope" x="455.0" y="40.0" width="46.0" height="210.0" rx="2" fill="#c9b5a6"/>
+<text x="478.0" y="34.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">406k</text>
+<text x="478.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Set/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Out/25 (01–10): R$ 163.700 · receita item-scope" data-tip="Out/25 (01–10)|R$ 163.700 · receita item-scope" x="725.7" y="165.4" width="46.0" height="84.6" rx="2" fill="#d8cabd"/>
+<text x="748.7" y="159.4" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">164k</text>
+<text x="748.7" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Out/25</text>
+</svg>
+</div>
+<div class="c" style="margin:0">
+<p style="margin:0 0 8px;font-weight:600">Sessões · 01–10</p>
+<svg viewBox="0 0 900 300" role="img" aria-label="Sessões 01-10 por janela">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">48k</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Out/26 (01–10): 29.422 sessões" data-tip="Out/26 (01–10)|29.422 sessões" x="184.3" y="121.5" width="46.0" height="128.5" rx="2" fill="#8b6f5c"/>
+<text x="207.3" y="115.5" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">29k</text>
+<text x="207.3" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Out/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Set/26 (01–10): 48.070 sessões" data-tip="Set/26 (01–10)|48.070 sessões" x="455.0" y="40.0" width="46.0" height="210.0" rx="2" fill="#c9b5a6"/>
+<text x="478.0" y="34.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">48k</text>
+<text x="478.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Set/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Out/25 (01–10): 31.373 sessões" data-tip="Out/25 (01–10)|31.373 sessões" x="725.7" y="112.9" width="46.0" height="137.1" rx="2" fill="#d8cabd"/>
+<text x="748.7" y="106.9" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">31k</text>
+<text x="748.7" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Out/25</text>
+</svg>
+</div>
+</div>
+<div class="c">
+<table>
+<tr><th>01–10 (fechado)</th><th class="n">Out/26</th><th class="n">Set/26</th><th class="n">Out/25</th><th class="n">vs Set</th><th class="n">vs Out/25</th></tr>
+<tr><td>Sessões</td><td class="n">29.422</td><td class="n">48.070</td><td class="n">31.373</td><td class="n"><span class="t tb">−39%</span></td><td class="n">−6%</td></tr>
+<tr><td>Receita item-scope</td><td class="n">R$ 276,9k</td><td class="n">R$ 406,1k</td><td class="n">R$ 163,7k</td><td class="n"><span class="t tb">−32%</span></td><td class="n"><span class="t tg">+69%</span></td></tr>
+<tr><td>Receita por evento</td><td class="n">R$ 193,9k</td><td class="n">R$ 371,4k</td><td class="n">R$ 148,9k</td><td class="n"><span class="t tb">−48%*</span></td><td class="n">+30%</td></tr>
+<tr><td>Receita / sessão (item)</td><td class="n">R$ 9,41</td><td class="n">R$ 8,45</td><td class="n">R$ 5,22</td><td class="n"><span class="t tg">+11%</span></td><td class="n"><span class="t tg">+80%</span></td></tr>
+</table>
+<p class="big" style="margin-top:14px">A queda de outubro contra setembro é <strong>essencialmente tráfego</strong> (−39% de sessões). A <strong>receita por sessão até subiu</strong> (+11%). Contra o ano passado, outubro/26 mede <strong>+69% em itens</strong> — coerente com o crescimento de ~+46% que a marca vinha tendo no ano.</p>
+<p class="nt">* O −48% pelo "evento de compra" é <strong>exagerado pela quebra</strong> de 01–05; por isso usamos o item-scope (−32%) como <strong>melhor proxy disponível</strong> — ainda sem reconciliação com pedidos aprovados. Setembro foi um pico de tráfego (lançamentos/estação); outubro normalizou para um patamar parecido com o de outubro/25 em sessões. O dia 06/10 foi o maior do período (R$ 60,8k em itens, possível lançamento/ação — a confirmar).</p>
+</div>
+
+<h2>3. A hipótese mais forte: a medição quebra no checkout</h2>
+<div class="c">
+<p>Na vitrine (usetrico.com.br) as <strong>tags principais estão presentes</strong>: Google Analytics 4, Meta pixel, Google Ads e Microsoft Clarity. A hipótese mais forte está na <strong>finalização da compra</strong>: o checkout fica em um domínio separado (documentado como <code>easycheckout.tray.com.br</code>) com uma política de segurança que <strong>pode bloquear o disparo das tags</strong> na tela de confirmação. Confirmar no painel da plataforma.</p>
+<div class="flow" style="margin-top:14px">
+<div class="node">Quebra de medição a partir de 01/10 · checkout em domínio separado</div><div class="ar">▼</div>
+<div class="node bad">Evento de compra, conversão do Google e pixel do Meta <strong>podem não disparar</strong> no checkout</div><div class="ar">▼</div>
+<div class="node bad">Meta e Google "veem" quase nenhuma venda → tendem a <strong>reduzir a entrega</strong></div><div class="ar">▼</div>
+<div class="node">Menos cliques e sessões → menos vendas medidas (e possivelmente reais)</div>
+</div>
+<p class="nt">O mecanismo provável é uma <strong>espiral</strong>: sinal de conversão quebrado → os algoritmos de mídia tendem a cortar verba e entrega → o tráfego tende a cair. Consertar a medição é a <strong>alavanca mais provável</strong> de recuperação. <span class="t tw">Hipótese · confiança alta</span> — evidência convergente (divergência de escopo, colapso da conversão do Google, arquitetura do checkout), mas a confirmação final exige acesso ao painel da plataforma.</p>
+</div>
+
+<h2>4. A origem do tráfego está trocada — o pago virou "orgânico"</h2>
+<div class="c">
+<p style="margin:0 0 8px;font-weight:600">Sessões por canal · setembro vs outubro</p>
+<svg viewBox="0 0 900 310" role="img" aria-label="Paid vs Organic Social, setembro vs outubro">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">24.3k</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Paid Social · Set/26: 24.258 sessões" data-tip="Paid Social · Set/26|24.258 sessões" x="250.0" y="40.0" width="24.0" height="210.0" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Paid Social · Out/26: 1.147 sessões" data-tip="Paid Social · Out/26|1.147 sessões" x="276.0" y="240.1" width="24.0" height="9.9" rx="2" fill="#8b6f5c"/>
+<text x="275.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Paid Social</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Organic Social · Set/26: 9.600 sessões" data-tip="Organic Social · Set/26|9.600 sessões" x="656.0" y="166.9" width="24.0" height="83.1" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Organic Social · Out/26: 16.905 sessões" data-tip="Organic Social · Out/26|16.905 sessões" x="682.0" y="103.7" width="24.0" height="146.3" rx="2" fill="#8b6f5c"/>
+<text x="681.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Organic Social</text>
+<rect x="600" y="22" width="12" height="12" fill="#c9b5a6"/>
+<text x="616.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Set/26</text>
+<rect x="710" y="22" width="12" height="12" fill="#8b6f5c"/>
+<text x="726.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Out/26</text>
+</svg>
+<p class="leg"><span class="pill" style="color:#c9b5a6">■</span> Set/26 &nbsp; <span class="pill" style="color:var(--ac)">■</span> Out/26</p>
+<p class="big" style="margin-top:14px">O "Paid Social" caiu de <strong>24.258 → 1.147</strong> sessões e o "Organic Social" subiu de <strong>9.600 → 16.905</strong>. O tráfego pago do Meta <strong>provavelmente não sumiu</strong>: o padrão é <strong>fortemente compatível</strong> com o pago sendo contado como orgânico (hipótese de alta confiança) — os parâmetros de campanha (UTM) parecem ter deixado de ser reconhecidos no período.</p>
+<p class="nt">Consequência prática: <strong>não dá para confiar na atribuição de canal do GA4 em outubro</strong>. Mídia paga precisa ser lida pelo Meta e pelo Google. Somando pago+orgânico social (33.858 → 18.052), há também uma queda real de ~47% — explicada na próxima seção.</p>
+</div>
+
+<h2>5. Meta e Google reduziram a entrega medida — provável falta de sinal</h2>
+<div class="two">
+<div class="c" style="margin:0">
+<p style="margin:0 0 8px;font-weight:600">Meta — cliques no link</p>
+<svg viewBox="0 0 900 300" role="img" aria-label="Link clicks Meta por janela">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">51k</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Meta · Out/26: 29.672 link clicks · R$ 38.741" data-tip="Meta · Out/26|29.672 link clicks · R$ 38.741" x="184.3" y="127.8" width="46.0" height="122.2" rx="2" fill="#8b6f5c"/>
+<text x="207.3" y="121.8" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">30k</text>
+<text x="207.3" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Out/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Meta · Set/26: 50.988 link clicks · R$ 46.519" data-tip="Meta · Set/26|50.988 link clicks · R$ 46.519" x="455.0" y="40.0" width="46.0" height="210.0" rx="2" fill="#c9b5a6"/>
+<text x="478.0" y="34.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">51k</text>
+<text x="478.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Set/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Meta · Out/25: 22.588 link clicks · R$ 24.229" data-tip="Meta · Out/25|22.588 link clicks · R$ 24.229" x="725.7" y="157.0" width="46.0" height="93.0" rx="2" fill="#d8cabd"/>
+<text x="748.7" y="151.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">23k</text>
+<text x="748.7" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Out/25</text>
+</svg>
+<p class="nt">Gasto −17% MoM, mas cliques −42%. Impressões caíram só −7%: a hipótese é que o algoritmo entregou pior com o sinal do pixel de compra comprometido (o valor médio do pedido no pixel caiu no período).</p>
+</div>
+<div class="c" style="margin:0">
+<p style="margin:0 0 8px;font-weight:600">Google Ads — conversões rastreadas</p>
+<svg viewBox="0 0 900 300" role="img" aria-label="Conversões Google Ads por janela">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="48.0" font-size="11" fill="#a39890" text-anchor="end">115</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Google Ads · Out/26: 9 conversões rastreadas" data-tip="Google Ads · Out/26|9 conversões rastreadas" x="184.3" y="233.4" width="46.0" height="16.6" rx="2" fill="#c0392b"/>
+<text x="207.3" y="227.4" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">9</text>
+<text x="207.3" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Out/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Google Ads · Set/26: 110 conversões rastreadas" data-tip="Google Ads · Set/26|110 conversões rastreadas" x="455.0" y="50.0" width="46.0" height="200.0" rx="2" fill="#c9b5a6"/>
+<text x="478.0" y="44.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">110</text>
+<text x="478.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Set/26</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Google Ads · Out/25: 115 conversões rastreadas" data-tip="Google Ads · Out/25|115 conversões rastreadas" x="725.7" y="40.0" width="46.0" height="210.0" rx="2" fill="#d8cabd"/>
+<text x="748.7" y="34.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">115</text>
+<text x="748.7" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Out/25</text>
+</svg>
+<p class="nt">Conversões 110 → 9 (−92%), muito além do gasto (−58%). Sem conversão rastreada, o lance automático tende a "cegar" e cortar a verba (hipótese). Em out/25 eram 115.</p>
+</div>
+</div>
+<div class="c">
+<table>
+<tr><th>Mídia · 01–11</th><th class="n">Out/26</th><th class="n">Set/26</th><th class="n">Out/25</th></tr>
+<tr><td>Meta — investimento</td><td class="n">R$ 38,7k</td><td class="n">R$ 46,5k</td><td class="n">R$ 24,2k</td></tr>
+<tr><td>Meta — cliques no link</td><td class="n">29.672</td><td class="n">50.988</td><td class="n">22.588</td></tr>
+<tr><td>Google — investimento</td><td class="n">R$ 2,7k</td><td class="n">R$ 6,4k</td><td class="n">R$ 2,4k</td></tr>
+<tr><td>Google — cliques</td><td class="n">2.946</td><td class="n">9.643</td><td class="n">5.822</td></tr>
+<tr><td>Google — conversões</td><td class="n"><span class="t tb">9</span></td><td class="n">110</td><td class="n">115</td></tr>
+</table>
+<p class="nt">Leitura: provavelmente a entrega caiu por <strong>falta de sinal de conversão</strong>, não por decisão manual — hipótese reversível ao corrigir o rastreamento. <span class="t tw">Atribuição ≠ incrementalidade</span>: estes números dizem o que os canais mediram, não o que cada um causou; o impacto incremental não está demonstrado.</p>
+</div>
+
+<h2>6. Funil: quebrado no começo, recuperando depois</h2>
+<div class="c">
+<p>Os eventos de meio-de-funil ficaram <strong>incompletos/anômalos em 01–03</strong> (ex.: 02/10 zerado; checkout zerado em 02–03; dia 01 com apenas 48 add-to-cart) e se normalizaram a partir de ~04–05/10. Por isso <strong>não calculamos taxas de funil do início do mês</strong> — evento ausente não é abandono real.</p>
+<table>
+<tr><th class="n">Dia</th><th class="n">01</th><th class="n">02</th><th class="n">03</th><th class="n">04</th><th class="n">05</th><th class="n">06</th><th class="n">07</th><th class="n">08</th><th class="n">09</th><th class="n">10</th></tr>
+<tr><td>Add to cart</td><td class="n">48</td><td class="n"><span class="dn">0</span></td><td class="n">32</td><td class="n">123</td><td class="n">94</td><td class="n">203</td><td class="n">157</td><td class="n">145</td><td class="n">153</td><td class="n">133</td></tr>
+<tr><td>Checkout</td><td class="n">8</td><td class="n"><span class="dn">0</span></td><td class="n"><span class="dn">0</span></td><td class="n">23</td><td class="n">125</td><td class="n">262</td><td class="n">115</td><td class="n">113</td><td class="n">171</td><td class="n">99</td></tr>
+</table>
+<p class="nt">A partir da 2ª semana o funil volta a ser registrado, mas <strong>ainda com incoerências</strong> (às vezes "checkout" supera "add to cart") — ler com cautela e instrumentar junto com a correção, antes de calcular taxas finais.</p>
+</div>
+
+<h2>7. Produtos — o verão já está puxando</h2>
+<div class="c">
+<p>Mesmo com a medição parcial de produto (visualizações subcontadas), os campeões de outubro são claramente de <strong>primavera/verão</strong> — linho, algodão e palha — exatamente a virada de estação recomendada.</p>
+<table>
+<tr><th>Produto (top por receita)</th><th class="n">Compras</th><th class="n">Receita</th></tr>
+<tr><td>Camisa Manuela Linho Italiano Capri</td><td class="n">9</td><td class="n">R$ 5.399</td></tr>
+<tr><td>Papete/Chinelo em Palha Trançada</td><td class="n">5</td><td class="n">R$ 3.250</td></tr>
+<tr><td>Bermuda/Jorts Anelise em Linho</td><td class="n">6</td><td class="n">R$ 2.999</td></tr>
+<tr><td>Regata Nati em Algodão Canelada</td><td class="n">12</td><td class="n">R$ 2.639</td></tr>
+<tr><td>Casaco Nati 100% Algodão Ponto Pérola</td><td class="n">5</td><td class="n">R$ 2.200</td></tr>
+</table>
+<p class="nt">Distinção importante: <strong>produto que traz cliente ≠ produto que mais fatura</strong>. Com a conversão de produto subcontada, tratar estes dados como direção, não ranking fechado. Disponibilidade/ruptura de estoque <strong>não</strong> pôde ser medida (sem fonte).</p>
+</div>
+
+<h2>8. Regiões — Sul concentra, e há tráfego "fantasma"</h2>
+<div class="c">
+<table>
+<tr><th>Estado</th><th class="n">Sessões</th><th class="n">Receita (evento)</th></tr>
+<tr><td>Rio Grande do Sul</td><td class="n">15.879</td><td class="n">R$ 94.975</td></tr>
+<tr><td>Santa Catarina</td><td class="n">4.474</td><td class="n">R$ 35.527</td></tr>
+<tr><td>Paraná</td><td class="n">3.365</td><td class="n">R$ 32.647</td></tr>
+<tr><td>São Paulo</td><td class="n">2.163</td><td class="n">R$ 20.166</td></tr>
+<tr><td>Rio de Janeiro</td><td class="n">237</td><td class="n">R$ 8.297</td></tr>
+</table>
+<p class="nt">A região Sul (RS+SC+PR) soma <strong>R$ 163,1k dos R$ 198,6k rastreados por região</strong> (~82%). Atenção: aparecem milhares de sessões de locais típicos de robô/datacenter (Oregon, Iowa, Nebraska, Dublin) com <strong>zero receita</strong> — tráfego "fantasma" que infla sessões e derruba a conversão aparente. Vale filtrar.</p>
+</div>
+
+<h2>9. Base vs novas — a base sustenta, mas a classificação está furada</h2>
+<div class="c">
+<div class="two">
+<div class="motor mok"><h3>Recorrentes</h3><p style="margin:0">11.337 sessões · <strong>291 compras</strong> · R$ 185 mil</p><p class="nt" style="margin-top:6px">A base segue sustentando a receita (coerente com o histórico ~80%).</p></div>
+<div class="motor m2"><h3>Novas</h3><p style="margin:0">14.143 sessões · <strong>19 compras</strong> · R$ 13,6 mil</p><p class="nt" style="margin-top:6px">Conversão 0,13% é implausível → classificação New/Returning <strong>ainda furada</strong>.</p></div>
+</div>
+<p class="nt">No dia 02/10 a classificação registrava literalmente <strong>0 compras de novas</strong>; melhorou, mas ainda não é confiável. Mais 5.559 sessões ficaram sem classificação. Não tratar "aquisição parou" como fato — é medição.</p>
+</div>
+
+<h2>10. Matriz de causas</h2>
+<div class="c">
+<table>
+<tr><th>Sintoma</th><th>Causa provável</th><th>Confiança</th><th>Teste confirmatório</th></tr>
+<tr><td>Compras/receita por evento subcontadas e duplicadas</td><td>Tags de compra provavelmente não disparam no checkout (domínio separado + CSP)</td><td><span class="t tb">Alta</span></td><td>Acessar o painel da plataforma e inspecionar o checkout; comparar com pedidos reais</td></tr>
+<tr><td>Google conversões −92%</td><td>Conversão não registrada no checkout (hipótese) → lance automático cega</td><td><span class="t tb">Alta</span></td><td>Teste de conversão no Google Ads; importação offline temporária</td></tr>
+<tr><td>Paid Social 24,3k→1,1k sessões</td><td>Hipótese: UTMs não reconhecidas no período (macro não resolvida / possível domínio antigo)</td><td><span class="t tb">Alta</span></td><td>Inspecionar URLs das campanhas Meta e os parâmetros de destino</td></tr>
+<tr><td>Meta cliques −42% com gasto −17%</td><td>Pixel de compra quebrado degrada a otimização</td><td><span class="t tw">Média-alta</span></td><td>Pixel + CAPI com valor; observar recuperação de CTR/entrega</td></tr>
+<tr><td>Sessões −39% vs setembro</td><td>Sazonalidade (set foi pico) + espiral de mídia acima</td><td><span class="t tw">Média-alta</span></td><td>YoY sessões ~estáveis (−6%) confirma componente sazonal</td></tr>
+<tr><td>Nova cliente convertendo 0,13%</td><td>Classificação New/Returning e identidade quebradas</td><td><span class="t tw">Média</span></td><td>Checar consentimento/identificação na plataforma da loja</td></tr>
+</table>
+<p class="nt"><strong>NÃO</strong> é causa: queda comercial da marca (YoY +69% em itens). <strong>Não comprovado</strong> (sem fonte): ruptura de estoque, queda estrutural de demanda. Antes×depois da quebra observada = associação forte, <strong>não</strong> prova de causa isolada.</p>
+</div>
+
+<h2>11. Plano de recuperação — medição primeiro, caixa depois</h2>
+<p class="sub" style="margin:0 0 6px">Priorizado por impacto no caixa e facilidade (ICE). Dono sugerido entre parênteses.</p>
+<ol class="a">
+<li><p class="ti">24–72h · Validar e corrigir a captura de compra/conversão no checkout <span class="t tb">crítico</span></p><p class="de">Confirmar no painel se compra/conversão disparam no checkout e, se não dispararem, forçar o disparo — preferencialmente por envio server-side (API de conversão/CAPI), que contorna um eventual bloqueio do domínio de checkout. (CLK + dev da plataforma) · KPI: compras medidas = pedidos reais; conversões Google voltam.</p></li>
+<li><p class="ti">24–72h · Verificar e corrigir as UTMs e os destinos das campanhas <span class="t tb">crítico</span></p><p class="de">Padronizar <code>utm_source/medium/campaign</code> no Meta e no Google; eliminar destinos apontando para o domínio antigo da loja. (CLK/tráfego) · KPI: "Paid Social" volta a aparecer no GA4.</p></li>
+<li><p class="ti">24–72h · Destravar o lance do Google <span class="t tb">crítico</span></p><p class="de">Com a conversão restabelecida (ou importação offline temporária), tirar as campanhas do modo "cego". (CLK/Google) · KPI: conversões rastreadas voltam ao patamar de set.</p></li>
+<li><p class="ti">7 dias · Pixel Meta + CAPI com valor e deduplicação</p><p class="de">Restaurar o sinal de valor do pedido para a otimização; acompanhar recuperação de CTR e entrega. (CLK) · KPI: AOV do pixel volta ao normal.</p></li>
+<li><p class="ti">7 dias · Fechar a reconciliação com pedidos reais</p><p class="de">Um export de pedidos da plataforma (CSV) fecha a conta "medido × aprovado" e calibra tudo. (Leonardo envia · CLK processa) · KPI: diferença medido×real &lt; 5%.</p></li>
+<li><p class="ti">7 dias · Filtrar tráfego fantasma</p><p class="de">Excluir bots/geo irrelevante do GA4 e revisar segmentação que atrai região fora do público. (CLK) · KPI: conversão aparente sobe sem mudar venda.</p></li>
+<li><p class="ti">14 dias · Recompor a verba de aquisição conforme o sinal volta</p><p class="de">Não cortar por ROAS falso; reescalar Meta/Google à medida que a conversão volta a ser medida. (CLK/tráfego) · KPI: sessões pagas e CPA voltam ao normal.</p></li>
+<li><p class="ti">14 dias · CRO do checkout</p><p class="de">Reduzir fricção na finalização (o checkout separado é ponto de perda) — frete, Pix, parcelamento visíveis cedo. (CLK/CRO) · KPI: taxa checkout→compra.</p></li>
+<li><p class="ti">30 dias · Monitorar funil e New/Returning</p><p class="de">Validar add_to_cart/checkout/purchase e a classificação de novas clientes. (CLK) · KPI: funil e New/Returning confiáveis.</p></li>
+<li><p class="ti">30 dias · Preparar a Black Friday com medição íntegra</p><p class="de">Teste de estresse e sala de guerra (método EDP) só fazem sentido com rastreamento confiável — sem isso, decide-se no escuro. (CLK + Leonardo) · KPI: checklist BF com tracking validado.</p></li>
+</ol>
+
+<h2>12. O que não deu para medir (lacunas)</h2>
+<div class="c">
+<ul style="margin:0;padding-left:18px">
+<li><strong>Receita e pedidos aprovados da loja</strong> — não há conector/export automático da plataforma. Tentativa autônoma feita (GA4/pixel/mídia); fecha com <strong>um export CSV de pedidos</strong> da plataforma.</li>
+<li><strong>Acesso ao painel da plataforma da loja</strong> — necessário para confirmar/consertar as tags do checkout.</li>
+<li><strong>Estoque / ruptura</strong> — sem fonte; não dá para separar "sem venda" de "sem estoque".</li>
+<li><strong>Calendário de lives/ações</strong> — sem registro disponível; o pico de 06/10 é um candidato a live/lançamento a confirmar.</li>
+<li><strong>Margem/CMV</strong> — fora do escopo desta auditoria (não necessário para as conclusões).</li>
+</ul>
+<p class="nt">Nenhuma conclusão deste relatório depende de dado inexistente — onde faltou fonte, está marcado como lacuna.</p>
+</div>
+
+<h2>13. Apêndice técnico — números e reconciliações</h2>
+<div class="c">
+<p style="margin:0 0 6px;font-weight:600">Receita diária outubro/26 (R$) — item-scope vs evento</p>
+<table>
+<tr><th class="n">Dia</th><th class="n">Item</th><th class="n">Evento</th><th class="n">item/evento</th><th class="n">Sessões</th></tr>
+<tr><td>01</td><td class="n">24.425</td><td class="n">11.604</td><td class="n">2,11</td><td class="n">2.032</td></tr>
+<tr><td>02</td><td class="n">45.999</td><td class="n">20.438</td><td class="n">2,25</td><td class="n">3.163</td></tr>
+<tr><td>03</td><td class="n">31.594</td><td class="n">12.922</td><td class="n">2,44</td><td class="n">3.438</td></tr>
+<tr><td>04</td><td class="n">15.857</td><td class="n">4.426</td><td class="n">3,58</td><td class="n">3.398</td></tr>
+<tr><td>05</td><td class="n">14.297</td><td class="n">11.775</td><td class="n">1,21</td><td class="n">3.245</td></tr>
+<tr><td>06</td><td class="n">60.805</td><td class="n">57.510</td><td class="n">1,06</td><td class="n">4.287</td></tr>
+<tr><td>07</td><td class="n">18.906</td><td class="n">17.155</td><td class="n">1,10</td><td class="n">2.492</td></tr>
+<tr><td>08</td><td class="n">16.366</td><td class="n">14.733</td><td class="n">1,11</td><td class="n">2.908</td></tr>
+<tr><td>09</td><td class="n">28.764</td><td class="n">27.574</td><td class="n">1,04</td><td class="n">2.548</td></tr>
+<tr><td>10</td><td class="n">19.895</td><td class="n">15.725</td><td class="n">1,27</td><td class="n">1.911</td></tr>
+<tr><td style="color:var(--mut)">11 (parcial)</td><td class="n" style="color:var(--mut)">4.909</td><td class="n" style="color:var(--mut)">4.773</td><td class="n" style="color:var(--mut)">1,03</td><td class="n" style="color:var(--mut)">1.300</td></tr>
+<tr><td><strong>01–10</strong></td><td class="n"><strong>276.908</strong></td><td class="n"><strong>193.860</strong></td><td class="n"><strong>1,43</strong></td><td class="n"><strong>29.422</strong></td></tr>
+</table>
+<p class="nt">Sub-períodos: 01–05 item/evento = 2,16× (quebra); 06–10 = 1,09× (normal). Referências saudáveis: Set/26 = 1,09×; Out/25 = 1,10×.</p>
+</div>
+<div class="c">
+<p style="margin:0 0 6px;font-weight:600">Sessões por canal (GA4) — Set vs Out · 01–11</p>
+<table>
+<tr><th>Canal (GA4)</th><th class="n">Set/26</th><th class="n">Out/26</th></tr>
+<tr><td>Paid Social</td><td class="n">24.258</td><td class="n">1.147</td></tr>
+<tr><td>Organic Social</td><td class="n">9.600</td><td class="n">16.905</td></tr>
+<tr><td>Cross-network</td><td class="n">4.701</td><td class="n">1.741</td></tr>
+<tr><td>Unassigned</td><td class="n">5.115</td><td class="n">3.912</td></tr>
+<tr><td>Direct</td><td class="n">2.591</td><td class="n">3.790</td></tr>
+<tr><td>Paid Search</td><td class="n">1.368</td><td class="n">737</td></tr>
+</table>
+<p class="nt">A troca de "Paid Social" por "Organic Social"/"Direct" é <strong>compatível com</strong> quebra de UTM (hipótese). Atribuição de canal do GA4 = não confiável em outubro.</p>
+</div>
+
+<p class="nt" style="margin-top:30px;border-top:1px solid var(--line);padding-top:16px">
+<strong>Fontes e definições.</strong> Google Analytics 4 (propriedade Use Tricô), Meta Ads (contas Fuso BR e LA), Google Ads e navegação na loja, períodos 01–11/10/2026, 01–11/09/2026 e 01–11/10/2025; comparações no corte fechado 01–10 (dia 11 parcial). <strong>item-scope</strong> = soma do valor dos itens; <strong>evento</strong> = valor do evento de compra; em medição saudável os dois quase coincidem. Números de mídia são o que cada plataforma mediu — <strong>atribuição não é prova de causa (incrementalidade)</strong>. "Antes × depois" da quebra observada é associação, não causa isolada. Receita de pedidos aprovados não estava disponível (lacuna). Valores de outubro são preliminares (medição em recuperação).
+</p>
+
+</div><div id="tip" role="status" aria-live="polite"></div>
+<script>
+(function(){
+ var tip=document.getElementById('tip');var cur=null;
+ function place(x,y){var r=tip.getBoundingClientRect();var l=x+14,t=y-r.height-12;if(t<6)t=y+20;if(l+r.width>window.innerWidth-8)l=window.innerWidth-8-r.width;if(l<6)l=6;tip.style.left=l+'px';tip.style.top=t+'px';}
+ function show(el,x,y){var d=el.getAttribute('data-tip')||'';var p=d.split('|');tip.innerHTML='<span class="tl">'+p[0]+'</span>'+(p[1]?'<span class="tv">'+p[1]+'</span>':'');tip.classList.add('on');place(x,y);cur=el;}
+ function hide(){tip.classList.remove('on');cur=null;}
+ document.querySelectorAll('.bar').forEach(function(el){
+  el.addEventListener('mouseenter',function(e){show(el,e.clientX,e.clientY);});
+  el.addEventListener('mousemove',function(e){if(cur===el)place(e.clientX,e.clientY);});
+  el.addEventListener('mouseleave',hide);
+  el.addEventListener('focus',function(){var b=el.getBoundingClientRect();show(el,b.left+b.width/2,b.top);});
+  el.addEventListener('blur',hide);
+  el.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+ });
+ document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.bar');if(el){var b=el.getBoundingClientRect();if(cur===el){hide();}else{show(el,b.left+b.width/2,b.top);}e.stopPropagation();}else{hide();}},true);
+ window.addEventListener('scroll',hide,true);window.addEventListener('resize',hide);
+})();
+</script>
+</body></html>
