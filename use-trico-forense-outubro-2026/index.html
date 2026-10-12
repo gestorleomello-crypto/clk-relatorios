@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Use Tricô — Auditoria Forense de Outubro</title>
+<style>:root{--bg:#faf8f6;--card:#fff;--ink:#2b2724;--mut:#7a716b;--line:#e8e1db;--ok:#2e7d5b;--bad:#c0392b;--warn:#b8860b;--ac:#8b6f5c}
+*{box-sizing:border-box}body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:0 16px}
+.w{max-width:960px;margin:0 auto;padding:32px 0 64px}
+h1{font-size:30px;line-height:1.15;margin:0 0 4px;letter-spacing:-.02em}
+.sub{color:var(--mut);margin:0 0 30px;font-size:15px}
+h2{font-size:20px;margin:46px 0 12px;letter-spacing:-.01em;border-bottom:2px solid var(--line);padding-bottom:8px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:14px 0}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin:16px 0}
+.k{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px}
+.k .l{font-size:11.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.k .v{font-size:24px;font-weight:600;margin:5px 0 2px;letter-spacing:-.02em}
+.k .d{font-size:13px;font-weight:600}
+.up{color:var(--ok)}.dn{color:var(--bad)}.fl{color:var(--mut)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.t{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.03em}
+.tb{background:#fdecea;color:var(--bad)}.tg{background:#e7f4ed;color:var(--ok)}.tw{background:#fdf5e2;color:var(--warn)}
+.big{font-size:19px;line-height:1.5;font-weight:500;margin:0}
+.nt{font-size:13.5px;color:var(--mut);margin-top:8px}
+ol.a{padding-left:0;list-style:none;counter-reset:a}
+ol.a li{counter-increment:a;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:10px;padding:15px 17px;margin:10px 0;position:relative}
+ol.a li::before{content:counter(a);position:absolute;left:-2px;top:-2px;background:var(--ac);color:#fff;width:25px;height:25px;border-radius:50% 0 50% 0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+ol.a .ti{font-weight:600;margin:0 0 4px;padding-left:21px}
+ol.a .de{font-size:14px;color:var(--mut);margin:0}
+svg{display:block;max-width:100%;height:auto}
+.hero{background:linear-gradient(135deg,#8b6f5c,#6f5848);color:#fff;border-radius:16px;padding:34px 26px;margin:8px 0 6px}
+.hero h1{color:#fff}.hero .sub{color:#f0e6df;margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.leg{font-size:12.5px;color:var(--mut);margin:6px 0 0}.pill{font-weight:700}
+@media(max-width:620px){h1{font-size:24px}.k .v{font-size:20px}.c{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:16px 14px}table{font-size:13px}th,td{padding:7px 5px}th{font-size:10.5px;letter-spacing:.03em}.t{font-size:10px;padding:2px 6px}.big{font-size:17px}.g{grid-template-columns:1fr 1fr;gap:9px}.k{padding:12px}svg{min-width:560px}.two{grid-template-columns:1fr}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1715;--card:#231f1d;--ink:#ece6e1;--mut:#a39890;--line:#3a332f}
+:root:not([data-theme="light"]) .tb{background:#3d211e}:root:not([data-theme="light"]) .tg{background:#1c3329}:root:not([data-theme="light"]) .tw{background:#3a3016}}
+.bar{cursor:pointer;transition:opacity .12s ease}.bar:hover{opacity:.72}.bar:focus{outline:none}.bar:focus-visible{outline:2px solid var(--ac);outline-offset:1px;opacity:.72}
+#tip{position:fixed;z-index:60;pointer-events:none;background:var(--ink);color:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12.5px;line-height:1.4;box-shadow:0 6px 22px rgba(0,0,0,.22);opacity:0;transform:translateY(2px);transition:opacity .1s ease}
+#tip.on{opacity:1;transform:none}#tip .tl{font-weight:700;display:block}#tip .tv{display:block;opacity:.9}
+</style></head><body><div class="w">
+
+<div class="hero">
+<h1>Use Tricô — Auditoria Forense de Outubro</h1>
+<p class="sub">Por que o faturamento caiu · 01–10/10/2026 vs 01–10/09/2026 · pedidos reais + GA4 + mídia</p>
+</div>
+<p class="sub" style="margin-top:12px">Base comercial: export de pedidos da loja (jul–out/2026), consolidando LOJA VIRTUAL + PARTICULAR. Comportamento: Google Analytics 4. Mídia: Meta e Google. Corte fechado <strong>01–10</strong> (dia 11 parcial). Passe o mouse ou toque nos gráficos para o valor exato. <strong>item-scope do GA4 não é caixa</strong> — faturamento aqui = pedidos aprovados.</p>
+
+<div class="c">
+<p class="big">Em outubro (01–10) os <strong>pedidos aprovados</strong> somaram <strong>R$ 189 mil</strong> (caixa confirmado <strong>R$ 181 mil</strong>), contra <strong>R$ 355 mil</strong> na mesma janela de setembro — queda de <strong>−47%</strong> (−49% em caixa). A explicação não é uma só: <strong>78% da queda é tráfego</strong> (menos visitas), 19% é conversão e 3% é ticket.</p>
+<p class="big" style="margin-top:12px">E a queda é <strong>geograficamente concentrada</strong>: o <strong>Rio Grande do Sul sozinho responde por 70%</strong> de toda a perda. Setembro teve picos compatíveis com lives fortes (base/RS) — base de comparação alta, efeito não quantificável sem o calendário — e a migração <strong>coincide</strong> com uma quebra de medição que <strong>pode</strong> ter reduzido a aquisição paga. Recuperar caixa passa por <strong>reativar a base do RS</strong> e <strong>consertar a medição</strong>.</p>
+</div>
+
+<div class="g">
+<div class="k"><div class="l">Aprovado 01–10</div><div class="v">R$ 189 mil</div><div class="d dn">−47% · caixa R$ 181k (−49%)</div></div>
+<div class="k"><div class="l">RS na queda</div><div class="v dn">70%</div><div class="d fl">R$ −117k de R$ −166k</div></div>
+<div class="k"><div class="l">Motor da queda</div><div class="v" style="font-size:19px">Tráfego</div><div class="d fl">78% · conversão 19% · ticket 3%</div></div>
+<div class="k"><div class="l">Clientes</div><div class="v dn">−43%</div><div class="d fl">331 → 189 compradores</div></div>
+</div>
+
+<h2>1. Verdade financeira — o que é caixa e o que não é</h2>
+<div class="c">
+<p>Antes de explicar a queda, separamos as medidas de receita. Só a primeira é caixa:</p>
+<svg viewBox="0 0 900 300" role="img" aria-label="Escada de definicoes de receita Out 01-10">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="50.0" font-size="11" fill="#a39890" text-anchor="end">R$ 277k</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Caixa aprovado (pagamento): R$ 180.961 ≈ gestor R$ 181.088" data-tip="Caixa aprovado (pagamento)|R$ 180.961 ≈ gestor R$ 181.088" x="138.5" y="114.1" width="70.0" height="135.9" rx="2" fill="#2e7d5b"/>
+<text x="173.5" y="108.1" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">R$ 181k</text>
+<text x="173.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Caixa aprovado</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Pedidos criados (status pago): R$ 188.924 — elegível por status" data-tip="Pedidos criados (status pago)|R$ 188.924 — elegível por status" x="341.5" y="108.1" width="70.0" height="141.9" rx="2" fill="#8b6f5c"/>
+<text x="376.5" y="102.1" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">R$ 189k</text>
+<text x="376.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Pedidos criados</text>
+<rect class="bar" tabindex="0" role="img" aria-label="GA4 purchase-event: R$ 193.860 — comportamental" data-tip="GA4 purchase-event|R$ 193.860 — comportamental" x="544.5" y="104.4" width="70.0" height="145.6" rx="2" fill="#c9b5a6"/>
+<text x="579.5" y="98.4" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">R$ 194k</text>
+<text x="579.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">GA4 purchase</text>
+<rect class="bar" tabindex="0" role="img" aria-label="GA4 item-scope: R$ 276.908 — NÃO é caixa (+47%)" data-tip="GA4 item-scope|R$ 276.908 — NÃO é caixa (+47%)" x="747.5" y="42.0" width="70.0" height="208.0" rx="2" fill="#d8cabd"/>
+<text x="782.5" y="36.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">R$ 277k</text>
+<text x="782.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">GA4 item-scope</text>
+</svg>
+<p class="leg"><span class="pill" style="color:var(--ok)">■</span> caixa aprovado &nbsp; <span class="pill" style="color:var(--ac)">■</span> pedidos criados &nbsp; <span class="pill" style="color:#c9b5a6">■</span> GA4 purchase &nbsp; <span class="pill" style="color:#d8cabd">■</span> GA4 item-scope</p>
+<table>
+<tr><th>Medida (Out 01–10)</th><th class="n">Valor</th><th>O que é</th></tr>
+<tr><td><strong>Caixa aprovado</strong> (por pagamento)</td><td class="n">R$ 180.961</td><td>≈ número do gestor (R$ 181.088)</td></tr>
+<tr><td>Pedidos criados (status pago)</td><td class="n">R$ 188.924</td><td>"elegíveis por status" — por data do pedido</td></tr>
+<tr><td>GA4 purchase-event</td><td class="n">R$ 193.860</td><td>comportamental (≈ pedidos criados)</td></tr>
+<tr><td>GA4 item-scope</td><td class="n">R$ 276.908</td><td><strong>não é caixa</strong> — +47% sobre pedidos criados</td></tr>
+</table>
+<p class="nt"><strong>A diferença de R$ 7.836</strong> entre "pedidos criados" (R$ 188.924) e caixa aprovado (R$ 181 mil) foi investigada por pedido: são <strong>13 pedidos</strong> criados na janela mas pagos depois (1) ou sem pagamento confirmado/valor zero (12, alguns com total R$ 0) — corretamente fora do caixa. Fora do aprovado ficaram ainda <strong>R$ 49.469 cancelados</strong> (75 pedidos) e <strong>R$ 28.248 aguardando pagamento</strong> (30). Não atribuímos essa diferença a cashback/cancelamento sem a evidência por pedido.</p>
+</div>
+<div class="c">
+<p style="margin:0 0 6px;font-weight:600">⚠ Cuidado com "loja virtual vs particular"</p>
+<p class="nt" style="margin:0">Em outubro, 69% do faturamento aparece como <strong>"PARTICULAR"</strong> (R$ 129,7k, ticket R$ 998) e 31% como "loja virtual" (R$ 59,2k, ticket R$ 666). Mas <strong>jul, ago e set foram 100% "loja virtual"</strong> — "PARTICULAR" só existe em outubro. É uma <strong>mudança de classificação</strong> introduzida na migração (só outubro tem "PARTICULAR"); a <strong>natureza comercial</strong> de "PARTICULAR" não está comprovada. Por isso comparamos sempre o <strong>consolidado</strong>; ler "a loja online caiu 83%" seria um erro de classificação.</p>
+</div>
+
+<h2>2. A anatomia da queda — 78% é tráfego</h2>
+<div class="c">
+<p style="margin:0 0 8px;font-weight:600">Quanto cada fator tirou do faturamento (R$ da queda de −R$ 166k)</p>
+<svg viewBox="0 0 900 300" role="img" aria-label="Contribuicao de cada fator para a queda de receita">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="50.0" font-size="11" fill="#a39890" text-anchor="end">R$ 130k</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Tráfego (sessões −39%): R$ −129,7k · 78% da queda" data-tip="Tráfego (sessões −39%)|R$ −129,7k · 78% da queda" x="172.3" y="42.0" width="70.0" height="208.0" rx="2" fill="#8b6f5c"/>
+<text x="207.3" y="36.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">R$ 130k</text>
+<text x="207.3" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Tráfego</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Conversão (−11%): R$ −31,6k · 19% da queda" data-tip="Conversão (−11%)|R$ −31,6k · 19% da queda" x="443.0" y="199.3" width="70.0" height="50.7" rx="2" fill="#c9b5a6"/>
+<text x="478.0" y="193.3" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">R$ 32k</text>
+<text x="478.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Conversão</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Ticket (−2%): R$ −5,0k · 3% da queda" data-tip="Ticket (−2%)|R$ −5,0k · 3% da queda" x="713.7" y="242.0" width="70.0" height="8.0" rx="2" fill="#d8cabd"/>
+<text x="748.7" y="236.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">R$ 5k</text>
+<text x="748.7" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Ticket</text>
+</svg>
+<table>
+<tr><th>Fator</th><th class="n">Set</th><th class="n">Out</th><th class="n">Variação</th><th class="n">% da queda</th></tr>
+<tr><td>Sessões (tráfego)</td><td class="n">48.070</td><td class="n">29.422</td><td class="n"><span class="t tb">−39%</span></td><td class="n">78%</td></tr>
+<tr><td>Conversão (pedidos/sessão)</td><td class="n">0,84%</td><td class="n">0,74%</td><td class="n"><span class="t tb">−11%</span></td><td class="n">19%</td></tr>
+<tr><td>Ticket médio</td><td class="n">R$ 881</td><td class="n">R$ 863</td><td class="n">−2%</td><td class="n">3%</td></tr>
+<tr><td><strong>Pedidos aprovados</strong> <span class="nt" style="display:inline">(status/criação)</span></td><td class="n">R$ 355,2k</td><td class="n">R$ 188,9k</td><td class="n"><span class="t tb">−47%</span></td><td class="n">100%</td></tr>
+</table>
+<p class="big" style="margin-top:14px">A queda é, antes de tudo, <strong>menos visitas</strong>. A conversão piorou um pouco e o ticket ficou quase igual — o mix de verão <strong>não</strong> derrubou o ticket.</p>
+<p class="nt">Conversão = pedidos (base de pedidos) ÷ sessões (GA4): numerador e denominador de fontes diferentes, então é uma referência, não uma taxa reconciliada por pedido. Participações calculadas por decomposição multiplicativa (log).</p>
+</div>
+
+<h2>3. O dia a dia — setembro teve picos que outubro não repetiu</h2>
+<div class="c">
+<svg viewBox="0 0 900 315" role="img" aria-label="Faturamento aprovado diario set vs out">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="50.0" font-size="11" fill="#a39890" text-anchor="end">R$ 79k</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="1/set: R$ 58.590 aprovado" data-tip="1/set|R$ 58.590 aprovado" x="81.4" y="96.2" width="26.0" height="153.8" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="1/out: R$ 11.298 aprovado" data-tip="1/out|R$ 11.298 aprovado" x="110.4" y="220.3" width="26.0" height="29.7" rx="2" fill="#8b6f5c"/>
+<text x="108.9" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">01</text>
+<rect class="bar" tabindex="0" role="img" aria-label="2/set: R$ 27.586 aprovado" data-tip="2/set|R$ 27.586 aprovado" x="155.2" y="177.6" width="26.0" height="72.4" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="2/out: R$ 17.059 aprovado" data-tip="2/out|R$ 17.059 aprovado" x="184.2" y="205.2" width="26.0" height="44.8" rx="2" fill="#8b6f5c"/>
+<text x="182.7" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">02</text>
+<rect class="bar" tabindex="0" role="img" aria-label="3/set: R$ 40.413 aprovado" data-tip="3/set|R$ 40.413 aprovado" x="229.0" y="143.9" width="26.0" height="106.1" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="3/out: R$ 14.102 aprovado" data-tip="3/out|R$ 14.102 aprovado" x="258.0" y="213.0" width="26.0" height="37.0" rx="2" fill="#8b6f5c"/>
+<text x="256.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">03</text>
+<rect class="bar" tabindex="0" role="img" aria-label="4/set: R$ 15.818 aprovado" data-tip="4/set|R$ 15.818 aprovado" x="302.9" y="208.5" width="26.0" height="41.5" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="4/out: R$ 4.403 aprovado" data-tip="4/out|R$ 4.403 aprovado" x="331.9" y="238.4" width="26.0" height="11.6" rx="2" fill="#8b6f5c"/>
+<text x="330.4" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">04</text>
+<rect class="bar" tabindex="0" role="img" aria-label="5/set: R$ 19.330 aprovado" data-tip="5/set|R$ 19.330 aprovado" x="376.7" y="199.2" width="26.0" height="50.8" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="5/out: R$ 13.151 aprovado" data-tip="5/out|R$ 13.151 aprovado" x="405.7" y="215.5" width="26.0" height="34.5" rx="2" fill="#8b6f5c"/>
+<text x="404.2" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">05</text>
+<rect class="bar" tabindex="0" role="img" aria-label="6/set: R$ 17.719 aprovado" data-tip="6/set|R$ 17.719 aprovado" x="450.5" y="203.5" width="26.0" height="46.5" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="6/out: R$ 60.972 aprovado" data-tip="6/out|R$ 60.972 aprovado" x="479.5" y="89.9" width="26.0" height="160.1" rx="2" fill="#8b6f5c"/>
+<text x="478.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">06</text>
+<rect class="bar" tabindex="0" role="img" aria-label="7/set: R$ 23.205 aprovado" data-tip="7/set|R$ 23.205 aprovado" x="524.3" y="189.1" width="26.0" height="60.9" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="7/out: R$ 11.331 aprovado" data-tip="7/out|R$ 11.331 aprovado" x="553.3" y="220.2" width="26.0" height="29.8" rx="2" fill="#8b6f5c"/>
+<text x="551.8" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">07</text>
+<rect class="bar" tabindex="0" role="img" aria-label="8/set: R$ 32.581 aprovado" data-tip="8/set|R$ 32.581 aprovado" x="598.1" y="164.5" width="26.0" height="85.5" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="8/out: R$ 16.000 aprovado" data-tip="8/out|R$ 16.000 aprovado" x="627.1" y="208.0" width="26.0" height="42.0" rx="2" fill="#8b6f5c"/>
+<text x="625.6" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">08</text>
+<rect class="bar" tabindex="0" role="img" aria-label="9/set: R$ 40.689 aprovado" data-tip="9/set|R$ 40.689 aprovado" x="672.0" y="143.2" width="26.0" height="106.8" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="9/out: R$ 26.965 aprovado" data-tip="9/out|R$ 26.965 aprovado" x="701.0" y="179.2" width="26.0" height="70.8" rx="2" fill="#8b6f5c"/>
+<text x="699.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">09</text>
+<rect class="bar" tabindex="0" role="img" aria-label="10/set: R$ 79.221 aprovado" data-tip="10/set|R$ 79.221 aprovado" x="745.8" y="42.0" width="26.0" height="208.0" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="10/out: R$ 13.643 aprovado" data-tip="10/out|R$ 13.643 aprovado" x="774.8" y="214.2" width="26.0" height="35.8" rx="2" fill="#8b6f5c"/>
+<text x="773.3" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">10</text>
+<rect class="bar" tabindex="0" role="img" aria-label="11/set: R$ 38.242 aprovado" data-tip="11/set|R$ 38.242 aprovado" x="819.6" y="149.6" width="26.0" height="100.4" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="11/out: R$ 5.572 aprovado" data-tip="11/out|R$ 5.572 aprovado" x="848.6" y="235.4" width="26.0" height="14.6" rx="2" fill="#8b6f5c"/>
+<text x="847.1" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">11</text>
+<rect x="620" y="22" width="12" height="12" fill="#c9b5a6"/>
+<text x="636.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Set</text>
+<rect x="730" y="22" width="12" height="12" fill="#8b6f5c"/>
+<text x="746.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Out</text>
+</svg>
+<p class="leg"><span class="pill" style="color:#c9b5a6">■</span> Set/26 &nbsp; <span class="pill" style="color:var(--ac)">■</span> Out/26 · pedidos aprovados por dia (status/criação)</p>
+<p class="big" style="margin-top:14px">Setembro teve <strong>dias excepcionais</strong> (Set 10 R$ 79k, Set 1 R$ 59k, Set 3 R$ 40k) — compatíveis com lives fortes. Outubro teve um pico (Out 6, terça, R$ 61k) e pedidos mais baixos nos demais dias.</p>
+<p class="nt">Parte relevante da queda é uma <strong>base de comparação excepcional</strong>: setembro foi forte, não necessariamente outubro "quebrado". O calendário exato de lives (set × out) é uma lacuna — a quantificar. O dia 11/10 (domingo) teve só R$ 5.572, baixo mesmo para domingo.</p>
+</div>
+
+<h2>4. Onde caiu — o Rio Grande do Sul é 70% da perda</h2>
+<div class="two">
+<div class="c" style="margin:0"><p style="margin:0 0 8px;font-weight:600">Pedidos aprovados por estado (status/criação)</p><svg viewBox="0 0 900 315" role="img" aria-label="Pedidos aprovados por estado (status/criação) set vs out">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="50.0" font-size="11" fill="#a39890" text-anchor="end">R$ 189k</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="RS · Set/26: R$ 189.457 aprovado (01–10)" data-tip="RS · Set/26|R$ 189.457 aprovado (01–10)" x="125.7" y="42.0" width="26.0" height="208.0" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="RS · Out/26: R$ 72.597 aprovado (01–10)" data-tip="RS · Out/26|R$ 72.597 aprovado (01–10)" x="154.7" y="170.3" width="26.0" height="79.7" rx="2" fill="#8b6f5c"/>
+<text x="153.2" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">RS</text>
+<rect class="bar" tabindex="0" role="img" aria-label="SC · Set/26: R$ 58.618 aprovado (01–10)" data-tip="SC · Set/26|R$ 58.618 aprovado (01–10)" x="288.1" y="185.6" width="26.0" height="64.4" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="SC · Out/26: R$ 42.129 aprovado (01–10)" data-tip="SC · Out/26|R$ 42.129 aprovado (01–10)" x="317.1" y="203.7" width="26.0" height="46.3" rx="2" fill="#8b6f5c"/>
+<text x="315.6" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">SC</text>
+<rect class="bar" tabindex="0" role="img" aria-label="PR · Set/26: R$ 43.407 aprovado (01–10)" data-tip="PR · Set/26|R$ 43.407 aprovado (01–10)" x="450.5" y="202.3" width="26.0" height="47.7" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="PR · Out/26: R$ 28.896 aprovado (01–10)" data-tip="PR · Out/26|R$ 28.896 aprovado (01–10)" x="479.5" y="218.3" width="26.0" height="31.7" rx="2" fill="#8b6f5c"/>
+<text x="478.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">PR</text>
+<rect class="bar" tabindex="0" role="img" aria-label="SP · Set/26: R$ 42.441 aprovado (01–10)" data-tip="SP · Set/26|R$ 42.441 aprovado (01–10)" x="612.9" y="203.4" width="26.0" height="46.6" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="SP · Out/26: R$ 19.925 aprovado (01–10)" data-tip="SP · Out/26|R$ 19.925 aprovado (01–10)" x="641.9" y="228.1" width="26.0" height="21.9" rx="2" fill="#8b6f5c"/>
+<text x="640.4" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">SP</text>
+<rect class="bar" tabindex="0" role="img" aria-label="MG · Set/26: R$ 12.334 aprovado (01–10)" data-tip="MG · Set/26|R$ 12.334 aprovado (01–10)" x="775.3" y="236.5" width="26.0" height="13.5" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="MG · Out/26: R$ 14.100 aprovado (01–10)" data-tip="MG · Out/26|R$ 14.100 aprovado (01–10)" x="804.3" y="234.5" width="26.0" height="15.5" rx="2" fill="#8b6f5c"/>
+<text x="802.8" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">MG</text>
+<rect x="620" y="22" width="12" height="12" fill="#c9b5a6"/>
+<text x="636.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Set</text>
+<rect x="730" y="22" width="12" height="12" fill="#8b6f5c"/>
+<text x="746.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Out</text>
+</svg>
+<p class="leg"><span class="pill" style="color:#c9b5a6">■</span> Set &nbsp; <span class="pill" style="color:var(--ac)">■</span> Out</p></div>
+<div class="c" style="margin:0"><p style="margin:0 0 8px;font-weight:600">Participação de cada estado na queda</p><svg viewBox="0 0 900 300" role="img" aria-label="Participacao de cada estado na queda">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="50.0" font-size="11" fill="#a39890" text-anchor="end">70%</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="RS: 70% da queda total (R$ −116,9k)" data-tip="RS|70% da queda total (R$ −116,9k)" x="138.5" y="42.0" width="70.0" height="208.0" rx="2" fill="#c0392b"/>
+<text x="173.5" y="36.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">70%</text>
+<text x="173.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">RS</text>
+<rect class="bar" tabindex="0" role="img" aria-label="SP: 14% (R$ −22,5k)" data-tip="SP|14% (R$ −22,5k)" x="341.5" y="208.4" width="70.0" height="41.6" rx="2" fill="#8b6f5c"/>
+<text x="376.5" y="202.4" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">14%</text>
+<text x="376.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">SP</text>
+<rect class="bar" tabindex="0" role="img" aria-label="SC: 10% (R$ −16,5k)" data-tip="SC|10% (R$ −16,5k)" x="544.5" y="220.3" width="70.0" height="29.7" rx="2" fill="#c9b5a6"/>
+<text x="579.5" y="214.3" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">10%</text>
+<text x="579.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">SC</text>
+<rect class="bar" tabindex="0" role="img" aria-label="PR: 9% (R$ −14,5k)" data-tip="PR|9% (R$ −14,5k)" x="747.5" y="223.3" width="70.0" height="26.7" rx="2" fill="#d8cabd"/>
+<text x="782.5" y="217.3" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">9%</text>
+<text x="782.5" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">PR</text>
+</svg>
+<p class="leg">RS sozinho = 70% de toda a queda de faturamento</p></div>
+</div>
+<div class="c">
+<table>
+<tr><th>UF</th><th class="n">Sessões Set→Out</th><th class="n">Receita Set→Out</th><th class="n">Var receita</th><th class="n">% da queda</th></tr>
+<tr><td><strong>RS</strong></td><td class="n">28.570 → 15.291 <span class="t tb">−46%</span></td><td class="n">R$ 189,5k → R$ 72,6k</td><td class="n"><span class="t tb">−62%</span></td><td class="n"><strong>70%</strong></td></tr>
+<tr><td>SP</td><td class="n">5.448 → 2.056 <span class="t tb">−62%</span></td><td class="n">R$ 42,4k → R$ 19,9k</td><td class="n">−53%</td><td class="n">14%</td></tr>
+<tr><td>SC</td><td class="n">5.331 → 4.259 −20%</td><td class="n">R$ 58,6k → R$ 42,1k</td><td class="n">−28%</td><td class="n">10%</td></tr>
+<tr><td>PR</td><td class="n">3.456 → 3.206 −7%</td><td class="n">R$ 43,4k → R$ 28,9k</td><td class="n">−33%</td><td class="n">9%</td></tr>
+<tr><td>MG</td><td class="n">1.298 → 389 −70%</td><td class="n">R$ 12,3k → R$ 14,1k</td><td class="n"><span class="t tg">+14%</span></td><td class="n">−1%</td></tr>
+</table>
+<p style="margin:16px 0 8px;font-weight:600">Por que o RS caiu −62%? Caiu nos três eixos:</p>
+<svg viewBox="0 0 900 300" role="img" aria-label="RS queda por eixo">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="50.0" font-size="11" fill="#a39890" text-anchor="end">−46%</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="RS · tráfego (sessões): −46% (28.570→15.291)" data-tip="RS · tráfego (sessões)|−46% (28.570→15.291)" x="172.3" y="42.0" width="70.0" height="208.0" rx="2" fill="#8b6f5c"/>
+<text x="207.3" y="36.0" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">−46%</text>
+<text x="207.3" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Tráfego</text>
+<rect class="bar" tabindex="0" role="img" aria-label="RS · conversão: −18% (0,75%→0,60%)" data-tip="RS · conversão|−18% (0,75%→0,60%)" x="443.0" y="168.6" width="70.0" height="81.4" rx="2" fill="#c9b5a6"/>
+<text x="478.0" y="162.6" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">−18%</text>
+<text x="478.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Conversão</text>
+<rect class="bar" tabindex="0" role="img" aria-label="RS · ticket: −14% (R$ 889→R$ 764)" data-tip="RS · ticket|−14% (R$ 889→R$ 764)" x="713.7" y="186.7" width="70.0" height="63.3" rx="2" fill="#d8cabd"/>
+<text x="748.7" y="180.7" font-size="10.5" fill="#a39890" text-anchor="middle" font-weight="600">−14%</text>
+<text x="748.7" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Ticket</text>
+</svg>
+<p class="big" style="margin-top:14px">O RS perdeu <strong>tráfego (−46%)</strong>, <strong>conversão (−18%)</strong> e <strong>ticket (−14%)</strong> ao mesmo tempo.</p>
+<p class="nt">O RS é a casa da marca e o público das lives. Em setembro o RS teve dias de pico compatíveis com lives (Set 10 R$ 79k); em outubro esses picos não se repetiram na mesma intensidade (efeito não quantificável sem o calendário), e a migração coincide com a quebra de medição que <strong>pode</strong> ter afetado a aquisição. <strong>SP</strong> perdeu tráfego de forma ainda mais aguda (−62% de sessões): aqui o problema é majoritariamente <strong>entrada de visitas</strong> (aquisição), não conversão. <span class="t tw">Mecanismo "lives" = hipótese</span> (calendário a confirmar).</p>
+</div>
+
+<h2>5. Aquisição e mídia — a entrega paga caiu</h2>
+<div class="c">
+<table>
+<tr><th>Mídia · 01–11</th><th class="n">Out/26</th><th class="n">Set/26</th><th class="n">Var</th></tr>
+<tr><td>Meta — investimento</td><td class="n">R$ 38,7k</td><td class="n">R$ 46,5k</td><td class="n">−17%</td></tr>
+<tr><td>Meta — cliques no link</td><td class="n">29.672</td><td class="n">50.988</td><td class="n"><span class="t tb">−42%</span></td></tr>
+<tr><td>Google — investimento</td><td class="n">R$ 2,7k</td><td class="n">R$ 6,4k</td><td class="n">−58%</td></tr>
+<tr><td>Google — cliques</td><td class="n">2.946</td><td class="n">9.643</td><td class="n"><span class="t tb">−69%</span></td></tr>
+<tr><td>Google — conversões</td><td class="n"><span class="t tb">9</span></td><td class="n">110</td><td class="n">−92%</td></tr>
+</table>
+<p class="big" style="margin-top:14px">A mídia <strong>entregou menos</strong>: Meta −42% de cliques (com −17% de verba) e Google −69% de cliques. A conversão rastreada do Google caiu −92% — sinal quebrado <strong>pode</strong> fazer o lance automático "cegar" e reduzir entrega (hipótese).</p>
+<p class="nt">A atribuição de canal do GA4 está <strong>inválida</strong> em outubro: "Paid Social" caiu de 24.258 → 1.147 sessões e "Organic Social" subiu de 9.600 → 16.905 — o padrão é compatível com <strong>reclassificação</strong> do tráfego pago por quebra de UTM (hipótese); o que é certo é que a <strong>atribuição de canal ficou inválida</strong>. Por isso lemos mídia por Meta/Google, não pelo GA4. <span class="t tw">Atribuição ≠ incrementalidade</span>: estes números dizem o que cada plataforma mediu, não o que causou. Parte da perda de cliques é possível efeito do sinal quebrado; parte é a base forte de setembro + sazonalidade — tudo hipótese, não causa isolada.</p>
+</div>
+
+<h2>6. Funil — mais fraco, e quebrado no começo do mês</h2>
+<div class="c">
+<table>
+<tr><th>01–10</th><th class="n">Set</th><th class="n">Out</th></tr>
+<tr><td>Add to cart (total)</td><td class="n">3.016</td><td class="n">1.088</td></tr>
+<tr><td>Checkouts (total)</td><td class="n">1.289</td><td class="n">916</td></tr>
+<tr><td>Taxa ATC (período saudável)</td><td class="n">~6,2%</td><td class="n">~5,1%</td></tr>
+</table>
+<p class="nt">Os eventos de meio-de-funil ficaram <strong>incompletos nos dias 01–03</strong> de outubro (02/10 zerado). Mesmo no período já saudável (05–10), a taxa de carrinho ficou ~18% abaixo de setembro — coerente com a conversão −11%. A queda foi majoritariamente <strong>pré-carrinho</strong> (menos visitas qualificadas), com piora adicional de conversão; não há evidência de um gargalo único pós-carrinho.</p>
+</div>
+
+<h2>7. Clientes — novos e recorrentes, ambos caíram</h2>
+<div class="c">
+<svg viewBox="0 0 900 315" role="img" aria-label="Clientes set vs out">
+<line x1="58" y1="250.0" x2="884" y2="250.0" stroke="#e8e1db" stroke-width="1.5"/>
+<text x="50.0" y="50.0" font-size="11" fill="#a39890" text-anchor="end">331</text>
+<text x="50.0" y="250.0" font-size="11" fill="#a39890" text-anchor="end">0</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Clientes únicos · Set/26: 331 clientes" data-tip="Clientes únicos · Set/26|331 clientes" x="247.5" y="42.0" width="26.0" height="208.0" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Clientes únicos · Out/26: 189 clientes" data-tip="Clientes únicos · Out/26|189 clientes" x="276.5" y="131.2" width="26.0" height="118.8" rx="2" fill="#8b6f5c"/>
+<text x="275.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Clientes únicos</text>
+<rect class="bar" tabindex="0" role="img" aria-label="Recorrentes · Set/26: 164 clientes" data-tip="Recorrentes · Set/26|164 clientes" x="653.5" y="146.9" width="26.0" height="103.1" rx="2" fill="#c9b5a6"/>
+<rect class="bar" tabindex="0" role="img" aria-label="Recorrentes · Out/26: 128 clientes" data-tip="Recorrentes · Out/26|128 clientes" x="682.5" y="169.6" width="26.0" height="80.4" rx="2" fill="#8b6f5c"/>
+<text x="681.0" y="266.0" font-size="10.5" fill="#a39890" text-anchor="middle">Recorrentes</text>
+<rect x="620" y="22" width="12" height="12" fill="#c9b5a6"/>
+<text x="636.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Set</text>
+<rect x="730" y="22" width="12" height="12" fill="#8b6f5c"/>
+<text x="746.0" y="32.0" font-size="12" fill="#a39890" text-anchor="start">Out</text>
+</svg>
+<p class="leg"><span class="pill" style="color:#c9b5a6">■</span> Set &nbsp; <span class="pill" style="color:var(--ac)">■</span> Out</p>
+<p class="big" style="margin-top:14px">Compradores únicos caíram <strong>−43%</strong> (331 → 189). Recorrentes −22% (164 → 128); a entrada de clientes novos caiu mais.</p>
+<p class="nt">A classificação "novo" aqui usa o histórico do próprio export (desde 14/07), com <strong>janela de lookback assimétrica</strong> entre os meses — então o número de novos é direcional, não exato. O RS perdeu 54% dos compradores (179 → 82). A base recorrente segue concentrando a maior parte da receita.</p>
+</div>
+
+<h2>8. Produtos — verão puxa, mas sem caixa por SKU</h2>
+<div class="c">
+<p>O export de pedidos é <strong>por pedido, não por item</strong> — então não há faturamento aprovado por SKU. Pelo comportamento do GA4 (visualização/compra de item), os campeões de outubro são de <strong>primavera/verão</strong> — linho, algodão e palha:</p>
+<table>
+<tr><th>Produto (GA4, comportamental)</th><th class="n">Compras</th><th class="n">Receita item</th></tr>
+<tr><td>Camisa Manuela Linho Italiano</td><td class="n">9</td><td class="n">R$ 5,4k</td></tr>
+<tr><td>Papete/Chinelo em Palha</td><td class="n">5</td><td class="n">R$ 3,2k</td></tr>
+<tr><td>Bermuda/Jorts Anelise Linho</td><td class="n">6</td><td class="n">R$ 3,0k</td></tr>
+<tr><td>Regata Nati Algodão</td><td class="n">12</td><td class="n">R$ 2,6k</td></tr>
+<tr><td>Casaco Nati Algodão</td><td class="n">5</td><td class="n">R$ 2,2k</td></tr>
+</table>
+<p class="nt">Tratar como <strong>direção</strong>, não ranking fechado (visualização de item está subcontada; e isto é item-scope, não caixa). Faturamento aprovado por produto, ruptura de estoque e devolução por SKU exigem um <strong>export com itens</strong> — hoje é lacuna. Produtos históricos (Pelerine 10177, Bianca Poá, Barrel Liz, Essencial 12303 etc.) só serão avaliáveis por caixa com esse export.</p>
+</div>
+
+<h2>9. Lives e calendário — a base de setembro foi excepcional</h2>
+<div class="c">
+<p class="big">A pergunta central de calendário: <strong>quanto da queda é setembro ter sido excepcionalmente forte</strong> e quanto é deterioração real de outubro?</p>
+<p class="nt" style="margin-top:10px">Evidência: setembro teve dias de R$ 79k (Set 10) e R$ 59k (Set 1), concentrados no RS — padrão compatível com live forte. Outubro teve um pico claro (Out 6, terça, R$ 61k). Os picos de setembro formam uma <strong>base de comparação alta</strong>; é a <strong>hipótese mais forte</strong> para parte do tráfego do RS, mas o efeito <strong>só é quantificável com o calendário</strong> de lives. O <strong>calendário exato de lives, ofertas e cupons</strong> (set × out) é uma <strong>lacuna</strong> (não disponível nas fontes automáticas); com ele dá para separar o efeito-calendário do efeito-operação. Não atribuímos causalidade a uma live específica sem esse dado.</p>
+</div>
+
+<h2>10. Medição e migração — o que quebrou</h2>
+<div class="c">
+<p>Uma quebra de parte da medição começou em 01/10 (o site hoje tem indícios de Tray; a mudança de plataforma e a data ficam a confirmar no painel). O que está comprovadamente afetado:</p>
+<table>
+<tr><th>Item</th><th>Estado</th><th>Efeito</th></tr>
+<tr><td>Conversão do Google Ads</td><td><span class="t tb">Quebrada</span></td><td>−92% → pode fazer o lance cortar entrega (hipótese)</td></tr>
+<tr><td>Atribuição de canal (UTM)</td><td><span class="t tb">Inválida</span></td><td>atribuição inválida (pago possivelmente contado como orgânico — hipótese)</td></tr>
+<tr><td>GA4 item-scope</td><td><span class="t tb">Inflado</span></td><td>+47% sobre pedidos — não é caixa</td></tr>
+<tr><td>Funil 01–03</td><td><span class="t tb">Incompleto</span></td><td>02/10 zerado; normaliza ~04–05</td></tr>
+<tr><td>Novas × recorrentes (GA4)</td><td><span class="t tw">Parcial</span></td><td>classificação ainda ruidosa</td></tr>
+<tr><td>GA4 purchase-event (total)</td><td><span class="t tg">Ok</span></td><td>≈ pedidos criados (bom proxy)</td></tr>
+</table>
+<p class="nt">Importante: o <strong>total</strong> de compras do GA4 rastreou bem (≈ pedidos criados), então a leitura de caixa não depende dele — usamos os pedidos. O que a quebra <strong>pode</strong> afetar é a <strong>otimização da mídia</strong> (Google/Meta) e a <strong>atribuição</strong> — a atribuição de canal, essa, está comprovadamente inválida. YoY comercial (vs out/25) = <strong>lacuna</strong>: o export começa em jul/2026 e não há fonte de pedidos de 2025.</p>
+</div>
+
+<h2>11. Causas priorizadas — quantificadas por impacto</h2>
+<div class="c">
+<table>
+<tr><th>Causa</th><th class="n">Impacto</th><th>Confiança</th><th>Evidência</th></tr>
+<tr><td>Queda de tráfego no RS (base + aquisição)</td><td class="n">R$ −117k · 70%</td><td><span class="t tg">Alta (efeito)</span></td><td>RS sessões −46%, receita −62%; Set com dias de pico (compatível com lives, hipótese)</td></tr>
+<tr><td>Colapso de tráfego em SP (aquisição)</td><td class="n">R$ −23k · 14%</td><td><span class="t tg">Alta</span></td><td>SP sessões −62%</td></tr>
+<tr><td>Entrega de mídia menor (Meta −42% cliques, Google −69%)</td><td class="n">dentro de tráfego</td><td><span class="t tw">Média-alta</span></td><td>sinal de conversão quebrado + base forte set</td></tr>
+<tr><td>Conversão mais fraca (funil + fricção checkout)</td><td class="n">R$ −32k · 19%</td><td><span class="t tw">Média</span></td><td>ATC ~−18%; quebra 01–03</td></tr>
+<tr><td>Ticket</td><td class="n">R$ −5k · 3%</td><td><span class="t tg">Alta</span></td><td>R$ 881→R$ 863 (quase estável)</td></tr>
+</table>
+<p class="nt"><strong>Não é causa comprovada:</strong> queda da marca YoY (sem out/25). <strong>Não é causa comercial:</strong> reclassificação loja/particular. O "efeito-lives de setembro" é a hipótese mais forte para a maior parte do tráfego do RS, mas depende do calendário para ser quantificada.</p>
+</div>
+
+<h2>12. Plano de recuperação</h2>
+<p class="sub" style="margin:0 0 6px">Priorizado por impacto no caixa e facilidade (ICE). Dono sugerido entre parênteses. Nenhuma alteração externa sem aprovação.</p>
+<ol class="a">
+<li><p class="ti">0–72h · Reativar a base do RS (lives + CRM/WhatsApp) <span class="t tb">maior caixa</span></p><p class="de">O RS é 70% da queda e é a base/público de relacionamento (efeito-lives = hipótese). Agendar live, disparar CRM/WhatsApp (Beavean) para a base RS/Sul com oferta de estação. (CLK + Renata) · KPI: pedidos aprovados RS/semana · Validação: RS volta a &gt; R$ 12k/dia em dia de live.</p></li>
+<li><p class="ti">0–72h · Religar a conversão do Google e o pixel/CAPI do Meta <span class="t tb">crítico</span></p><p class="de">Validar no painel e, se não dispararem, forçar o disparo (server-side/CAPI) para destravar o lance automático. (CLK + dev da plataforma) · KPI: conversões Google voltam ao patamar de set.</p></li>
+<li><p class="ti">0–72h · Corrigir UTMs e destravar entrega de mídia</p><p class="de">Padronizar UTMs, eliminar destinos no domínio antigo; recompor entrega de Meta/Google sem cortar por ROAS falso. (CLK/tráfego) · KPI: "Paid Social" reaparece no GA4; cliques recuperam.</p></li>
+<li><p class="ti">4–7d · Recuperar tráfego qualificado em SP e RS</p><p class="de">Reescalar aquisição nos estados que mais perderam visitas, com criativos de verão e produtos de entrada. (CLK) · KPI: sessões RS/SP vs set.</p></li>
+<li><p class="ti">4–7d · Export com itens para caixa por SKU</p><p class="de">Fechar faturamento aprovado por produto/estoque/devolução — hoje é lacuna. (Leonardo envia · CLK processa) · KPI: matriz produto × caixa × estoque.</p></li>
+<li><p class="ti">8–15d · CRO do checkout e instrumentação do funil</p><p class="de">Reduzir fricção (frete/Pix/parcelamento cedo); validar add_to_cart/checkout/purchase e New/Returning. (CLK/CRO) · KPI: taxa checkout→compra.</p></li>
+<li><p class="ti">8–15d · Calendário comercial e lives</p><p class="de">Reconstruir e planejar lives/ofertas; medir efeito por live com cupom/UTM. (CLK + Renata) · KPI: receita por live.</p></li>
+<li><p class="ti">16–30d · Preparar a Black Friday com medição íntegra</p><p class="de">Teste de estresse e sala de guerra só com rastreamento confiável. (CLK + Leonardo) · KPI: checklist BF validado.</p></li>
+</ol>
+
+<h2>13. Cenários de recuperação (01–10, vs setembro)</h2>
+<div class="c">
+<p>Premissas explícitas, sem somar o mesmo efeito duas vezes. Base: queda de R$ 166k (355→189). Partimos de recuperar partes do <strong>tráfego</strong> (via mídia + lives) e da <strong>conversão</strong>, mantendo ticket.</p>
+<table>
+<tr><th>Cenário</th><th>Premissa</th><th class="n">Receita 01–10 estimada</th><th class="n">vs out atual</th></tr>
+<tr><td><strong>Conservador</strong></td><td>Tráfego +20% (lives RS + mídia), conversão estável</td><td class="n">~R$ 227k</td><td class="n"><span class="t tg">+20%</span></td></tr>
+<tr><td><strong>Intermediário</strong></td><td>Tráfego +40%, conversão +6% (funil)</td><td class="n">~R$ 280k</td><td class="n"><span class="t tg">+48%</span></td></tr>
+<tr><td><strong>Agressivo</strong></td><td>Tráfego +60%, conversão +10%, ticket +3%</td><td class="n">~R$ 343k</td><td class="n"><span class="t tg">+81%</span></td></tr>
+</table>
+<p class="nt">Cenários <strong>condicionais</strong> e ilustrativos (premissas acima), não promessa. Dependências: medição religada, lives executadas, verba de aquisição recomposta. O teto (~setembro) só com lives na intensidade de setembro. Sem o calendário de lives e o export por item, a precisão é limitada — por isso são faixas, não metas.</p>
+</div>
+
+<h2>14. Metodologia e fontes</h2>
+<div class="c">
+<p class="nt" style="margin:0"><strong>Comercial (caixa):</strong> export de pedidos da loja (jul–out/2026, 4.373 pedidos, store 1547623), deduplicado por pedido, consolidando loja virtual + particular. "Aprovado" = status enviado/finalizado/a enviar/aguardando envio (exclui cancelado e aguardando pagamento); caixa por data de pagamento ≈ número do gestor. <strong>Comportamental:</strong> Google Analytics 4 (sessões, funil, região, produtos) — não é caixa. <strong>Mídia:</strong> Meta Ads (BR/LA) e Google Ads. Janela fechada 01–10 (dia 11 parcial). Decomposição por log-share. <strong>Atribuição ≠ incrementalidade</strong>; antes×depois da quebra = associação, não causa isolada. PII não foi persistida (apenas agregados).</p>
+</div>
+
+<h2>15. Limitações e pendências</h2>
+<div class="c">
+<ul style="margin:0;padding-left:18px">
+<li><strong>Faturamento out/2025</strong> — sem fonte (export começa em jul/2026); YoY comercial não comprovado.</li>
+<li><strong>Caixa por SKU / estoque / devolução</strong> — o export é por pedido (sem itens); produto por caixa é lacuna.</li>
+<li><strong>Calendário de lives/ofertas (set × out)</strong> — não disponível automaticamente; necessário para quantificar o efeito-calendário.</li>
+<li><strong>Atribuição de canal por pedido</strong> — UTM só preenchida em outubro; não compara MoM.</li>
+<li><strong>Conversão</strong> mistura pedidos (export) e sessões (GA4) — referência, não taxa reconciliada por pedido.</li>
+<li><strong>Classificação loja/particular</strong> — mudou na migração; só o consolidado é comparável.</li>
+</ul>
+<p class="nt">Nenhuma conclusão depende de dado inexistente — onde faltou fonte, está marcado como lacuna.</p>
+</div>
+
+<p class="nt" style="margin-top:30px;border-top:1px solid var(--line);padding-top:16px">Fontes: export de pedidos da loja (caixa), Google Analytics 4 (comportamento), Meta Ads e Google Ads (mídia). Períodos 01–10/10/2026 vs 01–10/09/2026 (corte fechado; dia 11 parcial). Valores de outubro são preliminares (medição em recuperação). Faturamento = pedidos aprovados; GA4 item-scope/purchase-event são comportamentais, não caixa. Atribuição não é prova de causa (incrementalidade). YoY comercial não comprovado (out/25 = lacuna).</p>
+
+</div><div id="tip" role="status" aria-live="polite"></div>
+<script>
+(function(){
+ var tip=document.getElementById('tip');var cur=null;
+ function place(x,y){var r=tip.getBoundingClientRect();var l=x+14,t=y-r.height-12;if(t<6)t=y+20;if(l+r.width>window.innerWidth-8)l=window.innerWidth-8-r.width;if(l<6)l=6;tip.style.left=l+'px';tip.style.top=t+'px';}
+ function show(el,x,y){var d=el.getAttribute('data-tip')||'';var p=d.split('|');tip.innerHTML='<span class="tl">'+p[0]+'</span>'+(p[1]?'<span class="tv">'+p[1]+'</span>':'');tip.classList.add('on');place(x,y);cur=el;}
+ function hide(){tip.classList.remove('on');cur=null;}
+ document.querySelectorAll('.bar').forEach(function(el){
+  el.addEventListener('mouseenter',function(e){show(el,e.clientX,e.clientY);});
+  el.addEventListener('mousemove',function(e){if(cur===el)place(e.clientX,e.clientY);});
+  el.addEventListener('mouseleave',hide);
+  el.addEventListener('focus',function(){var b=el.getBoundingClientRect();show(el,b.left+b.width/2,b.top);});
+  el.addEventListener('blur',hide);
+  el.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+ });
+ document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.bar');if(el){var b=el.getBoundingClientRect();if(cur===el){hide();}else{show(el,b.left+b.width/2,b.top);}e.stopPropagation();}else{hide();}},true);
+ window.addEventListener('scroll',hide,true);window.addEventListener('resize',hide);
+})();
+</script>
+</body></html>
