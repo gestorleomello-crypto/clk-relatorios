@@ -77,6 +77,9 @@ svg{display:block;max-width:100%;height:auto}
 :root:not([data-theme="light"]) .st .bx{background:#332c28}
 :root:not([data-theme="light"]) .tb{background:#3d211e}:root:not([data-theme="light"]) .tg{background:#1c3329}:root:not([data-theme="light"]) .tw{background:#3a3016}}
 .bar{cursor:pointer;transition:opacity .12s ease}
+.k[data-tip]{cursor:help}
+.k[data-tip]:focus{outline:none}
+.k[data-tip]:focus-visible{outline:2px solid var(--ac);outline-offset:1px}
 .bar:hover{opacity:.72}
 .bar:focus{outline:none}
 .bar:focus-visible{outline:2px solid var(--ac);outline-offset:1px;opacity:.72}
@@ -92,22 +95,65 @@ svg{display:block;max-width:100%;height:auto}
 <p class="sub">O que mudou em relação a setembro e o que isso significa para o negócio.</p>
 
 <div class="c" style="border-left:4px solid var(--ok)">
-<p class="big">Outubro foi o melhor mês da loja desde junho: <strong>R$ 147.214,73</strong> de faturamento,
-+26,8% contra setembro. Como outubro tem um dia a mais, a comparação justa é por dia —
-e por dia o crescimento foi de <strong>+22,7%</strong>.</p>
-<p class="nt">Três coisas puxaram esse resultado: entrou <strong>mais gente no site</strong>, uma
-<strong>parcela maior dessas pessoas comprou</strong>, e cada pedido saiu <strong>um pouco mais barato</strong>.
-As duas primeiras somaram mais do que a terceira tirou.</p>
+<p class="big">Em outubro a loja <strong>captou R$ 149.868,90</strong> e teve
+<strong>R$ 133.863,61 aprovados</strong> — 89,3% do valor que entrou.
+Na medição do site, que é a única régua que também existe para setembro, o faturamento foi
++26,8% no mês e <strong>+22,7% por dia</strong> —
+a comparação justa, porque outubro tem um dia a mais.</p>
+<p class="nt">Essa diferença se reparte, por aritmética, em três movimentos: entrou
+<strong>mais gente no site</strong>, uma <strong>parcela maior dessas pessoas comprou</strong>, e cada pedido
+saiu <strong>um pouco mais barato</strong>. Os dois primeiros somaram mais do que o terceiro tirou. 🔴 É a
+repartição do resultado, não a explicação de por que ele aconteceu.</p>
 </div>
 
-<h2>1. O faturamento de outubro contra setembro</h2>
+<h2>1. O resultado de outubro</h2>
+<h3>O que a loja registrou no mês</h3>
+<div class="cmp">
+<div class="mo"><div class="ml">faturamento captado</div><p class="mv">R$ 149.868,90</p>
+<p class="mx">tudo o que entrou como pedido</p></div>
+<div class="ag"><div class="av">89,3%</div><div class="al">aprovado</div>
+<div class="ai">→</div></div>
+<div class="mo out"><div class="ml">faturamento aprovado</div><p class="mv">R$ 133.863,61</p>
+<p class="mx">pagamento confirmado</p></div>
+</div>
 <div class="g">
-<div class="k" data-tip="Faturamento de outubro|R$ 147.214,73|Em setembro foram R$ 116.103,53. Outubro teve 31 dias e setembro 30." tabindex="0"><div class="l">Faturamento</div><div class="v">R$ 147.214,73</div><div class="d up">+26,8% vs setembro</div></div>
+<div class="k" data-tip="Faturamento captado que não foi aprovado|R$ 16.005,29|Diferença entre as duas somas do mês: R$ 149.868,90 captados e R$ 133.863,61 aprovados." tabindex="0"><div class="l">Ficou sem aprovar</div><div class="v">R$ 16.005,29</div><div class="d dn">10,7% do captado</div></div>
+<div class="k" data-tip="Pedidos de outubro|640 e 712|A plataforma traz duas contagens para o mês. Qual delas é o pedido que entra na loja está em conferência com vocês — por isso os indicadores que dependem dessa contagem aparecem como faixa." tabindex="0"><div class="l">Pedidos no mês</div><div class="v">640 e 712</div><div class="d fl">duas contagens — ver nota</div></div>
+<div class="k" data-tip="Taxa de conversão pela contagem da loja|entre 1,44 e 1,60 a cada 100 visitas|Pedidos da loja divididos por 44.505 visitas ao site. A faixa vem das duas contagens de pedido, não de imprecisão na medição de visita." tabindex="0"><div class="l">Pedidos a cada 100 visitas</div><div class="v">1,44 a 1,60</div><div class="d fl">na contagem da loja</div></div>
+<div class="k" data-tip="Ticket médio captado|entre R$ 210,49 e R$ 234,17|R$ 149.868,90 divididos pela contagem de pedidos captados. A faixa é a mesma das duas contagens. Medido no site, o ticket de outubro foi R$ 211,82." tabindex="0"><div class="l">Ticket médio captado</div><div class="v">R$ 210,49 a 234,17</div><div class="d fl">faturamento ÷ pedidos</div></div>
+</div>
+<p class="nt">🔴 <strong>Por que há uma faixa e não um número.</strong> Os dois <em>faturamentos</em> acima são
+diretos: captado é tudo o que entrou como pedido, aprovado é a parte cujo pagamento se confirmou. Já as
+<em>contagens de pedido</em> chegaram em duas versões para o mês — <strong>640</strong> e
+<strong>712</strong> — e a maior aparece como aprovada, o que não é possível se os pedidos
+aprovados forem parte dos pedidos que entraram no mesmo mês. Duas explicações continuam de pé: ou os rótulos
+vieram trocados, ou a contagem de aprovados inclui pedidos que entraram no fim de setembro e só foram pagos em
+outubro. <strong>Não escolhemos uma por conta própria</strong> — os dois indicadores que dependem dessa contagem,
+a conversão e o ticket captado, vão como faixa até vocês confirmarem qual é qual. Fora desses dois, nenhuma
+leitura desta página depende da definição: produto, origem de visita, funil, aparelho e região vêm todos da
+medição do site.</p>
+<p class="nt">🔴 <strong>O que a aprovação aqui não é.</strong> Os 89,3% comparam duas somas do
+mês, não o destino de um mesmo conjunto de pedidos acompanhado até o fim. Se parte do que foi aprovado em
+outubro tiver entrado em setembro, a proporção se desloca — e <strong>de quanto, não sabemos</strong>: isso
+exigiria os pedidos com data de entrada e data de aprovação, que não temos.</p>
+<div class="oq"><p class="h">O que isso mostra</p><p>De cada R$ 100 captados em outubro, cerca de R$ 89 apareceram como aprovados. 🔴 O que isso é: a comparação de duas somas do mês. O que isso não é: o destino de um conjunto de pedidos acompanhado até o fim — e por isso a diferença de R$ 16.005 não equivale a um valor perdido nem a um valor recuperável. Para transformar isso em diagnóstico seria preciso a quebra por forma de pagamento e os pedidos com data de entrada e de aprovação, que não temos aqui.</p></div>
+
+<h3>Outubro contra setembro</h3>
+<p>Para setembro <strong>não existe o número da loja</strong> — só a partir de outubro passamos a ter o
+faturamento captado e aprovado da plataforma. Então a comparação entre os dois meses usa a régua que existe
+nos dois: a <strong>medição do site</strong>. Ela serve para isso porque em outubro, onde dá para conferir,
+registrou <strong>98,2% do faturamento captado</strong> pela loja. Os valores abaixo vêm dessa
+medição, e ela é a fonte de todo faturamento, pedido e visita comparado entre os dois meses nesta página.
+🔴 A seção dos anúncios é a exceção e está marcada como tal: verba, exibições, cliques, páginas carregadas e
+vendas creditadas vêm da <strong>plataforma de anúncios</strong>, que mede outra coisa — e as duas fontes
+nunca são somadas.</p>
+<div class="g">
+<div class="k" data-tip="Faturamento medido no site|R$ 147.214,73|Em setembro foram R$ 116.103,53. Equivale a 98,2% do faturamento captado na loja em outubro." tabindex="0"><div class="l">Faturamento no site</div><div class="v">R$ 147.214,73</div><div class="d up">+26,8% vs setembro</div></div>
 <div class="k" data-tip="Faturamento por dia|R$ 4.748,86|Esta é a comparação justa entre meses de tamanhos diferentes. Em setembro foram R$ 3.870,12 por dia." tabindex="0"><div class="l">Faturamento por dia</div><div class="v">R$ 4.748,86</div><div class="d up">+22,7%</div></div>
-<div class="k" data-tip="Pedidos no mês|695|Em setembro foram 535." tabindex="0"><div class="l">Pedidos</div><div class="v">695</div><div class="d up">+29,9%</div></div>
-<div class="k" data-tip="Visitas ao site|44.505|Cada visita é uma sessão: uma pessoa pode voltar várias vezes no mês." tabindex="0"><div class="l">Visitas ao site</div><div class="v">44.505</div><div class="d up">+16,0%</div></div>
-<div class="k" data-tip="Taxa de conversão|1,56 pedidos a cada 100 visitas|Em setembro era 1,39. É o indicador que mais melhorou proporcionalmente." tabindex="0"><div class="l">Quem comprou, a cada 100 visitas</div><div class="v">1,56</div><div class="d up">+12,0%</div></div>
-<div class="k" data-tip="Ticket médio|R$ 211,82|Valor médio de cada pedido. Caiu um pouco: em setembro era R$ 217,02." tabindex="0"><div class="l">Ticket médio</div><div class="v">R$ 211,82</div><div class="d dn">−2,4%</div></div>
+<div class="k" data-tip="Pedidos medidos no site|695|Em setembro foram 535. É a contagem do site, que é a mesma régua nos dois meses — não a contagem da loja." tabindex="0"><div class="l">Pedidos no site</div><div class="v">695</div><div class="d up">+29,9%</div></div>
+<div class="k" data-tip="Visitas ao site|44.505|Cada visita é uma sessão: uma pessoa pode voltar várias vezes no mês. A ferramenta conta visita por estimativa — ver a nota ao final." tabindex="0"><div class="l">Visitas ao site</div><div class="v">44.505</div><div class="d up">+16,0%</div></div>
+<div class="k" data-tip="Compras a cada 100 visitas, medidas no site|1,56|Em setembro era 1,39. É o indicador que mais melhorou proporcionalmente, e é comparável entre os meses porque usa a mesma medição nos dois." tabindex="0"><div class="l">Compras a cada 100 visitas</div><div class="v">1,56</div><div class="d up">+12,0%</div></div>
+<div class="k" data-tip="Ticket médio medido no site|R$ 211,82|Faturamento do site dividido pelos pedidos do site. Caiu um pouco: em setembro era R$ 217,02." tabindex="0"><div class="l">Ticket médio no site</div><div class="v">R$ 211,82</div><div class="d dn">−2,4%</div></div>
 <div class="k" data-tip="Peças por pedido|1,92|Subiu. As pessoas levaram mais peças, mas de preço menor." tabindex="0"><div class="l">Peças por pedido</div><div class="v">1,92</div><div class="d up">+7,5%</div></div>
 <div class="k" data-tip="Investimento em anúncios|R$ 21.472,10|Quase o mesmo de setembro, que foi R$ 19.935,81. O faturamento subiu muito mais que a verba." tabindex="0"><div class="l">Investimento em anúncios</div><div class="v">R$ 21.472,10</div><div class="d up">+7,7%</div></div>
 </div>
@@ -125,8 +171,11 @@ Outubro foi melhor por <strong>regularidade</strong>: 19 dias acima de R$ 4.000 
 <p>O faturamento de um dia é sempre o resultado de três coisas multiplicadas: <strong>quantas pessoas entram</strong>,
 <strong>que parte delas compra</strong> e <strong>quanto cada uma gasta</strong>. Somando a elas o fato de outubro ter
 tido <strong>um dia a mais</strong>, as quatro parcelas explicam exatamente a diferença do mês, sem sobra.</p>
+<p class="nt">🔴 Esta conta roda na <strong>medição do site</strong>, porque é a única que existe nos dois meses —
+setembro não tem faturamento da plataforma. Por isso o total abaixo é a diferença de R$ 116.103,53 para
+R$ 147.214,73, e não a do faturamento captado na loja, que só temos para outubro.</p>
 <div class="c"><svg viewBox="0 0 900 118" role="img" aria-label="Quanto cada fator somou ou tirou do faturamento de outubro"><text x="222" y="23" font-size="13" fill="currentColor" text-anchor="end">Mais visitas no site</text><rect class="bar" x="232" y="8" width="520.0" height="21" rx="3" fill="var(--ok)" tabindex="0" role="button" data-tip="Mais visitas no site|+R$ 15.371,45 no faturamento|Entrou mais gente: de 1.279 para 1.436 visitas por dia."></rect><text x="760.0" y="23" font-size="13" font-weight="700" fill="var(--ok)">R$ 15.371</text><text x="222" y="57" font-size="13" fill="currentColor" text-anchor="end">Mais gente comprando</text><rect class="bar" x="232" y="42" width="511.0" height="21" rx="3" fill="var(--ok)" tabindex="0" role="button" data-tip="Mais gente comprando|+R$ 15.104,59 no faturamento|A cada 100 visitas, os pedidos passaram de 1,39 para 1,56."></rect><text x="751.0" y="57" font-size="13" font-weight="700" fill="var(--ok)">R$ 15.105</text><text x="222" y="91" font-size="13" fill="currentColor" text-anchor="end">Ticket médio menor</text><rect class="bar" x="232" y="76" width="109.4" height="21" rx="3" fill="var(--bad)" tabindex="0" role="button" data-tip="Ticket médio menor|−R$ 3.234,95 no faturamento|Cada pedido saiu em média R$ 5,20 mais barato."></rect><text x="349.4" y="91" font-size="13" font-weight="700" fill="var(--bad)">R$ -3.235</text></svg></div>
-<div class="c"><table><tr><th>fator</th><th class="n">efeito no mês</th><th class="n">o que mudou</th></tr><tr><td>Mais visitas no site</td><td class="n">+R$ 15.371,45</td><td class="n">1.279 → 1.436 visitas por dia</td></tr><tr><td>Mais gente comprando</td><td class="n">+R$ 15.104,59</td><td class="n">1,39 → 1,56 pedidos a cada 100 visitas</td></tr><tr><td>Ticket médio menor</td><td class="n">−R$ 3.234,95</td><td class="n">R$ 217,02 → R$ 211,82 por pedido</td></tr><tr><td>Um dia a mais no mês</td><td class="n">+R$ 3.870,12</td><td class="n">outubro teve 31 dias e setembro 30</td></tr><tr><td><strong>Diferença total do mês</strong></td><td class="n"><strong>+R$ 31.111,20</strong></td><td class="n"><strong>R$ 116.103,53 → R$ 147.214,73</strong></td></tr></table><p class="nt">As quatro parcelas somam exatamente a diferença do mês — não há resto nem arredondamento escondido.</p></div>
+<div class="c"><table><tr><th>fator</th><th class="n">efeito no mês</th><th class="n">o que mudou</th></tr><tr><td>Mais visitas no site</td><td class="n">+R$ 15.371,45</td><td class="n">1.279 → 1.436 visitas por dia</td></tr><tr><td>Mais gente comprando</td><td class="n">+R$ 15.104,59</td><td class="n">1,39 → 1,56 pedidos a cada 100 visitas</td></tr><tr><td>Ticket médio menor</td><td class="n">−R$ 3.234,95</td><td class="n">R$ 217,02 → R$ 211,82 por pedido</td></tr><tr><td>Um dia a mais no mês</td><td class="n">+R$ 3.870,12</td><td class="n">outubro teve 31 dias e setembro 30</td></tr><tr><td><strong>Diferença total do mês</strong></td><td class="n"><strong>+R$ 31.111,20</strong></td><td class="n"><strong>R$ 116.103,53 → R$ 147.214,73</strong></td></tr></table><p class="nt">As quatro parcelas reproduzem a diferença do mês sem sobra: na conta completa o resto é zero. Somando os valores como aparecem aqui, arredondados ao centavo, pode dar um centavo de diferença.</p></div>
 <div class="oq"><p class="h">O que isso mostra</p><p>Visitas e conversão contribuíram quase igual: 49% e 49% da diferença do mês. O ticket menor devolveu 10%, e o dia a mais somou 12%.</p></div><h2>3. No ano passado, o mesmo trecho do calendário foi de queda</h2>
 <p>Antes de atribuir o crescimento ao trabalho do mês, vale a pergunta: <em>outubro é simplesmente um mês melhor?</em>
 Um ano de histórico não responde isso — mas serve de indício, e o indício aponta no sentido contrário.</p>
@@ -143,7 +192,7 @@ contrário. Não é a mesma coisa que provar que o calendário não teve papel n
 
 <h2>4. De onde vieram as visitas e as vendas</h2>
 <div class="c"><table><tr><th>origem</th><th class="n">visitas set</th><th class="n">visitas out</th><th class="n">variação</th><th class="n">faturamento out</th><th class="n">variação</th><th class="n">compram a cada 100</th></tr><tr><td>Anúncios (Meta)</td><td class="n">21.175</td><td class="n">28.717</td><td class="n">+35,6%</td><td class="n">R$ 82.118</td><td class="n">+53,8%</td><td class="n">1,39</td></tr><tr><td>Direto</td><td class="n">6.231</td><td class="n">5.834</td><td class="n">−6,4%</td><td class="n">R$ 24.868</td><td class="n">+11,7%</td><td class="n">1,95</td></tr><tr><td>Redes sociais (não pago)</td><td class="n">6.932</td><td class="n">4.762</td><td class="n">−31,3%</td><td class="n">R$ 16.345</td><td class="n">+9,7%</td><td class="n">1,64</td></tr><tr><td>Busca do Google (não paga)</td><td class="n">2.998</td><td class="n">2.625</td><td class="n">−12,4%</td><td class="n">R$ 14.317</td><td class="n">−24,5%</td><td class="n">2,40</td></tr><tr><td>Não identificado</td><td class="n">611</td><td class="n">1.126</td><td class="n">+84,3%</td><td class="n">R$ 4.515</td><td class="n">+70,1%</td><td class="n">1,51</td></tr><tr><td>E-mail</td><td class="n">143</td><td class="n">141</td><td class="n">−1,4%</td><td class="n">R$ 3.067</td><td class="n">+77,8%</td><td class="n">9,93</td></tr><tr><td>Indicação de outros sites</td><td class="n">200</td><td class="n">235</td><td class="n">+17,5%</td><td class="n">R$ 1.652</td><td class="n">−16,0%</td><td class="n">2,98</td></tr><tr><td>Vitrine de compras</td><td class="n">248</td><td class="n">96</td><td class="n">−61,3%</td><td class="n">R$ 334</td><td class="n">+24,5%</td><td class="n">2,08</td></tr></table><p class="nt">As visitas somadas por origem (43.592 em outubro) não fecham exatamente com o total do site (44.505): parte das visitas não recebe origem no momento da medição. Use esta tabela para comparar origens entre si, não para somar o total.</p></div>
-<div class="oq"><p class="h">O que isso mostra</p><p>Os anúncios trouxeram +35,6% de visita e +53,8% de faturamento. A busca do Google foi a única origem grande que perdeu faturamento: −24,5%.</p></div>
+<div class="oq"><p class="h">O que isso mostra</p><p>A origem marcada como anúncio aparece com +35,6% de visita e +53,8% de faturamento — é o que a medição credita a ela, não o que ela gerou a mais. A busca do Google foi a única origem grande que perdeu faturamento: −24,5%.</p></div>
 
 <h2>5. Os anúncios: quase a mesma verba, muito mais visita</h2>
 <div class="g">
@@ -175,23 +224,16 @@ Ela <strong>não é uma campanha de venda</strong> — o objetivo dela é ganhar
 cobrar o resultado errado. Para avaliá-la seria preciso a meta de seguidores do período, que não temos aqui.</p>
 <div class="oq"><p class="h">O que isso mostra</p><p>A verba está concentrada nos produtos que mais vendem, o que é coerente. Vale registrar o tamanho dessa concentração: 45% da verba e 39% do faturamento de produto em duas famílias. Não medimos o que aconteceria se uma delas parasse de vender — é um risco a acompanhar, não um efeito calculado.</p></div>
 
-<h2>7. Google Ads</h2>
-<div class="c"><p class="big">Não temos acesso a nenhuma conta de Google Ads desta loja.</p>
-<p class="nt">🔴 Entre as contas de anúncio às quais temos acesso, nenhuma é da Bixo Grillo. Isso significa que
-<strong>não conseguimos relatar</strong> investimento ou desempenho em Google Ads — e não que a loja
-necessariamente não anuncie lá. A diferença importa: no primeiro caso falta acesso, no segundo faltaria a
-operação. Para fechar essa lacuna, basta nos dar acesso à conta, se ela existir.</p></div>
-
-<h2>8. O caminho dentro do site</h2>
+<h2>7. O caminho dentro do site</h2>
 <div class="c"><table><tr><th>etapa (a cada 100 visitas)</th><th class="n">setembro</th><th class="n">outubro</th><th class="n">variação</th></tr><tr><td>Chegaram ao checkout</td><td class="n">2,58</td><td class="n">2,72</td><td class="n">+5,7%</td></tr><tr><td>Compraram</td><td class="n">1,39</td><td class="n">1,56</td><td class="n">+12,0%</td></tr><tr><td>De quem chegou ao checkout, quantos compraram</td><td class="n">54,1%</td><td class="n">57,3%</td><td class="n">+6,0%</td></tr></table><p class="nt">🔴 A etapa de <strong>carrinho</strong> não entra nesta tabela: a medição do carrinho quebrou durante a troca de plataforma, em setembro, e ainda não voltou ao normal. Os números que existem são baixos demais para serem reais — é falta de medição, não falta de carrinho.</p></div>
 <p>Melhorou nas duas pontas: mais gente chega ao checkout <em>e</em> uma parcela maior de quem chega conclui.
 De cada 100 pessoas que iniciaram o checkout, 54 compravam em setembro e
 57 compraram em outubro.</p>
 <div class="oq"><p class="h">O que isso mostra</p><p>O site não ficou só mais visitado — ele passou a converter melhor quem chegou. Esse ganho aparece tanto na entrada do checkout quanto na conclusão dele.</p></div>
 
-<h2>9. Celular e computador</h2>
-<div class="c"><table><tr><th>aparelho</th><th class="n">% das visitas</th><th class="n">compram a cada 100 (set)</th><th class="n">compram a cada 100 (out)</th><th class="n">faturamento por visita (out)</th></tr><tr><td>Celular</td><td class="n">93,0%</td><td class="n">1,34</td><td class="n">1,57</td><td class="n">R$ 3,26</td></tr><tr><td>Computador</td><td class="n">6,6%</td><td class="n">1,83</td><td class="n">2,01</td><td class="n">R$ 5,09</td></tr><tr><td>Tablet</td><td class="n">0,4%</td><td class="n">0,00</td><td class="n">2,38</td><td class="n">R$ 4,11</td></tr></table><p class="nt">O tablet teve 168 visitas no mês — volume baixo demais para conclusão; fica como registro.</p></div>
-<div class="oq"><p class="h">O que isso mostra</p><p>Quase tudo acontece no celular (93% das visitas), e foi lá que a conversão subiu. O computador converte melhor, mas é uma fatia pequena — e encolheu.</p></div><h2>10. Visitantes novos e visitantes que voltaram</h2>
+<h2>8. Celular e computador</h2>
+<div class="c"><table><tr><th>aparelho</th><th class="n">% das visitas</th><th class="n">compram a cada 100 (set)</th><th class="n">compram a cada 100 (out)</th><th class="n">faturamento por visita (out)</th></tr><tr><td>Celular</td><td class="n">90,8%</td><td class="n">1,34</td><td class="n">1,57</td><td class="n">R$ 3,26</td></tr><tr><td>Computador</td><td class="n">6,5%</td><td class="n">1,83</td><td class="n">2,01</td><td class="n">R$ 5,09</td></tr><tr><td>Tablet</td><td class="n">0,4%</td><td class="n">0,00</td><td class="n">2,38</td><td class="n">R$ 4,11</td></tr></table><p class="nt">A coluna de percentual tem como base as 44.505 visitas do site, e não a soma dos três aparelhos — por isso as três linhas não somam 100%: 1.030 visitas (2,3%) não recebem aparelho no momento da medição. O tablet teve 168 visitas no mês — volume baixo demais para conclusão; fica como registro.</p></div>
+<div class="oq"><p class="h">O que isso mostra</p><p>Quase tudo acontece no celular (91% das visitas do site), e foi lá que a conversão subiu. O computador converte melhor, mas é uma fatia pequena — e encolheu.</p></div><h2>9. Visitantes novos e visitantes que voltaram</h2>
 <div class="c"><table><tr><th>grupo</th><th class="n">visitas</th><th class="n">pedidos</th><th class="n">compram a cada 100</th><th class="n">ticket médio</th><th class="n">faturamento</th></tr><tr><td>Já tinha visitado antes</td><td class="n">10.823</td><td class="n">344</td><td class="n">3,18</td><td class="n">R$ 219,39</td><td class="n">R$ 75.470</td></tr><tr><td>Primeira visita registrada</td><td class="n">29.942</td><td class="n">351</td><td class="n">1,17</td><td class="n">R$ 204,40</td><td class="n">R$ 71.745</td></tr></table><p class="nt">Parte das visitas (3.575) não recebe essa classificação e fica fora da tabela.</p></div>
 <p class="nt">🔴 <strong>Esta divisão é por navegador, não por pessoa.</strong> A medição marca o aparelho: quem
 troca de celular, limpa os dados ou usa outro navegador aparece como visita nova, mesmo sendo cliente antigo.
@@ -201,11 +243,15 @@ que quem aparece pela primeira vez — e a conversão melhorou nos dois grupos. 
 visita cresceu +50,6%, e o de quem voltou, +10,3%.</p>
 <div class="oq"><p class="h">O que isso mostra</p><p>A loja cresceu nos dois lados ao mesmo tempo: trouxe muito visitante novo e também melhorou a conversão de quem já tinha vindo. Os dois grupos subiram, então o ganho de conversão não veio de mudança na composição do público.</p></div>
 
-<h2>11. Por que o ticket médio caiu</h2>
-<p>O ticket caiu 2,4%, de R$ 217,02 para R$ 211,82.
+<h2>10. Por que o ticket médio caiu</h2>
+<p>O ticket aqui é o <strong>faturamento medido no site dividido pelos pedidos medidos no site</strong> — a régua
+que existe nos dois meses. Nessa conta ele caiu 2,4%, de
+R$ 217,02 para R$ 211,82. (Pela contagem da loja o ticket captado de outubro fica
+entre R$ 210,49 e R$ 234,17, pela razão explicada na seção 1 — mas a comparação entre os
+meses só é possível na medição do site.)
 Mas as pessoas <strong>levaram mais peças</strong>: 1,79 → 1,92 por pedido.
 Ou seja, o carrinho não ficou menor — as <strong>peças é que ficaram mais baratas</strong>.</p>
-<div class="c"><table><tr><th></th><th class="n">setembro</th><th class="n">outubro</th><th class="n">variação</th></tr><tr><td>Preço médio de cada peça</td><td class="n">R$ 121,57</td><td class="n">R$ 110,36</td><td class="n">−9,2%</td></tr><tr><td>Peças por pedido</td><td class="n">1,79</td><td class="n">1,92</td><td class="n">+7,5%</td></tr><tr><td>Ticket médio</td><td class="n">R$ 217,02</td><td class="n">R$ 211,82</td><td class="n">−2,4%</td></tr></table></div>
+<div class="c"><table><tr><th></th><th class="n">setembro</th><th class="n">outubro</th><th class="n">variação</th></tr><tr><td>Preço médio de cada peça</td><td class="n">R$ 121,57</td><td class="n">R$ 110,36</td><td class="n">−9,2%</td></tr><tr><td>Peças por pedido</td><td class="n">1,79</td><td class="n">1,92</td><td class="n">+7,5%</td></tr><tr><td>Ticket médio (faturamento do site ÷ pedidos do site)</td><td class="n">R$ 217,02</td><td class="n">R$ 211,82</td><td class="n">−2,4%</td></tr></table></div>
 <p>Separando as duas causas possíveis do ticket menor: <strong>R$ 1,75</strong> vieram de ter
 proporcionalmente mais pedidos de visitantes de primeira visita, que gastam menos; e <strong>R$ 3,45</strong>
 de o ticket ter caído <em>dentro</em> dos grupos — principalmente entre quem já tinha visitado
@@ -213,11 +259,11 @@ de o ticket ter caído <em>dentro</em> dos grupos — principalmente entre quem 
 (+8,5%).</p>
 <div class="oq"><p class="h">O que isso mostra</p><p>O ticket caiu porque o que vendeu mudou — peças de preço menor —, não porque as pessoas compraram menos. Vender mais peças mais baratas pode ser bom ou ruim: depende da margem de cada peça, que não temos aqui.</p></div>
 
-<h2>12. O que mais vendeu em outubro</h2>
+<h2>11. O que mais vendeu em outubro</h2>
 <div class="c"><table><tr><th>produto</th><th class="n">visualizações</th><th class="n">peças vendidas</th><th class="n">faturamento do produto</th></tr><tr><td>Calca Pantacourt Malha</td><td class="n">7.252</td><td class="n">284</td><td class="n">R$ 38.312</td></tr><tr><td>Vestido Boho Liso Longo Aurea</td><td class="n">7.040</td><td class="n">139</td><td class="n">R$ 18.056</td></tr><tr><td>Vestido Trapezio</td><td class="n">4.022</td><td class="n">138</td><td class="n">R$ 17.374</td></tr><tr><td>Macacao Malha Amara</td><td class="n">2.369</td><td class="n">51</td><td class="n">R$ 8.155</td></tr><tr><td>Kit 3 Calcas Pantacourt</td><td class="n">788</td><td class="n">23</td><td class="n">R$ 6.854</td></tr><tr><td>Vestido Trapezio Longo</td><td class="n">1.614</td><td class="n">46</td><td class="n">R$ 5.791</td></tr><tr><td>Vestido Curto Morceguinho</td><td class="n">1.218</td><td class="n">35</td><td class="n">R$ 4.372</td></tr><tr><td>Vestido Longo Alcinha Babado</td><td class="n">2.019</td><td class="n">26</td><td class="n">R$ 4.092</td></tr><tr><td>Calca Pantalona</td><td class="n">1.841</td><td class="n">23</td><td class="n">R$ 3.686</td></tr><tr><td>Vestido Morceguinho</td><td class="n">1.256</td><td class="n">28</td><td class="n">R$ 3.497</td></tr></table><p class="nt">Produtos agrupados por modelo, somando as cores. O faturamento por produto é uma repartição do valor dos pedidos entre as peças — por isso não é igual ao faturamento total do site.</p></div>
 <div class="oq"><p class="h">O que isso mostra</p><p>As duas primeiras famílias sozinhas responderam por R$ 56.368 — 39% do faturamento atribuído a produto.</p></div>
 
-<h2>13. O que entrou e o que saiu do catálogo</h2>
+<h2>12. O que entrou e o que saiu do catálogo</h2>
 <p>Comparar produto a produto entre setembro e outubro exige cuidado: a <strong>nomenclatura do catálogo mudou</strong>
 no período — o mesmo modelo aparece com nome diferente nos dois meses. Por isso agrupamos por modelo, somando as
 cores, e a comparação cobre 92% do faturamento de outubro.</p>
@@ -237,19 +283,19 @@ deixaram de ser procuradas, porque saíram de catálogo ou porque acabaram de es
 disponibilidade. Também não sabemos se as peças novas venderam por serem melhores ou por terem recebido a verba
 e a vitrine. A troca de peças e o crescimento do mês <strong>aconteceram juntos</strong>; qual puxou qual, esta
 leitura não separa.</p>
-<div class="oq"><p class="h">O que isso mostra</p><p>O que vendeu mudou de perfil, do mais pesado para o mais leve, junto com a virada de estação. É uma descrição do que aconteceu — não uma explicação testada de por que aconteceu.</p></div><h2>14. Produtos muito vistos que vendem pouco</h2>
+<div class="oq"><p class="h">O que isso mostra</p><p>O que vendeu mudou de perfil, do mais pesado para o mais leve, junto com a virada de estação. É uma descrição do que aconteceu — não uma explicação testada de por que aconteceu.</p></div><h2>13. Produtos muito vistos que vendem pouco</h2>
 <div class="c"><table><tr><th>produto</th><th class="n">visualizações</th><th class="n">peças vendidas</th><th class="n">vendem a cada 100 visualizações</th></tr><tr><td>Vestido Longo Estampado</td><td class="n">412</td><td class="n">0</td><td class="n">0,0</td></tr><tr><td>Vestido Seda</td><td class="n">1.042</td><td class="n">4</td><td class="n">0,4</td></tr><tr><td>Cropped Alcinha Canelado Lara</td><td class="n">401</td><td class="n">2</td><td class="n">0,5</td></tr><tr><td>Calca Pantalona Universo</td><td class="n">673</td><td class="n">5</td><td class="n">0,7</td></tr><tr><td>Kit 3 Vestidos Pontas Duna</td><td class="n">1.286</td><td class="n">10</td><td class="n">0,8</td></tr><tr><td>Conjunto Calca E Blusa</td><td class="n">833</td><td class="n">7</td><td class="n">0,8</td></tr></table><p class="nt">Só produtos com 400 visualizações ou mais no mês — abaixo disso o número oscila demais para significar algo.</p></div>
 <div class="oq"><p class="h">O que isso mostra</p><p>Estes produtos atraem olhar e não fecham. Vale olhar foto, descrição, tabela de medidas e preço — mas a leitura aqui aponta onde olhar, não o que está errado.</p></div>
 
-<h2>15. Produtos pouco vistos que convertem bem</h2>
+<h2>14. Produtos pouco vistos que convertem bem</h2>
 <div class="c"><table><tr><th>produto</th><th class="n">visualizações</th><th class="n">peças vendidas</th><th class="n">vendem a cada 100 visualizações</th></tr><tr><td>Brinco Hippie Resina</td><td class="n">272</td><td class="n">22</td><td class="n">8,1</td></tr><tr><td>Colar Osiris</td><td class="n">100</td><td class="n">6</td><td class="n">6,0</td></tr><tr><td>Anel Regulavel Prateado</td><td class="n">202</td><td class="n">12</td><td class="n">5,9</td></tr><tr><td>Kit Oculos Retro</td><td class="n">89</td><td class="n">5</td><td class="n">5,6</td></tr><tr><td>Colar Micangas Equilibrio Natural</td><td class="n">162</td><td class="n">7</td><td class="n">4,3</td></tr><tr><td>Oculos De Sol Hippie Redondo</td><td class="n">257</td><td class="n">10</td><td class="n">3,9</td></tr></table><p class="nt">Produtos entre 60 e 400 visualizações, com pelo menos 5 peças vendidas.</p></div>
 <div class="oq"><p class="h">O que isso mostra</p><p>São candidatos a receber mais vitrine: convertem bem quando aparecem, mas aparecem pouco.</p></div>
 
-<h2>16. Onde no Brasil</h2>
-<div class="c"><table><tr><th>estado</th><th class="n">visitas</th><th class="n">pedidos</th><th class="n">faturamento</th><th class="n">% do faturamento</th></tr><tr><td>São Paulo</td><td class="n">17.354</td><td class="n">277</td><td class="n">R$ 53.634</td><td class="n">38,6%</td></tr><tr><td>Rio de Janeiro</td><td class="n">5.530</td><td class="n">104</td><td class="n">R$ 21.317</td><td class="n">15,3%</td></tr><tr><td>Minas Gerais</td><td class="n">4.933</td><td class="n">69</td><td class="n">R$ 15.189</td><td class="n">10,9%</td></tr><tr><td>Bahia</td><td class="n">1.738</td><td class="n">44</td><td class="n">R$ 8.808</td><td class="n">6,3%</td></tr><tr><td>Rio Grande do Sul</td><td class="n">2.499</td><td class="n">36</td><td class="n">R$ 7.877</td><td class="n">5,7%</td></tr><tr><td>Paraná</td><td class="n">1.987</td><td class="n">26</td><td class="n">R$ 6.532</td><td class="n">4,7%</td></tr><tr><td>Pernambuco</td><td class="n">898</td><td class="n">24</td><td class="n">R$ 6.481</td><td class="n">4,7%</td></tr><tr><td>Distrito Federal</td><td class="n">1.340</td><td class="n">26</td><td class="n">R$ 5.175</td><td class="n">3,7%</td></tr><tr><td>Santa Catarina</td><td class="n">1.890</td><td class="n">20</td><td class="n">R$ 4.992</td><td class="n">3,6%</td></tr><tr><td>Espírito Santo</td><td class="n">768</td><td class="n">20</td><td class="n">R$ 4.930</td><td class="n">3,5%</td></tr></table></div>
-<div class="oq"><p class="h">O que isso mostra</p><p>São Paulo e Rio concentram 54% do faturamento. Cada visita rende em média R$ 3,46 nestes estados; Pernambuco rende R$ 7,22 e Espírito Santo R$ 6,42 — cerca do dobro, com pouca visita. São praças pequenas que convertem acima da média, não uma conclusão sobre potencial.</p></div>
+<h2>15. Onde no Brasil</h2>
+<div class="c"><table><tr><th>estado</th><th class="n">visitas</th><th class="n">pedidos</th><th class="n">faturamento</th><th class="n">% do faturamento do site</th></tr><tr><td>São Paulo</td><td class="n">17.354</td><td class="n">277</td><td class="n">R$ 53.634</td><td class="n">36,4%</td></tr><tr><td>Rio de Janeiro</td><td class="n">5.530</td><td class="n">104</td><td class="n">R$ 21.317</td><td class="n">14,5%</td></tr><tr><td>Minas Gerais</td><td class="n">4.933</td><td class="n">69</td><td class="n">R$ 15.189</td><td class="n">10,3%</td></tr><tr><td>Bahia</td><td class="n">1.738</td><td class="n">44</td><td class="n">R$ 8.808</td><td class="n">6,0%</td></tr><tr><td>Rio Grande do Sul</td><td class="n">2.499</td><td class="n">36</td><td class="n">R$ 7.877</td><td class="n">5,4%</td></tr><tr><td>Paraná</td><td class="n">1.987</td><td class="n">26</td><td class="n">R$ 6.532</td><td class="n">4,4%</td></tr><tr><td>Pernambuco</td><td class="n">898</td><td class="n">24</td><td class="n">R$ 6.481</td><td class="n">4,4%</td></tr><tr><td>Distrito Federal</td><td class="n">1.340</td><td class="n">26</td><td class="n">R$ 5.175</td><td class="n">3,5%</td></tr><tr><td>Santa Catarina</td><td class="n">1.890</td><td class="n">20</td><td class="n">R$ 4.992</td><td class="n">3,4%</td></tr><tr><td>Espírito Santo</td><td class="n">768</td><td class="n">20</td><td class="n">R$ 4.930</td><td class="n">3,3%</td></tr></table><p class="nt">A coluna de percentual tem como base o faturamento do site (R$ 147.214,73), e não a soma dos estados listados — por isso as dez linhas não somam 100%. Os doze estados de maior faturamento respondem por 94,5% do total; o restante está em estados menores ou sem estado identificado no momento da medição.</p></div>
+<div class="oq"><p class="h">O que isso mostra</p><p>São Paulo e Rio concentram 51% do faturamento do site. Nesses dois estados cada visita rende R$ 3,28, contra R$ 3,47 nos dez estados desta tabela somados. Pernambuco rende R$ 7,22 e Espírito Santo R$ 6,42 — 2,2× e 2,0× o de São Paulo e Rio, com pouca visita. São praças pequenas que rendem acima da média, não uma conclusão sobre potencial.</p></div>
 
-<h2>17. O que melhorou e o que piorou</h2>
+<h2>16. O que melhorou e o que piorou</h2>
 <div class="c"><p class="big">Melhorou</p><ol class="a">
 <li><strong>O anúncio ficou mais clicado</strong> — 1,90% → 2,46% de cliques por exibição. Trazer uma visita passou a custar 25,2% menos.</li>
 <li><strong>Mais gente comprando</strong> — 1,39 → 1,56 pedidos a cada 100 visitas, com melhora também na conclusão do checkout.</li>
@@ -258,104 +304,45 @@ leitura não separa.</p>
 </ol></div>
 <div class="c"><p class="big">Piorou</p><ol class="a">
 <li><strong>Busca do Google</strong> — única origem grande a perder faturamento: −24,5%, com −12,4% de visitas.</li>
-<li><strong>Redes sociais não pagas</strong> — −31,3% de visitas (o faturamento ainda subiu +9,7%, porque converteu melhor).</li>
+<li><strong>Redes sociais não pagas</strong> — −31,3% de visitas (o faturamento ainda subiu +9,7%: vieram menos visitas, e a parte delas que comprou foi maior).</li>
 <li><strong>Preço médio por peça</strong> — −9,2%; sem a margem dos produtos não dá para dizer se isso machucou o lucro.</li>
 <li><strong>Concentração</strong> — as duas maiores famílias respondem por 39% do faturamento atribuído a produto.</li>
-</ol></div>
-
-<h2>18. O que vamos fazer em novembro</h2>
-<p>🔴 <strong>Regra que vale para tudo abaixo: a verba total de novembro não sobe.</strong> Sem a margem dos
-produtos não existe um retorno mínimo — e sem ele, aumentar investimento é apostar, não decidir. Os testes a
-seguir são <strong>realocação dentro da verba atual</strong> (R$ 1.300 de R$ 21.472,
-6% do total), não dinheiro novo.</p>
-<div class="c"><ol class="a">
-<li><strong>Levantar a margem das famílias que mais vendem.</strong><br>
-<em>O que sabemos:</em> as duas maiores famílias somam 39% do faturamento de produto, e o preço
-médio por peça caiu 9,2%.<br>
-<em>O que não sabemos:</em> se vender mais peças mais baratas melhorou ou piorou o lucro. Essa é a pergunta
-que nenhum número desta página responde.<br>
-<em>O que precisamos de vocês:</em> o custo das peças das famílias de maior volume.<br>
-<em>Prazo e decisão:</em> com a margem em mãos, fixamos o retorno mínimo de cada família e passamos a avaliar
-campanha contra esse limite — não contra a média da conta. <strong>Até lá, nenhuma verba nova é proposta.</strong></li>
-
-<li><strong>Investigar a queda da busca do Google.</strong><br>
-<em>O que sabemos:</em> foi a única origem relevante a perder faturamento: −24,5%,
-com visitas −12,4%.<br>
-<em>Hipótese a testar:</em> a troca de plataforma, em setembro, pode ter alterado endereços de página.
-🔴 É hipótese — não verificamos o histórico de endereços nem as posições de busca.<br>
-<em>O que faremos:</em> comparar as páginas que recebiam busca em agosto com as que recebem hoje e checar
-quais endereços deixaram de responder.<br>
-<em>Decisão:</em> se a causa for endereço quebrado, corrigir redirecionamentos; se não for, o diagnóstico
-muda e voltamos com ele. Meta: visitas de busca de volta ao patamar de setembro
-(2.998 no mês) até 31/12.</li>
-
-<li><strong>Testar vitrine para produtos que convertem bem e aparecem pouco.</strong><br>
-<em>O que sabemos:</em> o melhor caso da seção 15 é o <strong>Brinco Hippie Resina</strong>: vendeu
-22 peças em apenas 272 visualizações —
-<strong>8,1%</strong> de venda por visualização, contra
-2,4% na média da loja.<br>
-<em>O que faremos:</em> destaque na home e uma campanha de teste só para ele, com
-<strong>teto de R$ 300 no mês</strong>, realocados da verba atual, mediante aprovação de vocês.<br>
-<em>Métrica, baseline e decisão:</em> acompanhamos <strong>peças vendidas no site</strong> (não vendas
-creditadas pela plataforma de anúncio). A taxa-base é a de hoje, <strong>8,1%</strong>.
-O teste só conclui com <strong>10 peças vendidas</strong>; abaixo disso nada é decidido e a verba volta ao
-destino anterior. Atingidas as 10 peças: se a taxa ficar <strong>igual ou acima de 8,1%</strong>,
-ele entra na fila de campanha maior — que ainda assim depende da margem do item 1; se ficar abaixo, o teste
-é encerrado e a verba volta.</li>
-
-<li><strong>Ampliar a base de produtos que sustenta o faturamento.</strong><br>
-<em>O que sabemos:</em> 39% do faturamento de produto vem de duas famílias. Não medimos o que
-aconteceria se uma delas parasse de vender — é um indicador a acompanhar.<br>
-<em>O que faremos:</em> destinar <strong>R$ 500 no mês para cada uma</strong> das duas famílias seguintes com
-melhor taxa de venda e volume mínimo — hoje <strong>Blusa Basica De Alcinha</strong>
-(7,0% de venda por visualização) e
-<strong>Kit 5 Blusas Basicas De Alcinha</strong> (3,5%).
-Valor fixo, realocado, que não sobe sem nova aprovação.<br>
-<em>Métrica, baseline e decisão:</em> <strong>peças vendidas no site</strong>. As taxas-base de hoje são
-7,0% (Blusa Basica De Alcinha) e 3,5% (Kit 5 Blusas Basicas De Alcinha).
-Cada família precisa chegar a <strong>10 peças vendidas no mês</strong> para a decisão valer; abaixo disso
-continua em observação e a verba volta ao destino anterior. Atingido esse volume: se a família
-<strong>mantiver ou superar a própria taxa-base</strong>, ela permanece com os R$ 500 e entra na fila de
-aumento — que depende da margem do item 1; se ficar abaixo, a verba volta às campanhas de origem.</li>
-
-<li><strong>Terminar o conserto da medição de carrinho.</strong><br>
-<em>O que sabemos:</em> hoje o carrinho registra <strong>menos</strong> eventos que o checkout
-(465 contra 1.212 em outubro) — o que é impossível na
-prática, já que ninguém chega ao checkout sem passar pelo carrinho.<br>
-<em>O que faremos:</em> concluir a correção já preparada e validar com pedidos reais.<br>
-<em>Decisão:</em> consideramos resolvido quando o carrinho voltar a registrar mais eventos que o checkout.
-Enquanto isso, nenhuma análise de abandono de carrinho é confiável.</li>
 </ol></div>
 
 <h2>Como lemos estes números</h2>
 <div class="c"><table>
 <tr><th>item</th><th>o que vale saber</th></tr>
-<tr><td><strong>Faturamento, pedidos e visitas</strong></td><td>Vêm da medição do site. É o resultado comercial.</td></tr>
+<tr><td><strong>Faturamento captado e aprovado</strong></td><td>Vêm da <strong>plataforma da loja</strong> e são o resultado comercial oficial. Existem a partir de outubro — para setembro não há esse número.</td></tr>
+<tr><td><strong>Faturamento, pedidos e visitas do site</strong></td><td>Vêm da <strong>medição do site</strong>. É a régua usada em toda comparação entre os dois meses, porque é a única que existe nos dois. Em outubro ela registrou 98,2% do faturamento captado pela loja.</td></tr>
+<tr><td><strong>Visitas</strong></td><td>A ferramenta conta visitas por <strong>estimativa</strong>, não uma a uma: pedindo dia por dia ou o mês inteiro, o total varia cerca de 2% — para cima num mês, para baixo no outro. Usamos a soma dos dias nos dois meses, que é a mesma régua do fechamento de setembro. A escolha move a taxa de conversão em 0,03 ponto. Pedidos e faturamento <strong>não</strong> têm essa imprecisão: somam exato.</td></tr>
 <tr><td><strong>Investimento e retorno de anúncio</strong></td><td>Vêm da plataforma de anúncios. <strong>Nunca somamos</strong> com o faturamento do site: são medições diferentes da mesma realidade.</td></tr>
 <tr><td><strong>Comparação entre os meses</strong></td><td>Outubro tem 31 dias e setembro 30. Por isso a comparação principal é <strong>por dia</strong>.</td></tr>
 <tr><td><strong>Faturamento por produto</strong></td><td>É uma repartição do valor dos pedidos entre as peças. Soma perto, mas não igual, ao faturamento do site.</td></tr>
-<tr><td><strong>Nomes de produto</strong></td><td>A nomenclatura do catálogo mudou entre os meses. Agrupamos por modelo para não tratar um nome novo do mesmo modelo como se fosse produto novo.</td></tr>
+<tr><td><strong>Nomes de produto</strong></td><td>A nomenclatura do catálogo mudou entre os meses. Agrupamos <strong>por nome</strong>, não por código de catálogo — não temos esse código. Isso evita que o mesmo modelo renomeado apareça como produto novo, mas é <strong>inferência pelo nome</strong>: não prova que duas peças sejam a mesma.</td></tr>
 </table>
 <p class="big" style="margin-top:22px">O que ainda não conseguimos responder</p>
 <table>
 <tr><th>lacuna</th><th>o que isso impede</th></tr>
 <tr><td><strong>Margem dos produtos</strong></td><td>Sem ela não sabemos se vender mais peças mais baratas melhorou ou piorou o lucro.</td></tr>
 <tr><td><strong>Carrinho</strong></td><td>A medição quebrou na troca de plataforma e não voltou. Não dá para dizer onde exatamente as pessoas desistem antes do checkout.</td></tr>
-<tr><td><strong>Aprovação de pagamento</strong></td><td>Não temos acesso aos dados de aprovação. Todo pedido aqui é pedido registrado no site, não pedido aprovado.</td></tr>
+<tr><td><strong>Aprovação de pagamento</strong></td><td>Temos os <strong>totais</strong> de outubro — 89,3% do valor <strong>captado</strong> apareceu como aprovado —, mas não a quebra por forma de pagamento — então não dá para dizer <em>onde</em> o pagamento falha, nem se piorou ou melhorou.</td></tr>
+<tr><td><strong>Qual contagem de pedido é qual</strong></td><td>A plataforma trouxe duas contagens para outubro (640 e 712) e não é possível decidir aqui qual é o pedido que entra e qual é o pago. Enquanto isso, conversão e ticket pela contagem da loja vão como faixa.</td></tr>
+<tr><td><strong>Setembro na régua da loja</strong></td><td>Não existe faturamento captado nem aprovado de setembro. Por isso nenhum crescimento é calculado nessa régua: tudo que compara os dois meses usa a medição do site.</td></tr>
 <tr><td><strong>Estoque</strong></td><td>Não é possível saber se um produto parou de vender por desinteresse ou por falta de tamanho.</td></tr>
 <tr><td><strong>Setembro e outubro de 2025</strong></td><td>A loja rodava em outra plataforma. A comparação com o ano passado serve para o <strong>movimento</strong> (subiu ou caiu), não para o nível exato.</td></tr>
 </table></div>
 <p class="nt" style="margin-top:28px">Período analisado: 1 a 31 de outubro de 2026, comparado com 1 a 30 de setembro de 2026.
-Faturamento, pedidos e visitas vêm da medição do site; investimento e retorno de anúncio, da plataforma de anúncios.
-As duas fontes medem coisas diferentes e <strong>nunca são somadas</strong>.
-As recomendações são propostas para aprovação — nenhuma alteração foi feita nas campanhas.</p></div><div id="tip" role="tooltip" aria-live="polite"></div>
+O faturamento captado e aprovado de outubro vem da plataforma da loja. Pedidos, visitas e o faturamento usado nas
+comparações entre os meses vêm da medição do site. Investimento e retorno de anúncio vêm da plataforma de anúncios.
+As três fontes medem coisas diferentes e <strong>nunca são somadas</strong>.
+Nenhuma alteração foi feita nas campanhas.</p></div><div id="tip" role="tooltip" aria-live="polite"></div>
 <script>
 (function(){
  var tip=document.getElementById('tip');var cur=null;
  function place(x,y){var r=tip.getBoundingClientRect();var l=x+14,t=y-r.height-12;if(t<6)t=y+20;if(l+r.width>window.innerWidth-8)l=window.innerWidth-8-r.width;if(l<6)l=6;tip.style.left=l+'px';tip.style.top=t+'px';}
  function show(el,x,y){var d=el.getAttribute('data-tip')||'';var p=d.split('|');tip.innerHTML='<span class="tl">'+p[0]+'</span>'+(p[1]?'<span class="tv">'+p[1]+'</span>':'')+(p[2]?'<span class="td">'+p[2]+'</span>':'');tip.classList.add('on');place(x,y);cur=el;}
  function hide(){tip.classList.remove('on');cur=null;}
- document.querySelectorAll('.bar').forEach(function(el){
+ document.querySelectorAll('[data-tip]').forEach(function(el){
   el.addEventListener('mouseenter',function(e){show(el,e.clientX,e.clientY);});
   el.addEventListener('mousemove',function(e){if(cur===el)place(e.clientX,e.clientY);});
   el.addEventListener('mouseleave',hide);
@@ -363,7 +350,7 @@ As recomendações são propostas para aprovação — nenhuma alteração foi f
   el.addEventListener('blur',hide);
   el.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
  });
- document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.bar');if(el){var b=el.getBoundingClientRect();if(cur===el){hide();}else{show(el,b.left+b.width/2,b.top);}e.stopPropagation();}else{hide();}},true);
+ document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('[data-tip]');if(el){var b=el.getBoundingClientRect();if(cur===el){hide();}else{show(el,b.left+b.width/2,b.top);}e.stopPropagation();}else{hide();}},true);
  window.addEventListener('scroll',hide,true);window.addEventListener('resize',hide);
 })();
 </script></body></html>
